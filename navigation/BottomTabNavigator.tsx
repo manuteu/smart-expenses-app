@@ -42,8 +42,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Login"
-        component={TabLogin}
+        name="TabLogin"
+        component={TabLoginNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
@@ -94,7 +94,7 @@ function TabTwoNavigator() {
 }
 const TabLoginStack = createStackNavigator<TabLoginParamList>();
 
-function TabLogin() {
+function TabLoginNavigator() {
   return (
     <TabLoginStack.Navigator>
       <TabLoginStack.Screen
