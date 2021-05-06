@@ -22,6 +22,11 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          TabLogin: {
+            screens: {
+              LoginScreen: 'login',
+            },
+          },
         },
       },
       NotFound: '*',

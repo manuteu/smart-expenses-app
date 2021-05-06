@@ -7,12 +7,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
-
+import LoginScreen from '../screens/LoginScreen';
 
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import {
+  BottomTabParamList,
+  TabLoginParamList,
+  TabOneParamList,
+  TabTwoParamList,
+} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -31,6 +35,15 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="ios-code" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={TabLogin}
         options={{
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="ios-code" color={color} />
@@ -77,5 +90,18 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+const TabLoginStack = createStackNavigator<TabLoginParamList>();
+
+function TabLogin() {
+  return (
+    <TabLoginStack.Navigator>
+      <TabLoginStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerTitle: 'Tela de Login' }}
+      />
+    </TabLoginStack.Navigator>
   );
 }
