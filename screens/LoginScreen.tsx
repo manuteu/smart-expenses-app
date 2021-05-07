@@ -1,10 +1,16 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, View, CheckBox } from 'react-native';
+
 import { TextInput } from 'react-native-gesture-handler';
+
+import { Button } from '../components/Button';
+
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export default function LoginScreen() {
+  const [isSelected, setSelection] = useState(false);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -22,6 +28,19 @@ export default function LoginScreen() {
             placeholder="Nome de usuário ou e-mail"
           />
           <TextInput style={styles.input} placeholder="Sua Senha" />
+        </View>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            style={styles.checkbox}
+            value={isSelected}
+            onValueChange={setSelection}
+          />
+          <Text style={styles.checkboxText}>Manter sessão</Text>
+        </View>
+        <View style={styles.footer}>
+          <Text>Registre-se</Text>
+
+          <Button title="Entrar" style={styles.button} />
         </View>
       </View>
     </SafeAreaView>
@@ -50,6 +69,7 @@ const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 47,
+    marginTop: -20,
   },
   input: {
     borderBottomWidth: 1,
@@ -59,6 +79,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 15,
     textAlign: 'center',
-    marginTop: 30,
+    marginTop: 40,
   },
+  checkbox: {
+    borderColor: colors.violet_dark,
+    padding: 8,
+    borderRadius: 2.5,
+  },
+  checkboxText: {
+    paddingHorizontal: 8,
+  },
+  checkboxContainer: {
+    marginTop: 55,
+    flexDirection: 'row',
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 100,
+  },
+  button: {},
 });

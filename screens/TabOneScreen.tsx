@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Button } from '../components/Button';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 
@@ -9,6 +10,8 @@ export default function TabOneScreen() {
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+
+      <Button title="Funciona" />
     </View>
   );
 }
