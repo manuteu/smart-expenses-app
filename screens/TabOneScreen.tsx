@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '../components/Button';
 
 import EditScreenInfo from '../components/EditScreenInfo';
+import colors from '../styles/colors';
 
 export default function TabOneScreen() {
   return (
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colors.background_light,
   },
   title: {
     fontSize: 20,

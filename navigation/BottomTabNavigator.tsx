@@ -28,7 +28,7 @@ export default function BottomTabNavigator() {
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <TabBarIcon name="grid-outline" color={color} />
           ),
         }}
       />
@@ -46,7 +46,7 @@ export default function BottomTabNavigator() {
         component={TabLoginNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <TabBarIcon name="people-circle-outline" color={color} />
           ),
         }}
       />
@@ -73,7 +73,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Painel do Usuário' }}
       />
     </TabOneStack.Navigator>
   );
