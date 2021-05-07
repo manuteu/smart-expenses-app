@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     color: colors.white,
     fontFamily: fonts.heading,
   },
