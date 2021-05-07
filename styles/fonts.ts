@@ -3,7 +3,7 @@ const fontStandard = 'Yu Gothic UI';
 export default {
   heading: fontStandard,
 
-  title: 'Yu Gothic UI',
+  title: fontStandard,
 
-  text: 'Yu Gothic UI',
+  text: fontStandard,
 };
