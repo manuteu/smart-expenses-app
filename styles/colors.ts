@@ -8,5 +8,5 @@ export default {
   placeholder: 'rgba(0, 0, 0, 0.33)',
 
   violet: 'rgba(171, 158, 250, 1)',
-  violet_dark: 'rgba(95, 11, 135, 1)',
+  violet_dark: 'rgba(95, 11, 135, 0.81)',
 };
