@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { color } from 'react-native-reanimated';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     borderColor: colors.violet_dark,
     color: colors.header,
     width: '100%',
-    fontSize: 20,
+    fontSize: 18,
     padding: 15,
     textAlign: 'center',
     marginTop: 30,
