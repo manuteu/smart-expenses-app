@@ -1,9 +1,9 @@
-const fontStandard = 'Yu Gothic UI';
+const fontRegular = 'Jost_400Regular';
 
 export default {
-  heading: 'Yu Gothic UI',
+  heading: 'Jost_600SemiBold',
 
-  title: fontStandard,
+  title: fontRegular,
 
-  text: fontStandard,
+  text: fontRegular,
 };
