@@ -1,5 +1,5 @@
 export default {
-  background_light: 'rgba(248, 232, 255, 0.51)',
+  background_light: 'rgba(248, 232, 255, 0.21)',
 
   white: '#FFFFFF',
 

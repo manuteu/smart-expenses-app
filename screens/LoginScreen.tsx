@@ -7,7 +7,10 @@ import {
   CheckBox,
   TouchableWithoutFeedback,
   Keyboard,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
+import {} from '@react-native-community/checkbox';
 
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -22,7 +25,7 @@ export default function LoginScreen() {
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
 
-  function handleInputBlue() {
+  function handleInputBlur() {
     setIsFocused(false);
     setIsFilled(!!name);
   }
@@ -39,7 +42,10 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'position' : 'height'}
+        >
           <View style={styles.header}>
             <Text style={styles.title}>Olá,</Text>
             <Text style={styles.subTitle}>
@@ -49,32 +55,36 @@ export default function LoginScreen() {
           </View>
 
           <View style={styles.form}>
-            <View>
-              <TextInput
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
-                  },
-                ]}
-                placeholder="Nome de usuário ou e-mail"
-                onBlur={handleInputBlue}
-                onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
-              />
-              <TextInput
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
-                  },
-                ]}
-                placeholder="Sua Senha"
-                onBlur={handleInputBlue}
-                onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
-              />
-            </View>
+            <TextInput
+              style={[
+                styles.input,
+                (isFocused || isFilled) && {
+                  borderColor: colors.violet_dark,
+                },
+              ]}
+              placeholder="Nome de usuário ou e-mail"
+              placeholderTextColor={colors.placeholder}
+              onBlur={handleInputBlur}
+              onFocus={handleInputFocus}
+              onChangeText={handleInputChange}
+              autoCompleteType="username"
+            />
+            <TextInput
+              style={[
+                styles.input,
+                (isFocused || isFilled) && {
+                  borderColor: colors.violet_dark,
+                },
+              ]}
+              placeholder="Sua Senha"
+              placeholderTextColor={colors.placeholder}
+              onBlur={handleInputBlur}
+              onFocus={handleInputFocus}
+              // onChangeText={handleInputChange}
+              autoCompleteType="password"
+              maxLength={16}
+              secureTextEntry={true}
+            />
 
             <View style={styles.checkboxContainer}>
               <CheckBox
@@ -95,7 +105,7 @@ export default function LoginScreen() {
               </View>
             </View>
           </View>
-        </>
+        </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
   );
@@ -127,7 +137,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    borderColor: colors.violet_dark,
+    borderColor: colors.violet,
     color: colors.header,
     width: '100%',
     fontSize: 18,
@@ -150,7 +160,7 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '27%',
+    marginTop: '20%',
     width: '100%',
   },
   footerText: {
