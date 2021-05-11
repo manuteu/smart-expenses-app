@@ -4,6 +4,13 @@ import { Button } from '../components/Button';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import colors from '../styles/colors';
+// import { TabLoginNavigator } from '../navigation/BottomTabNavigator';
+// import { TabLoginParamList } from '../types';
+
+// const goLogin = TabLoginNavigator();
+// function goToLoginTab() {
+//   return <goLogin />;
+// }
 
 export default function TabOneScreen() {
   return (
@@ -12,7 +19,10 @@ export default function TabOneScreen() {
       <View style={styles.separator} />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
 
-      <Button title="Funciona" />
+      <Button
+        title="Funciona"
+        // onPress={goToLoginTab}
+      />
     </View>
   );
 }

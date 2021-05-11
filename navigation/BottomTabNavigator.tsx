@@ -94,7 +94,7 @@ function TabTwoNavigator() {
 }
 const TabLoginStack = createStackNavigator<TabLoginParamList>();
 
-function TabLoginNavigator() {
+export function TabLoginNavigator() {
   return (
     <TabLoginStack.Navigator>
       <TabLoginStack.Screen
