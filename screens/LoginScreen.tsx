@@ -4,13 +4,11 @@ import {
   StyleSheet,
   Text,
   View,
-  CheckBox,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
-import {} from '@react-native-community/checkbox';
+import { CheckBox } from 'react-native-elements';
 
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -42,10 +40,7 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior={Platform.OS === 'ios' ? 'position' : 'height'}
-        >
+        <KeyboardAvoidingView style={styles.container} behavior="position">
           <View style={styles.header}>
             <Text style={styles.title}>Olá,</Text>
             <Text style={styles.subTitle}>
@@ -89,10 +84,16 @@ export default function LoginScreen() {
             <View style={styles.checkboxContainer}>
               <CheckBox
                 style={styles.checkbox}
-                value={isSelected}
-                onValueChange={setSelection}
+                title="Manter sessão"
+                checkedIcon="check"
+                uncheckedIcon="square-o"
+                checkedColor={colors.violet_dark}
+                uncheckedColor={colors.violet}
+                checked={isSelected}
+                onPress={() => setSelection(!isSelected)}
+                containerStyle={{ backgroundColor: colors.background_light }}
+                textStyle={{ fontFamily: fonts.title, fontSize: 16 }}
               />
-              <Text style={styles.checkboxText}>Manter sessão</Text>
             </View>
 
             <View style={styles.footer}>
