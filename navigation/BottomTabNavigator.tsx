@@ -13,7 +13,7 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import {
   BottomTabParamList,
-  TabLoginParamList,
+  // TabLoginParamList,
   TabOneParamList,
   TabTwoParamList,
 } from '../types';
@@ -41,7 +41,7 @@ export default function BottomTabNavigator() {
           ),
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="TabLogin"
         component={TabLoginNavigator}
         options={{
@@ -49,7 +49,7 @@ export default function BottomTabNavigator() {
             <TabBarIcon name="people-circle-outline" color={color} />
           ),
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }
@@ -92,16 +92,16 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
-const TabLoginStack = createStackNavigator<TabLoginParamList>();
+// const TabLoginStack = createStackNavigator<TabLoginParamList>();
 
-export function TabLoginNavigator() {
-  return (
-    <TabLoginStack.Navigator>
-      <TabLoginStack.Screen
-        name="LoginScreen"
-        component={LoginScreen}
-        options={{ headerTitle: 'Tela de Login' }}
-      />
-    </TabLoginStack.Navigator>
-  );
-}
+// export function TabLoginNavigator() {
+//   return (
+//     <TabLoginStack.Navigator>
+//       <TabLoginStack.Screen
+//         name="LoginScreen"
+//         component={LoginScreen}
+//         options={{ headerTitle: 'Tela de Login' }}
+//       />
+//     </TabLoginStack.Navigator>
+//   );
+// }

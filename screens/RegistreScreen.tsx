@@ -1,4 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import {
   SafeAreaView,
@@ -13,6 +12,7 @@ import {
 import { CheckBox } from 'react-native-elements';
 
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { StackScreenProps } from '@react-navigation/stack';
 
 import { Button } from '../components/Button';
 
@@ -20,9 +20,9 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { RootStackParamList } from '../types';
 
-export default function LoginScreen({
+export default function RegistreScreen({
   navigation,
-}: StackScreenProps<RootStackParamList, 'Login'>) {
+}: StackScreenProps<RootStackParamList, 'Registre'>) {
   const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -105,14 +105,14 @@ export default function LoginScreen({
             </View>
 
             <View style={styles.footer}>
-              <TouchableOpacity onPress={() => navigation.replace('Registre')}>
+              <TouchableOpacity>
                 <Text style={styles.footerText}>Registre-se</Text>
               </TouchableOpacity>
 
               <View style={styles.button}>
                 <Button
                   title="Entrar"
-                  onPress={() => navigation.replace('Root')}
+                  onPress={() => navigation.replace('Login')}
                 />
               </View>
             </View>
