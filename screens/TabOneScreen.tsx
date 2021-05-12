@@ -18,7 +18,7 @@ export default function TabOneScreen() {
   return (
     
     <View style={styles.container}>
-      <View style={styles.card}>
+      <View style={styles.purpleCard}>
         <Text style={styles.cardText}>Olá Usuário1</Text>
         <View style={styles.separator} />
         <View>
@@ -26,9 +26,7 @@ export default function TabOneScreen() {
           <Text style={styles.cardTextBold}>R$ 2.437,63</Text>
         </View>
       </View>
-      <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx"/>
 
       <Button
         title="Funciona"
@@ -39,7 +37,7 @@ export default function TabOneScreen() {
 }
 
 const styles = StyleSheet.create({
-  card: {
+  purpleCard: {
     textAlign: 'center',
     flex: 1,
     alignItems: 'center',
