@@ -40,10 +40,7 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior={'position'}
-        >
+        <KeyboardAvoidingView style={styles.container} behavior="position">
           <View style={styles.header}>
             <Text style={styles.title}>Olá,</Text>
             <Text style={styles.subTitle}>
