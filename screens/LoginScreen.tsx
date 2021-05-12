@@ -83,7 +83,6 @@ export default function LoginScreen() {
 
             <View style={styles.checkboxContainer}>
               <CheckBox
-                style={styles.checkbox}
                 title="Manter sessão"
                 checkedIcon="check"
                 uncheckedIcon="square-o"
@@ -144,20 +143,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 15,
     textAlign: 'center',
-    marginTop: 40,
+    marginTop: '13%',
   },
   checkboxContainer: {
-    marginTop: 40,
-    flexDirection: 'row',
+    marginTop: '5%',
+    width: '100%',
+    justifyContent: 'flex-start',
   },
-  checkbox: {
-    borderColor: colors.violet_dark,
-    padding: 8,
-    borderRadius: 2.5,
-  },
-  checkboxText: {
-    paddingHorizontal: 8,
-  },
+
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
