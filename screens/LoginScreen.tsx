@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  Image,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
@@ -47,6 +48,10 @@ export default function LoginScreen() {
               Faça login ou {'\n'}
               Registre-se
             </Text>
+            {/* <Image
+              style={styles.logo}
+              source={require('../assets/images/Logo.png')}
+            /> */}
           </View>
 
           <View style={styles.form}>
@@ -122,6 +127,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     color: colors.header,
     fontFamily: fonts.heading,
+    // flexDirection: 'row',
+  },
+  logo: {
+    // width: 200,
+    // height: 200,
   },
   title: {
     fontSize: 36,
