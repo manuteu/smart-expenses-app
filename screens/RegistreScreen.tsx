@@ -9,9 +9,8 @@ import {
   KeyboardAvoidingView,
   Image,
 } from 'react-native';
-import { CheckBox } from 'react-native-elements';
 
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
 
 import { Button } from '../components/Button';
@@ -23,7 +22,6 @@ import { RootStackParamList } from '../types';
 export default function RegistreScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'Registre'>) {
-  const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
@@ -45,78 +43,117 @@ export default function RegistreScreen({
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container} behavior="position">
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
           <View style={styles.header}>
-            <Text style={styles.title}>Olá,</Text>
+            <Text style={styles.title}>Registre-se,</Text>
             <Text style={styles.subTitle}>
-              Faça login ou {'\n'}
-              Registre-se
+              Para desfrutar de {'\n'}
+              Nossos recursos
             </Text>
             {/* <Image
               style={styles.logo}
               source={require('../assets/images/Logo.png')}
             /> */}
           </View>
-
-          <View style={styles.form}>
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.violet_dark,
-                },
-              ]}
-              placeholder="Nome de usuário ou e-mail"
-              placeholderTextColor={colors.placeholder}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              onChangeText={handleInputChange}
-              autoCompleteType="username"
-            />
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.violet_dark,
-                },
-              ]}
-              placeholder="Sua Senha"
-              placeholderTextColor={colors.placeholder}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              // onChangeText={handleInputChange}
-              autoCompleteType="password"
-              maxLength={16}
-              secureTextEntry={true}
-            />
-
-            <View style={styles.checkboxContainer}>
-              <CheckBox
-                title="Manter sessão"
-                checkedIcon="check"
-                uncheckedIcon="square-o"
-                checkedColor={colors.violet_dark}
-                uncheckedColor={colors.violet}
-                checked={isSelected}
-                onPress={() => setSelection(!isSelected)}
-                containerStyle={{ backgroundColor: colors.background_light }}
-                textStyle={{ fontFamily: fonts.title, fontSize: 16 }}
+          <ScrollView>
+            <View style={styles.form}>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Nome"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="name"
               />
-            </View>
-
-            <View style={styles.footer}>
-              <TouchableOpacity>
-                <Text style={styles.footerText}>Registre-se</Text>
-              </TouchableOpacity>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Sobrenome"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="name"
+              />
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="E-mail"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="email"
+              />
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Nome de usuário"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="username"
+              />
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Senha"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="password"
+                maxLength={16}
+                secureTextEntry={true}
+              />
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Confirme a Senha"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="password"
+                maxLength={16}
+                secureTextEntry={true}
+              />
 
               <View style={styles.button}>
                 <Button
-                  title="Entrar"
+                  title="Registrar"
                   onPress={() => navigation.replace('Login')}
                 />
               </View>
             </View>
-          </View>
+          </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -130,7 +167,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
-    marginTop: 20,
+    marginTop: '10%',
     paddingHorizontal: 25,
     color: colors.header,
     fontFamily: fonts.heading,
@@ -141,44 +178,30 @@ const styles = StyleSheet.create({
     // height: 200,
   },
   title: {
-    fontSize: 36,
+    fontSize: 34,
     color: colors.header,
   },
   subTitle: {
-    fontSize: 24,
+    fontSize: 18,
     color: colors.header,
+    marginTop: 15,
   },
   form: {
     paddingHorizontal: 37,
-    marginTop: 30,
+    marginTop: '12%',
   },
   input: {
     borderBottomWidth: 1,
     borderColor: colors.violet,
     color: colors.header,
     width: '100%',
-    fontSize: 18,
-    padding: 15,
+    fontSize: 16,
     textAlign: 'center',
-    marginTop: '13%',
-  },
-  checkboxContainer: {
-    marginTop: '5%',
-    width: '100%',
-    justifyContent: 'flex-start',
+    paddingVertical: 17,
   },
 
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: '20%',
-    width: '100%',
-  },
-  footerText: {
-    color: colors.violet_dark,
-    marginTop: 12,
-  },
   button: {
-    width: '40%',
+    width: '100%',
+    paddingVertical: 60,
   },
 });

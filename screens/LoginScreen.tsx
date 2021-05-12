@@ -12,7 +12,11 @@ import {
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 
 import { Button } from '../components/Button';
 
@@ -45,7 +49,7 @@ export default function LoginScreen({
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container} behavior="position">
+        <KeyboardAvoidingView style={styles.container} behavior="padding">
           <View style={styles.header}>
             <Text style={styles.title}>Olá,</Text>
             <Text style={styles.subTitle}>
@@ -57,66 +61,69 @@ export default function LoginScreen({
               source={require('../assets/images/Logo.png')}
             /> */}
           </View>
-
-          <View style={styles.form}>
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.violet_dark,
-                },
-              ]}
-              placeholder="Nome de usuário ou e-mail"
-              placeholderTextColor={colors.placeholder}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              onChangeText={handleInputChange}
-              autoCompleteType="username"
-            />
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.violet_dark,
-                },
-              ]}
-              placeholder="Sua Senha"
-              placeholderTextColor={colors.placeholder}
-              onBlur={handleInputBlur}
-              onFocus={handleInputFocus}
-              // onChangeText={handleInputChange}
-              autoCompleteType="password"
-              maxLength={16}
-              secureTextEntry={true}
-            />
-
-            <View style={styles.checkboxContainer}>
-              <CheckBox
-                title="Manter sessão"
-                checkedIcon="check"
-                uncheckedIcon="square-o"
-                checkedColor={colors.violet_dark}
-                uncheckedColor={colors.violet}
-                checked={isSelected}
-                onPress={() => setSelection(!isSelected)}
-                containerStyle={{ backgroundColor: colors.background_light }}
-                textStyle={{ fontFamily: fonts.title, fontSize: 16 }}
+          <ScrollView>
+            <View style={styles.form}>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Nome de usuário ou e-mail"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="name"
               />
-            </View>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.violet_dark,
+                  },
+                ]}
+                placeholder="Sua Senha"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                // onChangeText={handleInputChange}
+                autoCompleteType="password"
+                maxLength={16}
+                secureTextEntry={true}
+              />
 
-            <View style={styles.footer}>
-              <TouchableOpacity onPress={() => navigation.replace('Registre')}>
-                <Text style={styles.footerText}>Registre-se</Text>
-              </TouchableOpacity>
-
-              <View style={styles.button}>
-                <Button
-                  title="Entrar"
-                  onPress={() => navigation.replace('Root')}
+              <View style={styles.checkboxContainer}>
+                <CheckBox
+                  title="Manter sessão"
+                  checkedIcon="check"
+                  uncheckedIcon="square-o"
+                  checkedColor={colors.violet_dark}
+                  uncheckedColor={colors.violet}
+                  checked={isSelected}
+                  onPress={() => setSelection(!isSelected)}
+                  containerStyle={{ backgroundColor: colors.background_light }}
+                  textStyle={{ fontFamily: fonts.title, fontSize: 16 }}
                 />
               </View>
+
+              <View style={styles.footer}>
+                <TouchableOpacity
+                  onPress={() => navigation.replace('Registre')}
+                >
+                  <Text style={styles.footerText}>Registre-se</Text>
+                </TouchableOpacity>
+
+                <View style={styles.button}>
+                  <Button
+                    title="Entrar"
+                    onPress={() => navigation.replace('Root')}
+                  />
+                </View>
+              </View>
             </View>
-          </View>
+          </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -130,7 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
-    marginTop: 20,
+    marginTop: '10%',
     paddingHorizontal: 25,
     color: colors.header,
     fontFamily: fonts.heading,
@@ -150,7 +157,7 @@ const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 37,
-    marginTop: 30,
+    marginTop: '14%',
   },
   input: {
     borderBottomWidth: 1,
@@ -160,7 +167,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 15,
     textAlign: 'center',
-    marginTop: '13%',
+    marginTop: '20%',
   },
   checkboxContainer: {
     marginTop: '5%',
@@ -171,12 +178,13 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '20%',
+    marginTop: '24%',
     width: '100%',
   },
   footerText: {
     color: colors.violet_dark,
     marginTop: 12,
+    marginLeft: 20,
   },
   button: {
     width: '40%',
