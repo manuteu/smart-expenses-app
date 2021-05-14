@@ -45,15 +45,17 @@ export default function RegistreScreen({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView style={styles.container} behavior="padding">
           <View style={styles.header}>
-            <Text style={styles.title}>Registre-se,</Text>
-            <Text style={styles.subTitle}>
-              Para desfrutar de {'\n'}
-              Nossos recursos
-            </Text>
-            {/* <Image
+            <View>
+              <Text style={styles.title}>Registre-se,</Text>
+              <Text style={styles.subTitle}>
+                Para desfrutar de {'\n'}
+                Nossos recursos
+              </Text>
+            </View>
+            <Image
               style={styles.logo}
               source={require('../assets/images/Logo.png')}
-            /> */}
+            />
           </View>
           <ScrollView>
             <View style={styles.form}>
@@ -168,21 +170,25 @@ const styles = StyleSheet.create({
   },
   header: {
     marginTop: '10%',
-    paddingHorizontal: 25,
+    // paddingHorizontal: 25,
     color: colors.header,
     fontFamily: fonts.heading,
-    // flexDirection: 'row',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   logo: {
-    // width: 200,
-    // height: 200,
+    width: 110,
+    height: 110,
+    // marginLeft: 30,
   },
   title: {
     fontSize: 34,
+    marginLeft: 15,
     color: colors.header,
   },
   subTitle: {
     fontSize: 18,
+    marginLeft: 15,
     color: colors.header,
     marginTop: 15,
   },
@@ -202,6 +208,6 @@ const styles = StyleSheet.create({
 
   button: {
     width: '100%',
-    paddingVertical: 60,
+    paddingVertical: 50,
   },
 });

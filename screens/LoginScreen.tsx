@@ -51,15 +51,17 @@ export default function LoginScreen({
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView style={styles.container} behavior="padding">
           <View style={styles.header}>
-            <Text style={styles.title}>Olá,</Text>
-            <Text style={styles.subTitle}>
-              Faça login ou {'\n'}
-              Registre-se
-            </Text>
-            {/* <Image
+            <View>
+              <Text style={styles.title}>Olá,</Text>
+              <Text style={styles.subTitle}>
+                Faça login ou {'\n'}
+                Registre-se
+              </Text>
+            </View>
+            <Image
               style={styles.logo}
               source={require('../assets/images/Logo.png')}
-            /> */}
+            />
           </View>
           <ScrollView>
             <View style={styles.form}>
@@ -138,14 +140,16 @@ const styles = StyleSheet.create({
   },
   header: {
     marginTop: '10%',
+    marginLeft: 13,
     paddingHorizontal: 25,
     color: colors.header,
     fontFamily: fonts.heading,
-    // flexDirection: 'row',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   logo: {
-    // width: 200,
-    // height: 200,
+    width: 110,
+    height: 110,
   },
   title: {
     fontSize: 36,
