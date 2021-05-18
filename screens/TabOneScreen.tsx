@@ -1,22 +1,16 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+
 import { Button } from '../components/Button';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import colors from '../styles/colors';
-import LoginScreen from './LoginScreen';
-// import { TabLoginNavigator } from '../navigation/BottomTabNavigator';
-// import { TabLoginParamList } from '../types';
+import { RootStackParamList } from '../types';
 
-// const goLogin = TabLoginNavigator();
-// function goToLoginTab() {
-//   return <goLogin />;
-// }
-
-export default function TabOneScreen() {
+export default function TabOneScreen({
+  navigation,
+}: StackScreenProps<RootStackParamList, 'Registre'>) {
   return (
-    
     <View style={styles.container}>
       <View style={styles.purpleCard}>
         <Text style={styles.cardText}>Olá Usuário1</Text>
@@ -28,10 +22,12 @@ export default function TabOneScreen() {
       </View>
       <View style={styles.separator} />
 
-      <Button
-        title="Funciona"
-        //onPress={LoginScreen}
-      />
+      <View style={styles.button}>
+        <Button
+          title="Ir para Login"
+          onPress={() => navigation.replace('Login')}
+        />
+      </View>
     </View>
   );
 }
@@ -42,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#93278F',
+    backgroundColor: colors.purple,
     minWidth: '80%',
     maxHeight: '25%',
     borderRadius: 30,
@@ -73,6 +69,9 @@ const styles = StyleSheet.create({
   separator: {
     marginVertical: 10,
     height: 1,
+    width: '80%',
+  },
+  button: {
     width: '80%',
   },
 });

@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   footerText: {
-    color: colors.violet_dark,
+    color: colors.purple,
     marginTop: 12,
     marginLeft: 20,
   },
