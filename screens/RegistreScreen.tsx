@@ -14,10 +14,10 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
 
 import { Button } from '../components/Button';
+import { RootStackParamList } from '../types';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { RootStackParamList } from '../types';
 
 export default function RegistreScreen({
   navigation,
