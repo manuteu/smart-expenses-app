@@ -7,6 +7,7 @@ export default {
   text: 'rgba(68, 68, 68, 1)',
   placeholder: 'rgba(0, 0, 0, 0.33)',
 
+  pink: 'rgba(237, 30, 121, 1)',
   purple: 'rgba(147, 39, 143, 1)',
 
   violet: 'rgba(171, 158, 250, 1)',

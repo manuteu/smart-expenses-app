@@ -57,7 +57,7 @@ export default function RegistreScreen({
               source={require('../assets/images/Logo.png')}
             />
           </View>
-          <ScrollView>
+          <ScrollView style={styles.scroll}>
             <View style={styles.form}>
               <TextInput
                 style={[
@@ -147,15 +147,15 @@ export default function RegistreScreen({
                 maxLength={16}
                 secureTextEntry={true}
               />
-
-              <View style={styles.button}>
-                <Button
-                  title="Registrar"
-                  onPress={() => navigation.replace('Login')}
-                />
-              </View>
             </View>
           </ScrollView>
+
+          <View style={styles.button}>
+            <Button
+              title="Registrar"
+              onPress={() => navigation.replace('Login')}
+            />
+          </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -169,8 +169,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
+    // flex: 1,
     marginTop: '10%',
-    // paddingHorizontal: 25,
+
     color: colors.header,
     fontFamily: fonts.heading,
     flexDirection: 'row',
@@ -179,7 +180,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 110,
     height: 110,
-    // marginLeft: 30,
   },
   title: {
     fontSize: 34,
@@ -192,22 +192,37 @@ const styles = StyleSheet.create({
     color: colors.header,
     marginTop: 15,
   },
+  scroll: {
+    // flex: 1,
+  },
   form: {
+    flex: 1,
     paddingHorizontal: 37,
-    marginTop: '12%',
+    // position: 'relative',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    top: '20%',
   },
   input: {
     borderBottomWidth: 1,
-    borderColor: colors.violet,
+    borderColor: colors.placeholder,
     color: colors.header,
     width: '100%',
     fontSize: 16,
     textAlign: 'center',
-    paddingVertical: 17,
+    paddingVertical: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    marginBottom: 30,
   },
 
   button: {
+    // flex: 1,
+    position: 'absolute',
+    bottom: 0,
     width: '100%',
-    paddingVertical: 50,
+    paddingHorizontal: 37,
+    marginBottom: '7%',
+    // paddingVertical: 50,
   },
 });

@@ -109,23 +109,21 @@ export default function LoginScreen({
                   textStyle={{ fontFamily: fonts.title, fontSize: 16 }}
                 />
               </View>
-
-              <View style={styles.footer}>
-                <TouchableOpacity
-                  onPress={() => navigation.replace('Registre')}
-                >
-                  <Text style={styles.footerText}>Registre-se</Text>
-                </TouchableOpacity>
-
-                <View style={styles.button}>
-                  <Button
-                    title="Entrar"
-                    onPress={() => navigation.replace('Root')}
-                  />
-                </View>
-              </View>
             </View>
           </ScrollView>
+
+          <View style={styles.footer}>
+            <TouchableOpacity onPress={() => navigation.replace('Registre')}>
+              <Text style={styles.footerText}>Registre-se</Text>
+            </TouchableOpacity>
+
+            <View style={styles.button}>
+              <Button
+                title="Entrar"
+                onPress={() => navigation.replace('Root')}
+              />
+            </View>
+          </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -164,8 +162,9 @@ const styles = StyleSheet.create({
     marginTop: '14%',
   },
   input: {
+    flex: 1,
     borderBottomWidth: 1,
-    borderColor: colors.violet,
+    borderColor: colors.placeholder,
     color: colors.header,
     width: '100%',
     fontSize: 18,
@@ -180,10 +179,12 @@ const styles = StyleSheet.create({
   },
 
   footer: {
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: '24%',
+    marginBottom: '22%',
     width: '100%',
+    paddingHorizontal: 25,
   },
   footerText: {
     color: colors.purple,
