@@ -120,7 +120,7 @@ export default function LoginScreen({
             <View style={styles.button}>
               <Button
                 title="Entrar"
-                onPress={() => navigation.replace('Root')}
+                onPress={() => navigation.replace('Renda')}
               />
             </View>
           </View>

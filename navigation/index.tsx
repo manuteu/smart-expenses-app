@@ -10,6 +10,7 @@ import LoginScreen from '../screens/LoginScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import RegistreScreen from '../screens/RegistreScreen';
+import RendaScreen from '../screens/RendaScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -33,6 +34,7 @@ function RootNavigator() {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Renda" component={RendaScreen} />
       <Stack.Screen name="Registre" component={RegistreScreen} />
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen
