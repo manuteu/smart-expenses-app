@@ -179,12 +179,14 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    // flex: 1,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: '22%',
+    marginBottom: '20%',
     width: '100%',
     paddingHorizontal: 25,
+    position: 'absolute',
+    bottom: 0,
   },
   footerText: {
     color: colors.purple,

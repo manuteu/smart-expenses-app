@@ -2,6 +2,7 @@ export default {
   background_light: 'rgba(248, 232, 255, 0.21)',
 
   white: '#FFFFFF',
+  opacity: 'rgba(0,0,0,0)',
 
   header: 'rgba(0, 0, 0, 0.83)',
   text: 'rgba(68, 68, 68, 1)',
