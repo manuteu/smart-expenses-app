@@ -13,11 +13,11 @@ import {
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
 
-import { Button } from '../components/Button';
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from '../../types';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { Button } from '../components/Button';
 
 export default function RegistreScreen({
   navigation,
@@ -54,7 +54,7 @@ export default function RegistreScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
           <ScrollView style={styles.scroll}>
@@ -201,7 +201,8 @@ const styles = StyleSheet.create({
     // position: 'relative',
     // justifyContent: 'center',
     // alignItems: 'center',
-    top: '20%',
+    // top: '20%',
+    marginTop: '10%',
   },
   input: {
     borderBottomWidth: 1,
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     paddingHorizontal: 37,
-    marginBottom: '7%',
+    marginBottom: '10%',
     // paddingVertical: 50,
   },
 });

@@ -1,13 +1,7 @@
-/**
- * Learn more about createBottomTabNavigator:
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
-
+import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-import LoginScreen from '../screens/LoginScreen';
 
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -16,7 +10,7 @@ import {
   // TabLoginParamList,
   TabOneParamList,
   TabTwoParamList,
-} from '../types';
+} from '../../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -41,15 +35,6 @@ export default function BottomTabNavigator() {
           ),
         }}
       />
-      {/* <BottomTab.Screen
-        name="TabLogin"
-        component={TabLoginNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="people-circle-outline" color={color} />
-          ),
-        }}
-      /> */}
     </BottomTab.Navigator>
   );
 }

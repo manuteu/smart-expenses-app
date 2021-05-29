@@ -11,7 +11,7 @@ import AppLoading from 'expo-app-loading';
 
 import useCachedResources from './hooks/useCachedResources';
 
-import Navigation from './navigation';
+import Navigation from './src/navigation';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

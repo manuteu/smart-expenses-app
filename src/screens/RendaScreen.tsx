@@ -8,15 +8,18 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 
-import { RootStackParamList } from '../types';
-import { EmptyButton } from '../components/EmptyButton';
+import { RootStackParamList } from '../../types';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 import { TextInput } from 'react-native-gesture-handler';
+import { EmptyButton } from '../components/EmptyButton';
+import Input from '../components/InputMask';
 
 export default function RendaScreen({
   navigation,
@@ -25,6 +28,7 @@ export default function RendaScreen({
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
+  const [renda, setRenda] = useState();
 
   function handleInputBlur() {
     setIsFocused(false);
@@ -40,51 +44,68 @@ export default function RendaScreen({
     setName(value);
   }
 
+  function handleCustom(value: string) {
+    setRenda(value);
+  }
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>Cadastro de Renda</Text>
             </View>
             <Image
               style={styles.logo}
-              source={require('../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
 
           <View style={styles.forms}>
-            <View>
-              <TextInput
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && {
-                    borderColor: colors.purple,
-                  },
-                ]}
-                placeholder="R$ 0,00"
-                placeholderTextColor={colors.placeholder}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-                onChangeText={handleInputChange}
-                keyboardType="numeric"
-              />
-              <View>
-                <Text style={styles.textBellowInput}>
-                  Toque para digitar o valor
-                </Text>
-              </View>
-            </View>
+            <Text style={styles.textBellowInput}>Digite sua renda mensal</Text>
+            <Input
+              value={renda}
+              mask="renda"
+              inputMaskChange={(text: string) => handleCustom(text)}
+              style={[
+                styles.input,
+                (isFocused || isFilled) && {
+                  borderColor: colors.purple,
+                },
+              ]}
+              placeholder="R$ 0,00"
+              placeholderTextColor={colors.placeholder}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+              onChangeText={handleInputChange}
+              keyboardType="numeric"
+            />
+            <TextInput
+              style={[
+                styles.input,
+                (isFocused || isFilled) && {
+                  borderColor: colors.purple,
+                },
+              ]}
+              placeholder="R$ 0,00"
+              placeholderTextColor={colors.placeholder}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+              onChangeText={handleInputChange}
+              dataDetectorTypes={'calendarEvent'}
+            />
           </View>
-
           <View style={styles.footer}>
             <EmptyButton
               title="Cadastrar"
               onPress={() => navigation.replace('Root')}
             />
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
   );
@@ -94,6 +115,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    backgroundColor: colors.background_light,
     // padding: 10,
   },
   header: {
@@ -105,22 +127,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   title: {
-    fontSize: 28,
+    fontSize: 30,
     fontFamily: fonts.heading,
     color: colors.header,
     marginTop: 7,
   },
   logo: {
-    justifyContent: 'flex-end',
     height: 60,
     width: 60,
   },
   forms: {
+    flex: 1,
     paddingHorizontal: 55,
+    justifyContent: 'center',
   },
   input: {
-    // flex: 1,
     borderBottomWidth: 1,
+    marginBottom: '20%',
     marginTop: '10%',
     textAlign: 'center',
     // marginBottom: '100%',
@@ -129,12 +152,14 @@ const styles = StyleSheet.create({
   },
   textBellowInput: {
     fontSize: 16,
-    fontFamily: fonts.text,
+    fontFamily: fonts.heading,
     textAlign: 'center',
+    color: colors.header,
   },
   footer: {
-    // flex: 1,
     paddingHorizontal: 37,
-    // width: '90%',
+    position: 'absolute',
+    width: '100%',
+    bottom: '12%',
   },
 });

@@ -2,10 +2,9 @@ import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Button } from '../components/Button';
-
 import colors from '../styles/colors';
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from '../../types';
+import { Button } from '../components/Button';
 
 export default function TabOneScreen({
   navigation,

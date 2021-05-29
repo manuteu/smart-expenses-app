@@ -18,11 +18,10 @@ import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 
-import { Button } from '../components/Button';
-
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from '../../types';
+import { Button } from '../components/Button';
 
 export default function LoginScreen({
   navigation,
@@ -60,7 +59,7 @@ export default function LoginScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
           <ScrollView>
