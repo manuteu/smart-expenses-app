@@ -45,7 +45,7 @@ export default function RendaScreen({
   }
 
   function handleCustom(value: string) {
-    setRenda(value);
+    // setRenda(value);
   }
 
   return (
@@ -67,10 +67,10 @@ export default function RendaScreen({
 
           <View style={styles.forms}>
             <Text style={styles.textBellowInput}>Digite sua renda mensal</Text>
-            <Input
-              value={renda}
-              mask="renda"
-              inputMaskChange={(text: string) => handleCustom(text)}
+            <TextInput
+              // value={renda}
+              // // mask="renda"
+              // // inputMaskChange={(text: string) => handleCustom(text)}
               style={[
                 styles.input,
                 (isFocused || isFilled) && {
@@ -91,12 +91,12 @@ export default function RendaScreen({
                   borderColor: colors.purple,
                 },
               ]}
-              placeholder="R$ 0,00"
+              placeholder="Dia do Pagamento"
               placeholderTextColor={colors.placeholder}
               onFocus={handleInputFocus}
               onBlur={handleInputBlur}
               onChangeText={handleInputChange}
-              dataDetectorTypes={'calendarEvent'}
+              keyboardType="numeric"
             />
           </View>
           <View style={styles.footer}>
