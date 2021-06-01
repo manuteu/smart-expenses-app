@@ -100,8 +100,8 @@ export default function LoginScreen({
                   title="Manter sessão"
                   checkedIcon="check"
                   uncheckedIcon="square-o"
-                  checkedColor={colors.violet_dark}
-                  uncheckedColor={colors.violet}
+                  checkedColor={colors.purple}
+                  uncheckedColor={colors.purple}
                   checked={isSelected}
                   onPress={() => setSelection(!isSelected)}
                   containerStyle={{ backgroundColor: colors.background_light }}

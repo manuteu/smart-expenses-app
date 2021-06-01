@@ -6,9 +6,9 @@ import colors from '../styles/colors';
 import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
 
-export default function TabOneScreen({
+export default function Home({
   navigation,
-}: StackScreenProps<RootStackParamList, 'Registre'>) {
+}: StackScreenProps<RootStackParamList, 'Root'>) {
   return (
     <View style={styles.container}>
       <View style={styles.purpleCard}>

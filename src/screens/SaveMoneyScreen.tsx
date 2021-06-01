@@ -1,13 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import EditScreenInfo from '../components/EditScreenInfo';
 
-export default function TabTwoScreen() {
+export default function SaveMoney() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>Save Money</Text>
       <View style={styles.separator} />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
     </View>
   );
 }

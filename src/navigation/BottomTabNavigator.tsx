@@ -3,36 +3,64 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import Metas from '../screens/MetasScreen';
+import Despesas from '../screens/DespesaScreen';
+import Home from '../screens/HomeScreen';
+import SaveMoney from '../screens/SaveMoneyScreen';
+import Perfil from '../screens/PerfilScreen';
+
 import {
   BottomTabParamList,
-  // TabLoginParamList,
-  TabOneParamList,
-  TabTwoParamList,
+  TabMetasParamList,
+  TabDespesaParamList,
+  TabHomeParamList,
+  TabSaveMoneyParamList,
+  TabPerfilParamList,
 } from '../../types';
+import colors from '../styles/colors';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="TabOne">
+    <BottomTab.Navigator initialRouteName="Home">
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="Metas"
+        component={Metas}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="grid-outline" color={color} />
+          tabBarIcon: () => (
+            <TabBarIcon name="grid-outline" color={colors.purple} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Despesa"
+        component={Despesas}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+          tabBarIcon: () => (
+            <TabBarIcon name="pie-chart" color={colors.purple} />
           ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: () => <TabBarIcon name="home" color={colors.purple} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="SaveMoney"
+        component={SaveMoney}
+        options={{
+          tabBarIcon: () => <TabBarIcon name="moon" color={colors.purple} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Perfil"
+        component={Perfil}
+        options={{
+          tabBarIcon: () => <TabBarIcon name="person" color={colors.purple} />,
         }}
       />
     </BottomTab.Navigator>
@@ -50,43 +78,71 @@ function TabBarIcon(props: {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const TabMetasStack = createStackNavigator<TabMetasParamList>();
 
-function TabOneNavigator() {
+export function TabMetasNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Painel do Usuário' }}
+    <TabMetasStack.Navigator>
+      <TabMetasStack.Screen
+        name="MetasScreen"
+        component={Metas}
+        options={{ headerTitle: 'Tab Metas' }}
       />
-    </TabOneStack.Navigator>
+    </TabMetasStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const TabDespesaStack = createStackNavigator<TabDespesaParamList>();
 
-function TabTwoNavigator() {
+export function TabDespesaNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <TabDespesaStack.Navigator>
+      <TabDespesaStack.Screen
+        name="DespesaScreen"
+        component={Despesas}
+        options={{ headerTitle: 'Tab Despesas' }}
       />
-    </TabTwoStack.Navigator>
+    </TabDespesaStack.Navigator>
   );
 }
-// const TabLoginStack = createStackNavigator<TabLoginParamList>();
+const TabHomeStack = createStackNavigator<TabHomeParamList>();
 
-// export function TabLoginNavigator() {
-//   return (
-//     <TabLoginStack.Navigator>
-//       <TabLoginStack.Screen
-//         name="LoginScreen"
-//         component={LoginScreen}
-//         options={{ headerTitle: 'Tela de Login' }}
-//       />
-//     </TabLoginStack.Navigator>
-//   );
-// }
+export function TabHomeNavigator() {
+  return (
+    <TabHomeStack.Navigator>
+      <TabHomeStack.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{ headerTitle: 'Tab Home' }}
+      />
+    </TabHomeStack.Navigator>
+  );
+}
+
+const TabSaveMoneyStack = createStackNavigator<TabSaveMoneyParamList>();
+
+export function TabSaveMoneyNavigator() {
+  return (
+    <TabSaveMoneyStack.Navigator>
+      <TabSaveMoneyStack.Screen
+        name="SaveMoneyScreen"
+        component={SaveMoney}
+        options={{ headerTitle: 'Tab Home' }}
+      />
+    </TabSaveMoneyStack.Navigator>
+  );
+}
+
+const TabPerfilStack = createStackNavigator<TabPerfilParamList>();
+
+export function TabPerfilNavigator() {
+  return (
+    <TabPerfilStack.Navigator>
+      <TabPerfilStack.Screen
+        name="PerfilScreen"
+        component={Perfil}
+        options={{ headerTitle: 'Tab Home' }}
+      />
+    </TabPerfilStack.Navigator>
+  );
+}

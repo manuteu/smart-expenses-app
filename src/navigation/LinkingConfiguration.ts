@@ -12,24 +12,34 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Metas: {
             screens: {
-              TabOneScreen: 'one',
+              MetasScreen: 'metas',
             },
           },
-          TabTwo: {
+          Despesa: {
             screens: {
-              TabTwoScreen: 'two',
+              DespesaScreen: 'despesas',
             },
           },
-          TabLogin: {
+          Home: {
             screens: {
-              LoginScreen: 'login',
+              HomeScreen: 'home',
             },
           },
+          SaveMoney: {
+            screens: {
+              SaveMoneyScreen: 'savemoney',
+            },
+          },
+          Perfil: {
+            screens: {
+              PerfilScreen: 'perfil',
+            },
+          },
+          NotFound: '*',
         },
       },
-      NotFound: '*',
     },
   },
 };

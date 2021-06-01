@@ -6,24 +6,35 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
-  Registre: undefined;
   Login: undefined;
+  Registre: undefined;
   Renda: undefined;
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Metas: undefined;
+  Despesa: undefined;
+  Home: undefined;
+  SaveMoney: undefined;
+  Perfil: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type TabMetasParamList = {
+  MetasScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type TabDespesaParamList = {
+  DespesaScreen: undefined;
 };
 
-// export type TabLoginParamList = {
-//   LoginScreen: undefined;
-// };
+export type TabHomeParamList = {
+  HomeScreen: undefined;
+};
+
+export type TabSaveMoneyParamList = {
+  SaveMoneyScreen: undefined;
+};
+
+export type TabPerfilParamList = {
+  PerfilScreen: undefined;
+};
