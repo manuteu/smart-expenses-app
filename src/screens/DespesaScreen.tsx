@@ -1,35 +1,94 @@
-import React from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, View, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, View, Image, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from 'react-native-datepicker';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { ScrollView, TextInput, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
+
 export default function Despesa() {
+  
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.title}>Cadastro de despesa</Text>
-        </View>
-        <Image style={styles.logo} source={require('../../assets/images/Logo.png')} />
-      </View>
-      <View>
-        <Text style={styles.textBelowInput}>Tipo de despesa</Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView style={styles.container}>
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.title}>Cadastro de despesa</Text>
+            </View>
+            <Image style={styles.logo} source={require('../../assets/images/Logo.png')} />
+          </View>
+          <View style={styles.container}>
+            <View style={styles.flexColumn}>
+              <TextInput
+                style={styles.input}
+                placeholder="Nome"
+                placeholderTextColor={colors.placeholder}
+                keyboardType="default" />
+              <Text style={styles.textBelowInput}>Nome da despesa</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Alimentação"
+                placeholderTextColor={colors.placeholder}
+                keyboardType="default" />
+              <Text style={styles.textBelowInput}>Tipo da despesa</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="R$ 0,00"
+                placeholderTextColor={colors.placeholder}
+                keyboardType="numeric"
+              />
+              <Text style={styles.textBelowInput}>Valor da despesa</Text>
 
-      </View>
-    </SafeAreaView>
+              <DatePicker
+                format="DD/MM/YYYY"
+                style={styles.dateComponent}
+                date={state.data}
+                onDateChange={changeDate}
+              />
+
+              <Text style={styles.textBelowInput}>Data de pagamento</Text>
+
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
+    </SafeAreaView >
+    
   );
+}
+const state = {
+  data: ''
+}
+const changeDate = (valor: any) => {
+  useState({
+    data: valor
+  })
 }
 
 const styles = StyleSheet.create({
+  dateComponent: {
+    width: 250,
+  },
   container: {
-    flex: 1,
     width: '100%',
+    height: "100%",
     backgroundColor: colors.background_light,
-    // padding: 10,
+    textAlign: 'center',
+  },
+  flexColumn: {
+    marginTop: '-10%',
+    display: 'flex',
+    width: '100%',
+    height: "100%",
+    backgroundColor: colors.background_light,
+    textAlign: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
     paddingLeft: 20,
@@ -56,18 +115,18 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    marginBottom: '20%',
-    marginTop: '10%',
+    width: '80%',
+    marginBottom: '1%',
     textAlign: 'center',
     // marginBottom: '100%',
     fontSize: 18,
-    marginLeft: 10,
   },
   textBelowInput: {
     fontSize: 16,
     fontFamily: fonts.heading,
-    textAlign: 'center',
+    textAlign: 'right',
     color: colors.header,
+    marginBottom: '5%',
   },
   footer: {
     paddingHorizontal: 37,
@@ -76,3 +135,8 @@ const styles = StyleSheet.create({
     bottom: '12%',
   },
 });
+
+function showMode(arg0: string) {
+  throw new Error('Function not implemented.');
+}
+
