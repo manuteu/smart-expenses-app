@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import {
   Keyboard,
@@ -23,7 +23,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
 import { Button } from '../components/Button';
-import { sub } from 'react-native-reanimated';
+// import { sub } from 'react-native-reanimated';
 
 type Despesa = {
   nome: string;
