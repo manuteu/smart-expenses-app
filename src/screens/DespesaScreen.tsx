@@ -29,12 +29,14 @@ type Despesa = {
   nome: string;
   tipo: string;
   preco: number;
+  data: Date;
 };
 
 export default function Despesa() {
   const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState('');
   const [preco, setPreco] = useState('');
+  const [data, setData] = useState('');
 
   async function submit() {
     await axios({
@@ -44,6 +46,7 @@ export default function Despesa() {
         nome,
         tipo,
         preco,
+        data,
       },
     });
     alert('Despesa Cadastrada');
@@ -74,6 +77,7 @@ export default function Despesa() {
                 }}
               />
               <Text style={styles.textBelowInput}>Nome da despesa</Text>
+
               <TextInput
                 style={styles.input}
                 placeholder="Alimentação"
@@ -84,6 +88,7 @@ export default function Despesa() {
                 }}
               />
               <Text style={styles.textBelowInput}>Tipo da despesa</Text>
+
               <TextInput
                 style={styles.input}
                 placeholder="R$ 0,00"
@@ -96,16 +101,21 @@ export default function Despesa() {
 
               <Text style={styles.textBelowInput}>Valor da despesa</Text>
 
-              {/* <DatePicker
-                format="DD/MM/YYYY"
-                style={styles.dateComponent}
-                date={state.data}
-                onDateChange={changeDate}
-              /> */}
+              <TextInput
+                style={styles.input}
+                placeholder="DD-MM-AAAA"
+                placeholderTextColor={colors.placeholder}
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  setData(text);
+                }}
+              />
+
+              <Text style={styles.textBelowInput}>Data de pagamento</Text>
+
               <View style={styles.button}>
                 <Button title="submit" onPress={submit} />
               </View>
-              {/* <Text style={styles.textBelowInput}>Data de pagamento</Text> */}
             </View>
           </View>
         </KeyboardAvoidingView>
