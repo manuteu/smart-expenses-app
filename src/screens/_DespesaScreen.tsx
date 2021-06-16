@@ -135,8 +135,3 @@ const styles = StyleSheet.create({
     bottom: '12%',
   },
 });
-
-function showMode(arg0: string) {
-  throw new Error('Function not implemented.');
-}
-
