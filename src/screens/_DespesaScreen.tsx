@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
     width: '100%',
     bottom: '12%',
   },
-
   button: {
     width: '80%',
   },
