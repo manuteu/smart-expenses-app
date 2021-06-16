@@ -1,0 +1,23 @@
+{
+  "despesas": [
+    {
+      "id": 1
+    },
+    {
+      "nome": "dad",
+      "id": 2
+    },
+    {
+      "nome": "padaria",
+      "tipo": "comida",
+      "preco": "56456",
+      "id": 3
+    },
+    {
+      "nome": "sa",
+      "tipo": "",
+      "preco": "",
+      "id": 4
+    }
+  ]
+}
