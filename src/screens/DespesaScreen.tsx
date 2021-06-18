@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {
   Keyboard,
-  KeyboardAvoidingView,
-  Platform,
+  KeyboardAvoidingView,  
   StyleSheet,
   Text,
   View,
@@ -23,6 +22,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
 import { Button } from '../components/Button';
+
 // import { sub } from 'react-native-reanimated';
 
 type Despesa = {
@@ -50,12 +50,13 @@ export default function Despesa() {
       },
     });
     alert('Despesa Cadastrada');
+    
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="height">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>Cadastro de despesa</Text>
@@ -114,7 +115,7 @@ export default function Despesa() {
               <Text style={styles.textBelowInput}>Data de pagamento</Text>
 
               <View style={styles.button}>
-                <Button title="submit" onPress={submit} />
+                <Button title="Cadastrar" onPress={submit } />
               </View>
             </View>
           </View>
@@ -136,14 +137,14 @@ const styles = StyleSheet.create({
   dateComponent: {
     width: 250,
   },
-  container: {
+  container: {    
     width: '100%',
     height: '100%',
     backgroundColor: colors.background_light,
     textAlign: 'center',
   },
   flexColumn: {
-    marginTop: '-10%',
+    marginTop: '-20%',
     display: 'flex',
     width: '100%',
     height: '100%',
@@ -191,14 +192,17 @@ const styles = StyleSheet.create({
     color: colors.header,
     marginBottom: '5%',
   },
-  footer: {
-    paddingHorizontal: 37,
-    position: 'absolute',
-    width: '100%',
-    bottom: '12%',
-  },
+  // footer: {
+  //   paddingHorizontal: 37,
+  //   position: 'absolute',
+  //   width: '100%',
+  //   bottom: '12%',
+  // },
   button: {
     width: '80%',
+    position: 'absolute',
+    bottom: '14%'
+    
   },
 });
 
