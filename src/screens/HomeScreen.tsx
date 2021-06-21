@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+
 import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { RootStackParamList } from '../../types';
 
+import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
 
 import colors from '../styles/colors';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 
@@ -79,6 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   list: {
+    marginTop: 20,
     paddingHorizontal: 30,
     flexDirection: 'row',
     justifyContent: 'space-between'

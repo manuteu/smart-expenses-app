@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import {
   Keyboard,
@@ -8,19 +7,16 @@ import {
   Text,
   View,
   Image,
-  Alert,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-// import DateTimePicker from '@react-native-community/datetimepicker';
-// import DatePicker from 'react-native-datepicker';
-
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
 import {
-  ScrollView,
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
 
 // import { sub } from 'react-native-reanimated';
@@ -135,9 +131,6 @@ export default function Despesa() {
 // };
 
 const styles = StyleSheet.create({
-  dateComponent: {
-    width: 250,
-  },
   container: {    
     width: '100%',
     height: '100%',
