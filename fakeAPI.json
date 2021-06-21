@@ -43,6 +43,13 @@
       "preco": "50,00",
       "data": "",
       "id": 7
+    },
+    {
+      "nome": "Pizzaria",
+      "tipo": "Alimentação",
+      "preco": "100,00",
+      "data": "",
+      "id": 8
     }
   ]
 }

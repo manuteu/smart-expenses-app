@@ -39,19 +39,21 @@ export default function Despesa() {
   const [data, setData] = useState('');
 
   async function submit() {
-    await axios({
-      method: 'POST',
-      url: 'http://localhost:3000/despesas',
-      data: {
-        nome,
-        tipo,
-        preco,
-        data,
-      },
-    });
-    alert('Despesa Cadastrada');    
+      try {
+      await axios({
+        method: 'POST',
+        url: 'http://localhost:3000/despesas',
+        data: {
+          nome,
+          tipo,
+          preco,
+          data,
+        },
+      });
+      alert('Despesa Cadastrada');    
+    } catch (error) { 
+    }
   }
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   flexColumn: {
-    marginTop: '-20%',
+    marginTop: '5%',
     display: 'flex',
     width: '100%',
     height: '100%',

@@ -10,19 +10,33 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import fonts from '../styles/fonts';
+import api from '../services/api';
 
 export default function Home({
   navigation,
 }: StackScreenProps<RootStackParamList, 'Root'>) {
   const [despesas, setDespesas] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/despesas')
-    .then((response) => {
-      setDespesas(response.data)
-    })
-    console.log(despesas)
-  }, [])
+  
+    useEffect(() => {
+      // api
+      // .get('http://localhost:3000/despesas')
+      // .then((response) => {
+      //   setDespesas(response.data)
+      // })
+      // .catch((error) => {
+      //   alert("Ocorreu um erro ao buscar os items")
+      // });    
+      async function getItems() {
+        try {
+          const { data } = await api.get("/despesas");
+          setDespesas(data);
+        } catch (error) {
+          alert("Ocorreu um erro ao buscar os items");
+        }
+      }
+      getItems();  
+    }, []);
+  
       
   return (
     <View style={styles.container}>
@@ -48,9 +62,6 @@ export default function Home({
             </View>
           )}
         />
-      
-      
-
       <View style={styles.button}>
         <Button
           title="Ir para Login"
