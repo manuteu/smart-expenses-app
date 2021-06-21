@@ -49,8 +49,7 @@ export default function Despesa() {
         data,
       },
     });
-    alert('Despesa Cadastrada');
-    
+    alert('Despesa Cadastrada');    
   }
 
   return (
@@ -115,7 +114,7 @@ export default function Despesa() {
               <Text style={styles.textBelowInput}>Data de pagamento</Text>
 
               <View style={styles.button}>
-                <Button title="Cadastrar" onPress={submit } />
+                <Button title="Cadastrar" onPress={submit} />                
               </View>
             </View>
           </View>
@@ -200,8 +199,8 @@ const styles = StyleSheet.create({
   // },
   button: {
     width: '80%',
-    position: 'absolute',
-    bottom: '14%'
+    // position: 'absolute',
+    // bottom: '14%'
     
   },
 });

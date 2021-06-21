@@ -16,7 +16,7 @@ import Navigation from './src/navigation';
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
-    Jost_400Regular,
+    Jost_400Regular, 
     Jost_600SemiBold,
   });
 

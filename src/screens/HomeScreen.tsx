@@ -1,25 +1,55 @@
+import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
-import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { RootStackParamList } from '../../types';
+
+import { Button } from '../components/Button';
 
 import colors from '../styles/colors';
-import { RootStackParamList } from '../../types';
-import { Button } from '../components/Button';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import fonts from '../styles/fonts';
 
 export default function Home({
   navigation,
 }: StackScreenProps<RootStackParamList, 'Root'>) {
+  const [despesas, setDespesas] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/despesas')
+    .then((response) => {
+      setDespesas(response.data)
+    })
+    console.log(despesas)
+  }, [])
+      
   return (
     <View style={styles.container}>
-      <View style={styles.purpleCard}>
-        <Text style={styles.cardText}>Olá Usuário1</Text>
-        <View style={styles.separator} />
-        <View>
-          <Text style={styles.cardText}>Seu saldo é</Text>
-          <Text style={styles.cardTextBold}>R$ 2.437,63</Text>
-        </View>
-      </View>
-      <View style={styles.separator} />
+      
+        <FlatList 
+          data={despesas}          
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => (
+            <View>
+              <View style={styles.list}>
+                <Text style={styles.listName}>
+                  {item.nome} 
+                </Text>
+                <Text style={styles.listType}>
+                  {item.tipo}
+                </Text>
+              </View>
+              <View style={styles.listPrice}>
+                <Text>
+                  {item.preco} 
+                </Text>
+              </View>              
+            </View>
+          )}
+        />
+      
+      
 
       <View style={styles.button}>
         <Button
@@ -32,45 +62,33 @@ export default function Home({
 }
 
 const styles = StyleSheet.create({
-  purpleCard: {
-    textAlign: 'center',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.purple,
-    minWidth: '80%',
-    maxHeight: '25%',
-    borderRadius: 30,
-    marginTop: '3%',
-    marginBottom: '3%',
-    color: '#fff',
-  },
-  cardText: {
-    color: '#fff',
-    textAlign: 'center',
-  },
-  cardTextBold: {
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 16,
-  },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 37,
     backgroundColor: colors.background_light,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  list: {
+    paddingHorizontal: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
-  separator: {
-    marginVertical: 10,
-    height: 1,
-    width: '80%',
+  listName:{
+    fontFamily: fonts.text,
+    fontSize: 18
+  },
+  listType:{
+    fontFamily: fonts.text,
+    fontSize: 18
+  },
+  listPrice:{
+    paddingHorizontal: 30,
+    fontFamily: fonts.text,
+    fontSize: 14,
+    marginBottom: 10,
+    textAlign: 'right'
   },
   button: {
-    width: '80%',
+    width: '100%',
+    bottom: 20
   },
 });

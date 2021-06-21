@@ -1,36 +1,48 @@
 {
   "despesas": [
     {
+      "nome": "Mercado",
+      "tipo": "Alimentação",
+      "preco": "45,00",
       "id": 1
-    },
-    {
-      "nome": "dad",
-      "id": 2
-    },
-    {
-      "nome": "padaria",
-      "tipo": "comida",
-      "preco": "56456",
-      "id": 3
-    },
-    {
-      "nome": "sa",
-      "tipo": "",
-      "preco": "",
-      "id": 4
     },
     {
       "nome": "RP",
       "tipo": "Lazer",
-      "preco": "100",
+      "preco": "100,00",
+      "id": 2
+    },
+    {
+      "nome": "Nicolândia",
+      "tipo": "Lazer",
+      "preco": "30,00",
+      "id": 3
+    },
+    {
+      "nome": "Padaria",
+      "tipo": "Alimentação",
+      "preco": "200,00",
+      "id": 4
+    },
+    {
+      "nome": "Hotel",
+      "tipo": "Hospedagem",
+      "preco": "1.000,00",
       "id": 5
     },
     {
-      "nome": "CODGUIN",
-      "tipo": "LAZER",
-      "preco": "3201",
-      "data": "10/12/2002",
+      "nome": "Luz",
+      "tipo": "Contas",
+      "preco": "200,00",
+      "data": "",
       "id": 6
+    },
+    {
+      "nome": "Água",
+      "tipo": "Contas",
+      "preco": "50,00",
+      "data": "",
+      "id": 7
     }
   ]
 }
