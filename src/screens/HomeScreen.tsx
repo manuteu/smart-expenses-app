@@ -13,7 +13,7 @@ import api from '../services/api';
 export type item = {
   nome: string
   tipo: string
-  preco: number
+  preco: string
 }
 
 export default function Home({

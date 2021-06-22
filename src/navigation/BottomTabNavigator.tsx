@@ -18,6 +18,7 @@ import {
   TabPerfilParamList,
 } from '../../types';
 import colors from '../styles/colors';
+import { StyleSheet } from 'react-native';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -58,7 +59,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Perfil"
-        component={Perfil}
+        component={Perfil}        
         options={{
           tabBarIcon: () => <TabBarIcon name="person" color={colors.purple} />,
         }}
@@ -83,10 +84,9 @@ const TabMetasStack = createStackNavigator<TabMetasParamList>();
 export function TabMetasNavigator() {
   return (
     <TabMetasStack.Navigator>
-      <TabMetasStack.Screen
+      <TabMetasStack.Screen      
         name="MetasScreen"
-        component={Metas}
-        options={{ headerTitle: 'Tab Metas' }}
+        component={Metas}            
       />
     </TabMetasStack.Navigator>
   );
@@ -99,8 +99,7 @@ export function TabDespesaNavigator() {
     <TabDespesaStack.Navigator>
       <TabDespesaStack.Screen
         name="DespesaScreen"
-        component={Despesas}
-        options={{ headerTitle: 'Tab Despesas' }}
+        component={Despesas}        
       />
     </TabDespesaStack.Navigator>
   );
@@ -112,8 +111,7 @@ export function TabHomeNavigator() {
     <TabHomeStack.Navigator>
       <TabHomeStack.Screen
         name="HomeScreen"
-        component={Home}
-        options={{ headerTitle: 'Tab Home' }}
+        component={Home}        
       />
     </TabHomeStack.Navigator>
   );
@@ -126,8 +124,7 @@ export function TabSaveMoneyNavigator() {
     <TabSaveMoneyStack.Navigator>
       <TabSaveMoneyStack.Screen
         name="SaveMoneyScreen"
-        component={SaveMoney}
-        options={{ headerTitle: 'Tab Home' }}
+        component={SaveMoney}        
       />
     </TabSaveMoneyStack.Navigator>
   );
@@ -140,9 +137,14 @@ export function TabPerfilNavigator() {
     <TabPerfilStack.Navigator>
       <TabPerfilStack.Screen
         name="PerfilScreen"
-        component={Perfil}
-        options={{ headerTitle: 'Tab Home' }}
+        component={Perfil}        
       />
     </TabPerfilStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  bottomTab:{
+    backgroundColor: colors.pink
+  }
+})

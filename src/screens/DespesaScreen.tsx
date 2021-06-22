@@ -45,7 +45,7 @@ export default function Despesa() {
           preco,
           data,
         },
-      });
+      });      
       alert('Despesa Cadastrada');    
     } catch (error) { 
     }
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   flexColumn: {
-    marginTop: '5%',
+    marginTop: '-15%',
     display: 'flex',
     width: '100%',
     height: '100%',
@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
   // },
   button: {
     width: '80%',
-    // position: 'absolute',
-    // bottom: '14%'
+    position: 'absolute',
+    bottom: '14%'
     
   },
 });

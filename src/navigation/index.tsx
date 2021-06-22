@@ -37,7 +37,7 @@ function RootNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Renda" component={RendaScreen} />
       <Stack.Screen name="Registre" component={RegistreScreen} />
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="Root" component={BottomTabNavigator} />      
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
