@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
@@ -10,56 +10,63 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 
+
+type item = {
+  nome: string
+  tipo: string
+  preco: number
+}
+
 export default function Home({
   navigation,
 }: StackScreenProps<RootStackParamList, 'Root'>) {
   const [despesas, setDespesas] = useState([]);
-  
-    useEffect(() => {
-      // api
-      // .get('http://localhost:3000/despesas')
-      // .then((response) => {
-      //   setDespesas(response.data)
-      // })
-      // .catch((error) => {
-      //   alert("Ocorreu um erro ao buscar os items")
-      // });    
-      async function getItems() {
-        try {
-          const { data } = await api.get("/despesas");
-          setDespesas(data);
-        } catch (error) {
-          alert("Ocorreu um erro ao buscar os items");
-        }
+
+  useEffect(() => {
+    // api
+    // .get('http://localhost:3000/despesas')
+    // .then((response) => {
+    //   setDespesas(response.data)
+    // })
+    // .catch((error) => {
+    //   alert("Ocorreu um erro ao buscar os items")
+    // });    
+    async function getItems() {
+      try {
+        const { data } = await api.get("/despesas");
+        setDespesas(data);
+      } catch (error) {
+        alert("Ocorreu um erro ao buscar os items");
       }
-      getItems();  
-    }, []);
-  
-      
+    }
+    getItems();
+  }, []);
+
+
   return (
     <View style={styles.container}>
-      
-        <FlatList 
-          data={despesas}          
-          keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => (
-            <View>
-              <View style={styles.list}>
-                <Text style={styles.listName}>
-                  {item.nome} 
-                </Text>
-                <Text style={styles.listType}>
-                  {item.tipo}
-                </Text>
-              </View>
-              <View style={styles.listPrice}>
-                <Text>
-                  {item.preco} 
-                </Text>
-              </View>              
+      <FlatList
+        data={despesas}
+        keyExtractor={(item: any) => item.id}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }: any) => (
+          <View>
+            <View style={styles.list}>
+              <Text style={styles.listName}>
+                {item.nome}
+              </Text>
+              <Text style={styles.listType}>
+                {item.tipo}
+              </Text>
             </View>
-          )}
-        />
+            <View style={styles.listPrice}>
+              <Text>
+                {item.preco}
+              </Text>
+            </View>
+          </View>
+        )}
+      />
       <View style={styles.button}>
         <Button
           title="Ir para Login"
@@ -82,15 +89,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  listName:{
+  listName: {
     fontFamily: fonts.text,
     fontSize: 18
   },
-  listType:{
+  listType: {
     fontFamily: fonts.text,
     fontSize: 18
   },
-  listPrice:{
+  listPrice: {
     paddingHorizontal: 30,
     fontFamily: fonts.text,
     fontSize: 14,
@@ -99,6 +106,6 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    bottom: 20
+    bottom: 10,
   },
 });
