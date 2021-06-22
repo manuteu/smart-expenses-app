@@ -10,8 +10,7 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 
-
-type item = {
+export type item = {
   nome: string
   tipo: string
   preco: number
@@ -49,7 +48,7 @@ export default function Home({
         data={despesas}
         keyExtractor={(item: any) => item.id}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }: any) => (
+        renderItem={({ item }) => (
           <View>
             <View style={styles.list}>
               <Text style={styles.listName}>
