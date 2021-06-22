@@ -17,39 +17,7 @@
       "tipo": "Lazer",
       "preco": "30,00",
       "id": 3
-    },
-    {
-      "nome": "Padaria",
-      "tipo": "Alimentação",
-      "preco": "200,00",
-      "id": 4
-    },
-    {
-      "nome": "Hotel",
-      "tipo": "Hospedagem",
-      "preco": "1.000,00",
-      "id": 5
-    },
-    {
-      "nome": "Luz",
-      "tipo": "Contas",
-      "preco": "200,00",
-      "data": "",
-      "id": 6
-    },
-    {
-      "nome": "Água",
-      "tipo": "Contas",
-      "preco": "50,00",
-      "data": "",
-      "id": 7
-    },
-    {
-      "nome": "Pizzaria",
-      "tipo": "Alimentação",
-      "preco": "100,00",
-      "data": "",
-      "id": 8
     }
+   
   ]
 }
