@@ -17,7 +17,20 @@
       "tipo": "Lazer",
       "preco": "30,00",
       "id": 3
+    },
+    {
+      "nome": "Lanche",
+      "tipo": "Alimentação",
+      "preco": "20,00",
+      "data": "",
+      "id": 4
+    },
+    {
+      "nome": "Shopping",
+      "tipo": "Lazer",
+      "preco": "150,00",
+      "data": "",
+      "id": 5
     }
-   
   ]
 }

@@ -10,10 +10,11 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 
-export type item = {
-  nome: string
-  tipo: string
-  preco: string
+ export type item = {
+  nome: String;
+  tipo: String;
+  preco: String;
+  id: String;
 }
 
 export default function Home({
@@ -46,7 +47,7 @@ export default function Home({
     <View style={styles.container}>
       <FlatList
         data={despesas}
-        keyExtractor={(item: any) => item.id}
+        keyExtractor={(item: any) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <View>
