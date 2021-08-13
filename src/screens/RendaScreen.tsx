@@ -19,7 +19,7 @@ import fonts from '../styles/fonts';
 
 import { TextInput } from 'react-native-gesture-handler';
 import { EmptyButton } from '../components/EmptyButton';
-import Input from '../components/InputMask';
+
 
 export default function RendaScreen({
   navigation,
@@ -28,7 +28,7 @@ export default function RendaScreen({
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
-  const [renda, setRenda] = useState();
+  // const [renda, setRenda] = useState();
 
   function handleInputBlur() {
     setIsFocused(false);
@@ -44,9 +44,9 @@ export default function RendaScreen({
     setName(value);
   }
 
-  function handleCustom(value: string) {
-    // setRenda(value);
-  }
+  // function handleCustom(value: string) {
+  //   // setRenda(value);
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -61,7 +61,7 @@ export default function RendaScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.svg')}
             />
           </View>
 

@@ -54,7 +54,7 @@ export default function RegistreScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.svg')}
             />
           </View>
           <ScrollView style={styles.scroll}>

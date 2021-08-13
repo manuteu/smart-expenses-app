@@ -59,7 +59,7 @@ export default function LoginScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.png')}
+              source={require('../../assets/images/Logo.svg')}
             />
           </View>
           <ScrollView>
