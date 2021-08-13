@@ -17,7 +17,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { Button } from '../components/Button';
+import { EmptyButton } from '../components/EmptyButton';
 
 // import { sub } from 'react-native-reanimated';
 
@@ -58,7 +58,7 @@ export default function Despesa() {
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>Cadastro de despesa</Text>
-            </View>
+            </View>            
             <Image
               style={styles.logo}
               source={require('../../assets/images/Logo.svg')}
@@ -113,7 +113,7 @@ export default function Despesa() {
               <Text style={styles.textBelowInput}>Data de pagamento</Text>
 
               <View style={styles.button}>
-                <Button title="Cadastrar" onPress={submit} />                
+                <EmptyButton title="Cadastrar" onPress={submit} />                
               </View>
             </View>
           </View>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   flexColumn: {
-    marginTop: '15%',
+    marginTop: '-5%',
     display: 'flex',
     width: '100%',
     height: '100%',
@@ -195,8 +195,8 @@ const styles = StyleSheet.create({
   // },
   button: {
     width: '80%',
-    position: 'absolute',
-    bottom: '4%'
+    // position: 'absolute',
+    // bottom: '4%'
     
   },
 });
