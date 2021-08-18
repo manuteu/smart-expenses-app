@@ -30,7 +30,7 @@ export default function BottomTabNavigator() {
         component={Metas}
         options={{
           tabBarIcon: () => (
-            <TabBarIcon name="grid-outline" color={colors.purple} />
+            <TabBarIcon name="grid-outline" color={colors.turquesa} />
           ),
         }}
       />
@@ -39,7 +39,7 @@ export default function BottomTabNavigator() {
         component={Despesas}
         options={{
           tabBarIcon: () => (
-            <TabBarIcon name="pie-chart" color={colors.purple} />
+            <TabBarIcon name="pie-chart" color={colors.turquesa} />
           ),
         }}
       />
@@ -47,21 +47,21 @@ export default function BottomTabNavigator() {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <TabBarIcon name="home" color={colors.purple} />,
+          tabBarIcon: () => <TabBarIcon name="home" color={colors.turquesa} />,
         }}
       />
       <BottomTab.Screen
         name="SaveMoney"
         component={SaveMoney}
         options={{
-          tabBarIcon: () => <TabBarIcon name="moon" color={colors.purple} />,
+          tabBarIcon: () => <TabBarIcon name="moon" color={colors.turquesa} />,
         }}
       />
       <BottomTab.Screen
         name="Perfil"
         component={Perfil}        
         options={{
-          tabBarIcon: () => <TabBarIcon name="person" color={colors.purple} />,
+          tabBarIcon: () => <TabBarIcon name="person" color={colors.turquesa} />,
         }}
       />
     </BottomTab.Navigator>

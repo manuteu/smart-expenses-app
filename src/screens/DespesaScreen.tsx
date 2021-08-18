@@ -57,11 +57,14 @@ export default function Despesa() {
         <KeyboardAvoidingView style={styles.container} behavior="height">
           <View style={styles.header}>
             <View>
-              <Text style={styles.title}>Cadastro de despesa</Text>
+              <Text style={styles.title}>
+                Cadastro {'\n'} 
+                de {'\n'} 
+                despesa</Text>
             </View>            
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.svg')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
           <View style={styles.container}>
@@ -139,10 +142,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   flexColumn: {
+    flex: 1,
     marginTop: '-5%',
     display: 'flex',
-    width: '100%',
-    height: '100%',
+    // width: '100%',
+    // height: '100%',
     backgroundColor: colors.background_light,
     textAlign: 'center',
     flexDirection: 'column',
@@ -150,12 +154,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    paddingLeft: 20,
+    // flex:1,
+    paddingLeft: 40,
+    paddingRight: 20,
     marginTop: '10%',
-    color: colors.header,
-    fontFamily: fonts.heading,
+    // color: colors.header,
+    // fontFamily: fonts.heading,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    marginBottom: 15,
   },
   title: {
     fontSize: 30,
@@ -164,11 +171,11 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   logo: {
-    height: 60,
-    width: 60,
+    height: 110,
+    width: 110,
   },
   forms: {
-    flex: 1,
+    // flex: 1,
     paddingHorizontal: 55,
     justifyContent: 'center',
   },
@@ -184,7 +191,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.heading,
     textAlign: 'right',
-    color: colors.header,
+    color: colors.turquesa,
     marginBottom: '5%',
   },
   // footer: {

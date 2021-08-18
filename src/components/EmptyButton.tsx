@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.opacity,
     borderWidth: 1.5,
-    borderColor: colors.purple,
+    borderColor: colors.turquesa,
     height: 43,
     borderRadius: 24,
     justifyContent: 'center',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: colors.purple,
+    color: colors.turquesa,
     fontFamily: fonts.heading,
   },
 });

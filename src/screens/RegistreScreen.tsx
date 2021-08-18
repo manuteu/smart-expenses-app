@@ -54,7 +54,7 @@ export default function RegistreScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.svg')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
           <ScrollView style={styles.scroll}>
@@ -63,7 +63,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Nome"
@@ -77,7 +77,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Sobrenome"
@@ -91,7 +91,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="E-mail"
@@ -105,7 +105,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Nome de usuário"
@@ -119,7 +119,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Senha"
@@ -135,7 +135,7 @@ export default function RegistreScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Confirme a Senha"

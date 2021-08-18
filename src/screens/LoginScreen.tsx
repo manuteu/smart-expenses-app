@@ -59,7 +59,7 @@ export default function LoginScreen({
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.svg')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
           <ScrollView>
@@ -68,7 +68,7 @@ export default function LoginScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Nome de usuário ou e-mail"
@@ -82,7 +82,7 @@ export default function LoginScreen({
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
-                    borderColor: colors.violet_dark,
+                    borderColor: colors.turquesa,
                   },
                 ]}
                 placeholder="Sua Senha"
@@ -100,8 +100,8 @@ export default function LoginScreen({
                   title="Manter sessão"
                   checkedIcon="check"
                   uncheckedIcon="square-o"
-                  checkedColor={colors.purple}
-                  uncheckedColor={colors.purple}
+                  checkedColor={colors.asphalt}
+                  uncheckedColor={colors.asphalt}
                   checked={isSelected}
                   onPress={() => setSelection(!isSelected)}
                   containerStyle={{ backgroundColor: colors.background_light }}
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   footerText: {
-    color: colors.purple,
+    color: colors.asphalt,
     marginTop: 12,
     marginLeft: 20,
   },

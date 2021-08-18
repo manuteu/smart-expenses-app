@@ -57,11 +57,14 @@ export default function RendaScreen({
         >
           <View style={styles.header}>
             <View>
-              <Text style={styles.title}>Cadastro de Renda</Text>
+              <Text style={styles.title}>
+                Cadastro {'\n'}
+                de {'\n'}
+                Renda</Text>
             </View>
             <Image
               style={styles.logo}
-              source={require('../../assets/images/Logo.svg')}
+              source={require('../../assets/images/Logo.png')}
             />
           </View>
 
@@ -74,7 +77,7 @@ export default function RendaScreen({
               style={[
                 styles.input,
                 (isFocused || isFilled) && {
-                  borderColor: colors.purple,
+                  borderColor: colors.asphalt,
                 },
               ]}
               placeholder="R$ 0,00"
@@ -88,7 +91,7 @@ export default function RendaScreen({
               style={[
                 styles.input,
                 (isFocused || isFilled) && {
-                  borderColor: colors.purple,
+                  borderColor: colors.asphalt,
                 },
               ]}
               placeholder="Dia do Pagamento"
@@ -119,12 +122,13 @@ const styles = StyleSheet.create({
     // padding: 10,
   },
   header: {
-    paddingLeft: 20,
+    paddingLeft: 40,
+    paddingRight: 20,
     marginTop: '10%',
     color: colors.header,
     fontFamily: fonts.heading,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 30,
@@ -133,8 +137,8 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   logo: {
-    height: 60,
-    width: 60,
+    height: 110,
+    width: 110,
   },
   forms: {
     flex: 1,
