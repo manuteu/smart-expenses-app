@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {
   Keyboard,
-  KeyboardAvoidingView,  
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
   View,
   Image,
+  ScrollView,
 } from 'react-native';
 import {
   TextInput,
@@ -35,7 +36,7 @@ export default function Despesa() {
   const [data, setData] = useState('');
 
   async function submit() {
-      try {
+    try {
       await axios({
         method: 'POST',
         url: 'http://localhost:3000/despesas',
@@ -45,29 +46,30 @@ export default function Despesa() {
           preco,
           data,
         },
-      });      
-      alert('Despesa Cadastrada');    
-    } catch (error) { 
-      alert('Erro ao cadastrar despesa...')
+      });
+      alert('Despesa Cadastrada');
+    } catch (error) {
+      alert('Erro ao cadastrar despesa...');
     }
   }
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container} behavior="height">
+        <KeyboardAvoidingView style={styles.container} behavior="position">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>
-                Cadastro {'\n'} 
-                de {'\n'} 
-                despesa</Text>
-            </View>            
+                Cadastro {'\n'}
+                de {'\n'}
+                despesa
+              </Text>
+            </View>
             <Image
               style={styles.logo}
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-          <View style={styles.container}>
+          <ScrollView style={styles.container}>
             <View style={styles.flexColumn}>
               <TextInput
                 style={styles.input}
@@ -116,10 +118,10 @@ export default function Despesa() {
               <Text style={styles.textBelowInput}>Data de pagamento</Text>
 
               <View style={styles.button}>
-                <EmptyButton title="Cadastrar" onPress={submit} />                
+                <EmptyButton title="Cadastrar" onPress={submit} />
               </View>
             </View>
-          </View>
+          </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -135,7 +137,7 @@ export default function Despesa() {
 // };
 
 const styles = StyleSheet.create({
-  container: {    
+  container: {
     width: '100%',
     height: '100%',
     backgroundColor: colors.background_light,
@@ -143,9 +145,9 @@ const styles = StyleSheet.create({
   },
   flexColumn: {
     flex: 1,
-    marginTop: '-5%',
+    marginTop: '20%',
     display: 'flex',
-    // width: '100%',
+    width: '100%',
     // height: '100%',
     backgroundColor: colors.background_light,
     textAlign: 'center',
@@ -157,12 +159,12 @@ const styles = StyleSheet.create({
     // flex:1,
     paddingLeft: 40,
     paddingRight: 20,
-    marginTop: '10%',
+    marginTop: 10,
     // color: colors.header,
     // fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 15,
+    marginBottom: 20,
   },
   title: {
     fontSize: 30,
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
   },
   forms: {
     // flex: 1,
-    paddingHorizontal: 55,
+    // paddingHorizontal: 65,
     justifyContent: 'center',
   },
   input: {
@@ -203,8 +205,7 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     // position: 'absolute',
-    // bottom: '4%'
-    
+    // bottom: '-20%'
   },
 });
 

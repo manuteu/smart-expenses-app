@@ -22,7 +22,7 @@ export function Button({ title, ...rest }: ButtonProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.asphalt,
+    backgroundColor: colors.dark_asphalt,
     height: 43,
     borderRadius: 24,
     justifyContent: 'center',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: colors.white,
+    color: colors.background_light,
     fontFamily: fonts.heading,
   },
 });

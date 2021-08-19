@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
   form: {
     flex: 1,
     paddingHorizontal: 37,
+    height: '100%',
     // position: 'relative',
     // justifyContent: 'center',
     // alignItems: 'center',

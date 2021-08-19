@@ -24,13 +24,23 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="Home">
+    <BottomTab.Navigator
+      initialRouteName="Home"
+      tabBarOptions={{
+        tabStyle: {},
+        showLabel: false,
+        style: {
+          backgroundColor: colors.dark_asphalt,
+          borderTopColor: colors.dark_asphalt,
+        },
+      }}
+    >
       <BottomTab.Screen
         name="Metas"
         component={Metas}
         options={{
           tabBarIcon: () => (
-            <TabBarIcon name="grid-outline" color={colors.turquesa} />
+            <TabBarIcon name="grid-outline" color={colors.background_light} />
           ),
         }}
       />
@@ -39,7 +49,7 @@ export default function BottomTabNavigator() {
         component={Despesas}
         options={{
           tabBarIcon: () => (
-            <TabBarIcon name="pie-chart" color={colors.turquesa} />
+            <TabBarIcon name="pie-chart" color={colors.background_light} />
           ),
         }}
       />
@@ -47,21 +57,27 @@ export default function BottomTabNavigator() {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <TabBarIcon name="home" color={colors.turquesa} />,
+          tabBarIcon: () => (
+            <TabBarIcon name="home" color={colors.background_light} />
+          ),
         }}
       />
       <BottomTab.Screen
         name="SaveMoney"
         component={SaveMoney}
         options={{
-          tabBarIcon: () => <TabBarIcon name="moon" color={colors.turquesa} />,
+          tabBarIcon: () => (
+            <TabBarIcon name="moon" color={colors.background_light} />
+          ),
         }}
       />
       <BottomTab.Screen
         name="Perfil"
-        component={Perfil}        
+        component={Perfil}
         options={{
-          tabBarIcon: () => <TabBarIcon name="person" color={colors.turquesa} />,
+          tabBarIcon: () => (
+            <TabBarIcon name="person" color={colors.background_light} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -84,10 +100,7 @@ const TabMetasStack = createStackNavigator<TabMetasParamList>();
 export function TabMetasNavigator() {
   return (
     <TabMetasStack.Navigator>
-      <TabMetasStack.Screen      
-        name="MetasScreen"
-        component={Metas}            
-      />
+      <TabMetasStack.Screen name="MetasScreen" component={Metas} />
     </TabMetasStack.Navigator>
   );
 }
@@ -97,10 +110,7 @@ const TabDespesaStack = createStackNavigator<TabDespesaParamList>();
 export function TabDespesaNavigator() {
   return (
     <TabDespesaStack.Navigator>
-      <TabDespesaStack.Screen
-        name="DespesaScreen"
-        component={Despesas}        
-      />
+      <TabDespesaStack.Screen name="DespesaScreen" component={Despesas} />
     </TabDespesaStack.Navigator>
   );
 }
@@ -109,10 +119,7 @@ const TabHomeStack = createStackNavigator<TabHomeParamList>();
 export function TabHomeNavigator() {
   return (
     <TabHomeStack.Navigator>
-      <TabHomeStack.Screen
-        name="HomeScreen"
-        component={Home}        
-      />
+      <TabHomeStack.Screen name="HomeScreen" component={Home} />
     </TabHomeStack.Navigator>
   );
 }
@@ -122,10 +129,7 @@ const TabSaveMoneyStack = createStackNavigator<TabSaveMoneyParamList>();
 export function TabSaveMoneyNavigator() {
   return (
     <TabSaveMoneyStack.Navigator>
-      <TabSaveMoneyStack.Screen
-        name="SaveMoneyScreen"
-        component={SaveMoney}        
-      />
+      <TabSaveMoneyStack.Screen name="SaveMoneyScreen" component={SaveMoney} />
     </TabSaveMoneyStack.Navigator>
   );
 }
@@ -135,16 +139,7 @@ const TabPerfilStack = createStackNavigator<TabPerfilParamList>();
 export function TabPerfilNavigator() {
   return (
     <TabPerfilStack.Navigator>
-      <TabPerfilStack.Screen
-        name="PerfilScreen"
-        component={Perfil}        
-      />
+      <TabPerfilStack.Screen name="PerfilScreen" component={Perfil} />
     </TabPerfilStack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  bottomTab:{
-    backgroundColor: colors.pink
-  }
-})

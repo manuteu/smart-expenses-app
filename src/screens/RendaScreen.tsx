@@ -20,7 +20,6 @@ import fonts from '../styles/fonts';
 import { TextInput } from 'react-native-gesture-handler';
 import { EmptyButton } from '../components/EmptyButton';
 
-
 export default function RendaScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'Renda'>) {
@@ -60,7 +59,8 @@ export default function RendaScreen({
               <Text style={styles.title}>
                 Cadastro {'\n'}
                 de {'\n'}
-                Renda</Text>
+                Renda
+              </Text>
             </View>
             <Image
               style={styles.logo}
@@ -69,7 +69,6 @@ export default function RendaScreen({
           </View>
 
           <View style={styles.forms}>
-            <Text style={styles.textBellowInput}>Digite sua renda mensal</Text>
             <TextInput
               // value={renda}
               // // mask="renda"
@@ -87,6 +86,7 @@ export default function RendaScreen({
               onChangeText={handleInputChange}
               keyboardType="numeric"
             />
+            <Text style={styles.textBellowInput}>Digite sua renda mensal</Text>
             <TextInput
               style={[
                 styles.input,
@@ -144,13 +144,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 55,
     justifyContent: 'center',
+    marginBottom: '40%',
   },
   input: {
     borderBottomWidth: 1,
-    marginBottom: '20%',
-    marginTop: '10%',
+    marginTop: '25%',
     textAlign: 'center',
-    // marginBottom: '100%',
     fontSize: 18,
     marginLeft: 10,
   },
@@ -158,7 +157,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.heading,
     textAlign: 'center',
-    color: colors.header,
+    color: colors.turquesa,
+    marginTop: 6,
   },
   footer: {
     paddingHorizontal: 37,
