@@ -27,7 +27,7 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        tabStyle: {},
+        keyboardHidesTabBar: true,
         showLabel: false,
         style: {
           backgroundColor: colors.dark_asphalt,

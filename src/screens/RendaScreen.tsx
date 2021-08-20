@@ -10,6 +10,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from 'react-native';
 
 import { RootStackParamList } from '../../types';
@@ -54,6 +55,7 @@ export default function RendaScreen({
           style={styles.container}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
+          <StatusBar backgroundColor="transparent" />
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>

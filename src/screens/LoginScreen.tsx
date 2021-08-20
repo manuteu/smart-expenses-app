@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
+    flex: 1,
     marginTop: '10%',
     marginLeft: 13,
     paddingHorizontal: 25,
@@ -158,7 +159,15 @@ const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 37,
-    marginTop: '14%',
+    flex: 1,
+    width: '95%',
+    // marginTop: '10%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
   },
   input: {
     flex: 1,

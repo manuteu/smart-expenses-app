@@ -116,10 +116,9 @@ export default function Despesa() {
               />
 
               <Text style={styles.textBelowInput}>Data de pagamento</Text>
-
-              <View style={styles.button}>
-                <EmptyButton title="Cadastrar" onPress={submit} />
-              </View>
+            </View>
+            <View style={styles.button}>
+              <EmptyButton title="Cadastrar" onPress={submit} />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -127,44 +126,25 @@ export default function Despesa() {
     </SafeAreaView>
   );
 }
-// const state = {
-//   data: '',
-// };
-// const changeDate = (valor: any) => {
-//   useState({
-//     data: valor,
-//   });
-// };
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
     backgroundColor: colors.background_light,
     textAlign: 'center',
-  },
-  flexColumn: {
-    flex: 1,
-    marginTop: '20%',
-    display: 'flex',
-    width: '100%',
-    // height: '100%',
-    backgroundColor: colors.background_light,
-    textAlign: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   header: {
-    // flex:1,
     paddingLeft: 40,
     paddingRight: 20,
     marginTop: 10,
-    // color: colors.header,
-    // fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
+  },
+  flexColumn: {
+    flex: 1,
+    marginTop: '10%',
+    width: '100%',
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,
@@ -177,8 +157,7 @@ const styles = StyleSheet.create({
     width: 110,
   },
   forms: {
-    // flex: 1,
-    // paddingHorizontal: 65,
+    flex: 1,
     justifyContent: 'center',
   },
   input: {
@@ -186,7 +165,6 @@ const styles = StyleSheet.create({
     width: '80%',
     marginBottom: '1%',
     textAlign: 'center',
-    // marginBottom: '100%',
     fontSize: 18,
   },
   textBelowInput: {
@@ -196,19 +174,9 @@ const styles = StyleSheet.create({
     color: colors.turquesa,
     marginBottom: '5%',
   },
-  // footer: {
-  //   paddingHorizontal: 37,
-  //   position: 'absolute',
-  //   width: '100%',
-  //   bottom: '12%',
-  // },
   button: {
+    flex: 1,
     width: '80%',
-    // position: 'absolute',
-    // bottom: '-20%'
+    alignSelf: 'center',
   },
 });
-
-// function showMode(arg0: string) {
-//   throw new Error('Function not implemented.');
-// }
