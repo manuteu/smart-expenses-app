@@ -13,14 +13,12 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
-
+import { Picker } from '@react-native-picker/picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
-
-// import { sub } from 'react-native-reanimated';
 
 type Despesa = {
   nome: string;
@@ -55,7 +53,7 @@ export default function Despesa() {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container} behavior="position">
+        <KeyboardAvoidingView behavior="position">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>
@@ -69,58 +67,29 @@ export default function Despesa() {
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-          <ScrollView style={styles.container}>
-            <View style={styles.flexColumn}>
-              <TextInput
-                style={styles.input}
-                placeholder="Nome"
-                placeholderTextColor={colors.placeholder}
-                keyboardType="default"
-                onChangeText={(text) => {
-                  setNome(text);
-                }}
-              />
-              <Text style={styles.textBelowInput}>Nome da despesa</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="Alimentação"
-                placeholderTextColor={colors.placeholder}
-                keyboardType="default"
-                onChangeText={(text) => {
-                  setTipo(text);
-                }}
-              />
-              <Text style={styles.textBelowInput}>Tipo da despesa</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="R$ 0,00"
-                placeholderTextColor={colors.placeholder}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  setPreco(text);
-                }}
-              />
-
-              <Text style={styles.textBelowInput}>Valor da despesa</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="DD-MM-AAAA"
-                placeholderTextColor={colors.placeholder}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  setData(text);
-                }}
-              />
-
-              <Text style={styles.textBelowInput}>Data de pagamento</Text>
-            </View>
-            <View style={styles.button}>
-              <EmptyButton title="Cadastrar" onPress={submit} />
+          <ScrollView style={styles.forms}>
+            <View>
+              <Picker
+                style={styles.picker}
+                selectedValue={tipo}
+                onValueChange={(itemValue, itemIndex) => setTipo(itemValue)}
+              >
+                <Picker.Item
+                  color={colors.turquesa}
+                  key={0}
+                  label="Alimentação"
+                  value="Alimentação"
+                />
+                <Picker.Item key={1} label="Transporte" value="Transporte" />
+                <Picker.Item key={2} label="Aluguel" value="Aluguel" />
+                <Picker.Item key={3} label="Lazer" value="Lazer" />
+                <Picker.Item key={4} label="Vestimenta" value="Vestimenta" />
+              </Picker>
             </View>
           </ScrollView>
+          <View style={styles.footer}>
+            <EmptyButton title="Cadastrar" onPress={submit} />
+          </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -129,21 +98,21 @@ export default function Despesa() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    height: '100%',
+    width: '100%',
     backgroundColor: colors.background_light,
   },
   header: {
+    // flex: 1,
     paddingLeft: 40,
     paddingRight: 20,
-    marginTop: 10,
+    marginTop: '7%',
+    color: colors.header,
+    fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginBottom: 20,
-  },
-  flexColumn: {
-    flex: 1,
-    marginTop: '10%',
-    width: '100%',
-    alignItems: 'center',
+    // backgroundColor: colors.concret,
   },
   title: {
     fontSize: 30,
@@ -156,24 +125,15 @@ const styles = StyleSheet.create({
     width: 120,
   },
   forms: {
-    justifyContent: 'center',
+    // backgroundColor: colors.green,
   },
-  input: {
-    borderBottomWidth: 1,
-    width: '80%',
-    marginBottom: '1%',
-    textAlign: 'center',
-    fontSize: 18,
+  picker: {
+    // backgroundColor: colors.dark_blue,
   },
-  textBelowInput: {
-    fontSize: 16,
-    fontFamily: fonts.heading,
-    textAlign: 'right',
-    color: colors.turquesa,
-    marginBottom: '5%',
-  },
-  button: {
-    width: '80%',
-    alignSelf: 'center',
+  inputs: {},
+  textBellowInput: {},
+  footer: {
+    flex: 1,
+    paddingHorizontal: 37,
   },
 });
