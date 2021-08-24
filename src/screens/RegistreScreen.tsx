@@ -57,7 +57,7 @@ export default function RegistreScreen({
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-          <ScrollView style={styles.scroll}>
+          <ScrollView>
             <View style={styles.form}>
               <TextInput
                 style={[
@@ -169,41 +169,34 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
-    // flex: 1,
+    // flex: 2,
     marginTop: '10%',
-
     color: colors.header,
     fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   logo: {
-    width: 110,
-    height: 110,
+    height: 120,
+    width: 120,
   },
   title: {
     fontSize: 34,
     marginLeft: 15,
     color: colors.header,
+    fontFamily: fonts.heading,
   },
   subTitle: {
     fontSize: 18,
     marginLeft: 15,
     color: colors.header,
-    marginTop: 15,
-  },
-  scroll: {
-    // flex: 1,
+    marginTop: 7,
   },
   form: {
-    flex: 1,
-    paddingHorizontal: 37,
-    height: '100%',
-    // position: 'relative',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // top: '20%',
     marginTop: '10%',
+    paddingHorizontal: 50,
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   input: {
     borderBottomWidth: 1,
@@ -212,19 +205,15 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 16,
     textAlign: 'center',
-    paddingVertical: 2,
     flexDirection: 'column',
-    justifyContent: 'space-around',
-    marginBottom: 30,
+    marginBottom: 36,
   },
 
   button: {
-    // flex: 1,
     position: 'absolute',
     bottom: 0,
     width: '100%',
     paddingHorizontal: 37,
     marginBottom: '10%',
-    // paddingVertical: 50,
   },
 });

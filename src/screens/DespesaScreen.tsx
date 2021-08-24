@@ -130,7 +130,6 @@ export default function Despesa() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background_light,
-    textAlign: 'center',
   },
   header: {
     paddingLeft: 40,
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   flexColumn: {
     flex: 1,
@@ -153,11 +152,10 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   logo: {
-    height: 110,
-    width: 110,
+    height: 120,
+    width: 120,
   },
   forms: {
-    flex: 1,
     justifyContent: 'center',
   },
   input: {
@@ -175,7 +173,6 @@ const styles = StyleSheet.create({
     marginBottom: '5%',
   },
   button: {
-    flex: 1,
     width: '80%',
     alignSelf: 'center',
   },

@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 import { RootStackParamList } from '../../types';
@@ -109,6 +110,9 @@ export default function RendaScreen({
               title="Cadastrar"
               onPress={() => navigation.replace('Root')}
             />
+            <TouchableOpacity onPress={() => navigation.replace('Root')}>
+              <Text style={styles.textBellowButton}>Talvez depois</Text>
+            </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
@@ -139,8 +143,8 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   logo: {
-    height: 110,
-    width: 110,
+    height: 120,
+    width: 120,
   },
   forms: {
     flex: 1,
@@ -167,5 +171,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     bottom: '12%',
+  },
+  textBellowButton: {
+    fontSize: 14,
+    color: colors.turquesa,
+    fontFamily: fonts.heading,
+    textAlign: 'center',
+    paddingTop: 7,
   },
 });

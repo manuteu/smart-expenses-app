@@ -136,21 +136,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
-    flex: 1,
     marginTop: '10%',
     marginLeft: 13,
     paddingHorizontal: 25,
     color: colors.header,
-    fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   logo: {
-    width: 110,
-    height: 110,
+    height: 120,
+    width: 120,
   },
   title: {
     fontSize: 36,
+    fontFamily: fonts.heading,
     color: colors.header,
   },
   subTitle: {
@@ -159,9 +158,8 @@ const styles = StyleSheet.create({
   },
   form: {
     paddingHorizontal: 37,
-    flex: 1,
     width: '95%',
-    // marginTop: '10%',
+    marginTop: '10%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
