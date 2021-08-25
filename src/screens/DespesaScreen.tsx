@@ -8,6 +8,7 @@ import {
   View,
   Image,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {
   TextInput,
@@ -60,7 +61,7 @@ export default function Despesa() {
     { label: 'Vestimenta', value: 5 },
   ];
 
-  const picker = () => {};
+  // const picker = () => {};
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -80,14 +81,20 @@ export default function Despesa() {
           </View>
           <ScrollView style={styles.forms}>
             <View>
-              <Picker
-                item={tipo}
-                items={dados}
-                onItemChange={setTipo}
-                title="Tipo de Despesas"
-                placeholder="Selecione o Tipo"
-                isNullable
-              />
+              <View>
+                <Picker
+                  style={styles.picker}
+                  item={tipo}
+                  items={dados}
+                  onItemChange={setTipo}
+                  title="Tipo de Despesas"
+                  placeholder="Selecione o Tipo"
+                  // isNullable
+                  containerStyle={{ borderColor: colors.turquesa }}
+                  textInputStyle={styles.textPicker}
+                />
+                <Text style={styles.textBellowInput}>Seleciona a despesa</Text>
+              </View>
               {/* <Picker
                 prompt="Tipo de Despesas"
                 style={styles.picker}
@@ -132,7 +139,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingLeft: 40,
     paddingRight: 20,
-    marginTop: '7%',
+    marginTop: '3%',
     color: colors.header,
     fontFamily: fonts.heading,
     flexDirection: 'row',
@@ -155,16 +162,28 @@ const styles = StyleSheet.create({
     marginTop: '10%',
   },
   picker: {
-    // backgroundColor: colors.silver,
-    // position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    borderBottomWidth: 1,
+    borderColor: colors.concret,
+
+    // marginBottom: 20,
+  },
+  textPicker: {
+    fontFamily: fonts.text,
+    fontSize: 18,
+    textAlign: 'center',
   },
   inputs: {},
-  textBellowInput: {},
+  textBellowInput: {
+    fontSize: 16,
+    fontFamily: fonts.text,
+    color: colors.turquesa,
+    marginTop: 10,
+  },
   footer: {
-    flex: 1,
+    // flex: 1,
+    width: '100%',
     paddingHorizontal: 37,
+    // position: 'absolute',
+    marginTop: 100,
   },
 });
