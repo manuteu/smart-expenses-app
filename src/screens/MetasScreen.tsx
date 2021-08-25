@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Picker } from '@react-native-picker/picker';
+// import { Picker } from '@react-native-picker/picker';
 import colors from '../styles/colors';
 
 export default function Metas() {
@@ -10,7 +10,7 @@ export default function Metas() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Metas</Text>
-      <Picker
+      {/* <Picker
         style={styles.picker}
         selectedValue={selectedValue}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
@@ -18,7 +18,7 @@ export default function Metas() {
         <Picker.Item key={0} label="Alimentação" value="Alimentação" />
         <Picker.Item key={1} label="Transporte" value="Transporte" />
         <Picker.Item key={2} label="Aluguel" value="Aluguel" />
-      </Picker>
+      </Picker> */}
       <Text>Categoria {selectedValue}</Text>
       <View />
     </View>

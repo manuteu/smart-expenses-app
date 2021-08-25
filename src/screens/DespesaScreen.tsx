@@ -13,8 +13,9 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
-import { Picker } from '@react-native-picker/picker';
+// import { Picker } from '@react-native-picker/picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Picker, PickerItem } from 'react-native-woodpicker';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -29,7 +30,7 @@ type Despesa = {
 
 export default function Despesa() {
   const [nome, setNome] = useState('');
-  const [tipo, setTipo] = useState('');
+  const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
   const [data, setData] = useState('');
 
@@ -50,6 +51,16 @@ export default function Despesa() {
       alert('Erro ao cadastrar despesa...');
     }
   }
+
+  const dados: Array<PickerItem> = [
+    { label: 'Alimentação', value: 1 },
+    { label: 'Transporte', value: 2 },
+    { label: 'Aluguel', value: 3 },
+    { label: 'Lazer', value: 4 },
+    { label: 'Vestimenta', value: 5 },
+  ];
+
+  const picker = () => {};
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -70,12 +81,26 @@ export default function Despesa() {
           <ScrollView style={styles.forms}>
             <View>
               <Picker
+                item={tipo}
+                items={dados}
+                onItemChange={setTipo}
+                title="Tipo de Despesas"
+                placeholder="Selecione o Tipo"
+                isNullable
+              />
+              {/* <Picker
+                prompt="Tipo de Despesas"
                 style={styles.picker}
                 selectedValue={tipo}
                 onValueChange={(itemValue, itemIndex) => setTipo(itemValue)}
+                itemStyle={
+                  {
+                    // color: colors.turquesa,
+                  }
+                }
               >
                 <Picker.Item
-                  color={colors.turquesa}
+                  // color={colors.turquesa}
                   key={0}
                   label="Alimentação"
                   value="Alimentação"
@@ -84,7 +109,7 @@ export default function Despesa() {
                 <Picker.Item key={2} label="Aluguel" value="Aluguel" />
                 <Picker.Item key={3} label="Lazer" value="Lazer" />
                 <Picker.Item key={4} label="Vestimenta" value="Vestimenta" />
-              </Picker>
+              </Picker> */}
             </View>
           </ScrollView>
           <View style={styles.footer}>
@@ -126,9 +151,15 @@ const styles = StyleSheet.create({
   },
   forms: {
     // backgroundColor: colors.green,
+    marginHorizontal: '15%',
+    marginTop: '10%',
   },
   picker: {
-    // backgroundColor: colors.dark_blue,
+    // backgroundColor: colors.silver,
+    // position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   inputs: {},
   textBellowInput: {},
