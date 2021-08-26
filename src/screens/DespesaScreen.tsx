@@ -8,7 +8,6 @@ import {
   View,
   Image,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native';
 import {
   TextInput,
@@ -30,10 +29,14 @@ type Despesa = {
 };
 
 export default function Despesa() {
-  const [nome, setNome] = useState('');
+  // const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
-  const [data, setData] = useState('');
+  const [dataPagamento, setDataPagamento] = useState('');
+  const [dataVencimento, setDataVencimento] = useState('');
+
+  // const handleText = (): string =>
+  //   data ? data.toDateString() : 'No value Selected';
 
   async function submit() {
     try {
@@ -41,10 +44,10 @@ export default function Despesa() {
         method: 'POST',
         url: 'http://localhost:3000/despesas',
         data: {
-          nome,
           tipo,
           preco,
-          data,
+          dataPagamento,
+          dataVencimento,
         },
       });
       alert('Despesa Cadastrada');
@@ -65,7 +68,7 @@ export default function Despesa() {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView behavior="position">
+        <KeyboardAvoidingView behavior="padding">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>
@@ -79,8 +82,8 @@ export default function Despesa() {
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-          <ScrollView style={styles.forms}>
-            <View>
+          <ScrollView style={styles.scrollview}>
+            <View style={styles.forms}>
               <View>
                 <Picker
                   style={styles.picker}
@@ -88,40 +91,52 @@ export default function Despesa() {
                   items={dados}
                   onItemChange={setTipo}
                   title="Tipo de Despesas"
-                  placeholder="Selecione o Tipo"
-                  // isNullable
-                  containerStyle={{ borderColor: colors.turquesa }}
+                  placeholder="Tipo de Despesa"
+                  isNullable
+                  backdropAnimation={{
+                    opacity: 0.8,
+                    duration: 500,
+                    delay: 150,
+                  }}
                   textInputStyle={styles.textPicker}
                 />
-                <Text style={styles.textBellowInput}>Seleciona a despesa</Text>
               </View>
-              {/* <Picker
-                prompt="Tipo de Despesas"
-                style={styles.picker}
-                selectedValue={tipo}
-                onValueChange={(itemValue, itemIndex) => setTipo(itemValue)}
-                itemStyle={
-                  {
-                    // color: colors.turquesa,
-                  }
-                }
-              >
-                <Picker.Item
-                  // color={colors.turquesa}
-                  key={0}
-                  label="Alimentação"
-                  value="Alimentação"
+              <View>
+                <TextInput
+                  style={styles.inputs}
+                  placeholder="R$ 0,00"
+                  placeholderTextColor={colors.concret}
+                  keyboardType="numeric"
+                  value={preco}
+                  onChangeText={setPreco}
                 />
-                <Picker.Item key={1} label="Transporte" value="Transporte" />
-                <Picker.Item key={2} label="Aluguel" value="Aluguel" />
-                <Picker.Item key={3} label="Lazer" value="Lazer" />
-                <Picker.Item key={4} label="Vestimenta" value="Vestimenta" />
-              </Picker> */}
+                <View>
+                  <Text style={styles.textBellowInput}>
+                    Digite o valor da despesa
+                  </Text>
+                </View>
+              </View>
+              <View>
+                <TextInput
+                  style={styles.inputsData}
+                  placeholder="Data de Pagamento"
+                  placeholderTextColor={colors.concret}
+                  value={dataPagamento}
+                  onChangeText={setDataPagamento}
+                />
+                <TextInput
+                  style={styles.inputsData}
+                  placeholder="Data de Vencimento"
+                  placeholderTextColor={colors.concret}
+                  value={dataVencimento}
+                  onChangeText={setDataVencimento}
+                />
+              </View>
+            </View>
+            <View style={styles.footer}>
+              <EmptyButton title="Cadastrar" onPress={submit} />
             </View>
           </ScrollView>
-          <View style={styles.footer}>
-            <EmptyButton title="Cadastrar" onPress={submit} />
-          </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -131,8 +146,8 @@ export default function Despesa() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
-    width: '100%',
+    // height: '100%',
+    // width: '100%',
     backgroundColor: colors.background_light,
   },
   header: {
@@ -147,7 +162,7 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.concret,
   },
   title: {
-    fontSize: 30,
+    fontSize: 28,
     fontFamily: fonts.heading,
     color: colors.header,
     marginTop: 7,
@@ -156,34 +171,82 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
   },
+  scrollview: {
+    height: '100%',
+  },
   forms: {
+    // flex: 1,
     // backgroundColor: colors.green,
-    marginHorizontal: '15%',
+    marginHorizontal: '12%',
     marginTop: '10%',
+    // height: '55%',
   },
   picker: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-
-    // marginBottom: 20,
+    marginBottom: -30,
   },
   textPicker: {
     fontFamily: fonts.text,
     fontSize: 18,
+    color: colors.dark_concret,
     textAlign: 'center',
   },
-  inputs: {},
+  inputs: {
+    borderBottomWidth: 1,
+    borderColor: colors.concret,
+    fontFamily: fonts.text,
+    fontSize: 18,
+    textAlign: 'center',
+    position: 'absolute',
+    width: '100%',
+    marginTop: -35,
+  },
   textBellowInput: {
     fontSize: 16,
-    fontFamily: fonts.text,
+    fontFamily: fonts.heading,
     color: colors.turquesa,
-    marginTop: 10,
+    marginTop: -8,
+    textAlign: 'center',
+  },
+  inputsData: {
+    borderBottomWidth: 1,
+    borderColor: colors.concret,
+    fontFamily: fonts.text,
+    fontSize: 18,
+    textAlign: 'center',
+    marginTop: 40,
   },
   footer: {
-    // flex: 1,
-    width: '100%',
-    paddingHorizontal: 37,
     // position: 'absolute',
-    marginTop: 100,
+    width: '80%',
+    alignSelf: 'center',
+    marginTop: '20%',
   },
 });
+
+{
+  // Picker antigo
+  /* <Picker
+  prompt="Tipo de Despesas"
+  style={styles.picker}
+  selectedValue={tipo}
+  onValueChange={(itemValue, itemIndex) => setTipo(itemValue)}
+  itemStyle={
+    {
+      // color: colors.turquesa,
+    }
+  }
+>
+  <Picker.Item
+    // color={colors.turquesa}
+    key={0}
+    label="Alimentação"
+    value="Alimentação"
+  />
+  <Picker.Item key={1} label="Transporte" value="Transporte" />
+  <Picker.Item key={2} label="Aluguel" value="Aluguel" />
+  <Picker.Item key={3} label="Lazer" value="Lazer" />
+  <Picker.Item key={4} label="Vestimenta" value="Vestimenta" />
+</Picker> */
+}

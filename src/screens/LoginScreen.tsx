@@ -30,10 +30,12 @@ export default function LoginScreen({
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
+  const [senha, setSenha] = useState<string>();
 
   function handleInputBlur() {
     setIsFocused(false);
     setIsFilled(!!name);
+    setIsFilled(!!senha);
   }
 
   function handleInputFocus() {
@@ -43,6 +45,7 @@ export default function LoginScreen({
   function handleInputChange(value: string) {
     setIsFilled(!!value);
     setName(value);
+    setSenha(value);
   }
 
   return (
@@ -89,7 +92,7 @@ export default function LoginScreen({
                 placeholderTextColor={colors.placeholder}
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
-                // onChangeText={handleInputChange}
+                onChangeText={handleInputChange}
                 autoCompleteType="password"
                 maxLength={16}
                 secureTextEntry={true}
@@ -136,12 +139,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
+    flex: 1,
     marginTop: '10%',
     marginLeft: 13,
     paddingHorizontal: 25,
     color: colors.header,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   logo: {
     height: 120,
@@ -160,21 +164,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 37,
     width: '95%',
     marginTop: '10%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
   },
   input: {
-    flex: 1,
     borderBottomWidth: 1,
     borderColor: colors.placeholder,
     color: colors.header,
     width: '100%',
     fontSize: 18,
-    padding: 15,
+    padding: 14,
     textAlign: 'center',
     marginTop: '20%',
   },
@@ -183,11 +180,10 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-start',
   },
-
   footer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginBottom: '20%',
     width: '100%',
     paddingHorizontal: 25,

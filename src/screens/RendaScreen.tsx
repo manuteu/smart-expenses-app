@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     color: colors.header,
     fontFamily: fonts.heading,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   title: {
     fontSize: 30,
@@ -149,8 +149,7 @@ const styles = StyleSheet.create({
   forms: {
     flex: 1,
     paddingHorizontal: 55,
-    justifyContent: 'center',
-    marginBottom: '40%',
+    marginTop: '12%',
   },
   input: {
     borderBottomWidth: 1,
@@ -167,6 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   footer: {
+    flex: 1,
     paddingHorizontal: 37,
     position: 'absolute',
     width: '100%',
