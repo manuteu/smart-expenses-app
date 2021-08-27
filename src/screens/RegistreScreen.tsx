@@ -19,9 +19,7 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
 
-export default function RegistreScreen({
-  navigation,
-}: StackScreenProps<RootStackParamList, 'Registre'>) {
+export default function RegistreScreen({ navigation }: any) {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();

@@ -19,9 +19,7 @@ export type item = {
   id: String;
 };
 
-export default function Home({
-  navigation,
-}: StackScreenProps<RootStackParamList, 'Root'>) {
+export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
   // useEffect(() => {
@@ -155,7 +153,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   button: {
+    flex: 1,
     width: '100%',
-    bottom: 10,
+    // bottom: 50,
   },
 });

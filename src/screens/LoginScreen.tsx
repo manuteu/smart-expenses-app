@@ -1,4 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import {
   SafeAreaView,
@@ -20,12 +19,10 @@ import {
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { RootStackParamList } from '../../types';
+// import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
 
-export default function LoginScreen({
-  navigation,
-}: StackScreenProps<RootStackParamList, 'Login'>) {
+export default function LoginScreen({ navigation }: any) {
   const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -186,7 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginBottom: '20%',
     width: '100%',
-    paddingHorizontal: 25,
+    // paddingHorizontal: 25,
     position: 'absolute',
     bottom: 0,
   },

@@ -11,12 +11,14 @@ import AppLoading from 'expo-app-loading';
 
 import useCachedResources from './hooks/useCachedResources';
 
-import Navigation from './src/navigation';
+// import Navigation from './src/navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './src/navigation/Navigation';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
-    Jost_400Regular, 
+    Jost_400Regular,
     Jost_600SemiBold,
   });
 
@@ -26,10 +28,13 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation />
-        <StatusBar />
-      </SafeAreaProvider>
+      // <SafeAreaProvider>
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+      // {/* <Navigation /> */}
+      // <StatusBar />
+      // </SafeAreaProvider>
     );
   }
 }

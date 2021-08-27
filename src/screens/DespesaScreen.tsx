@@ -28,7 +28,7 @@ type Despesa = {
   data: Date;
 };
 
-export default function Despesa() {
+export default function DespesaScreen() {
   // const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
