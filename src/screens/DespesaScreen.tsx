@@ -124,6 +124,7 @@ export default function DespesaScreen({ navigation }: any) {
                   placeholderTextColor={colors.concret}
                   value={dataPagamento}
                   onChangeText={setDataPagamento}
+                  keyboardType="numeric"
                 />
                 <TextInput
                   style={styles.inputsData}
@@ -131,6 +132,7 @@ export default function DespesaScreen({ navigation }: any) {
                   placeholderTextColor={colors.concret}
                   value={dataVencimento}
                   onChangeText={setDataVencimento}
+                  keyboardType="numeric"
                 />
               </View>
             </View>
