@@ -6,6 +6,7 @@ import Home from '../screens/HomeScreen';
 import Despesa from '../screens/DespesaScreen';
 import Perfil from '../screens/PerfilScreen';
 import colors from '../styles/colors';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const CustomTabBarButton = ({ onPress }) => (
   <TouchableOpacity
@@ -40,6 +41,7 @@ const CustomTabBarButton = ({ onPress }) => (
 );
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const CustomTabs = () => {
   return (
@@ -77,10 +79,11 @@ const CustomTabs = () => {
           ),
         }}
       />
-      <Tab.Screen
+      <Stack.Screen
         name="Despesa"
         component={Despesa}
         options={{
+          tabBarVisible: false,
           // tabBarIcon: ({ focused }) => (
           //   // <Image
           //   //   source={require('../../assets/images/adicionar.png')}

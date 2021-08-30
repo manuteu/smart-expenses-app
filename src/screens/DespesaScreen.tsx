@@ -8,6 +8,7 @@ import {
   View,
   Image,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {
   TextInput,
@@ -28,7 +29,7 @@ type Despesa = {
   data: Date;
 };
 
-export default function DespesaScreen() {
+export default function DespesaScreen({ navigation }: any) {
   // const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
@@ -135,6 +136,10 @@ export default function DespesaScreen() {
             </View>
             <View style={styles.footer}>
               <EmptyButton title="Cadastrar" onPress={submit} />
+
+              <TouchableOpacity onPress={() => navigation.replace('Tab')}>
+                <Text style={styles.backButton}>Voltar</Text>
+              </TouchableOpacity>
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -221,7 +226,14 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     width: '80%',
     alignSelf: 'center',
-    marginTop: '20%',
+    marginTop: '13%',
+  },
+  backButton: {
+    paddingTop: 5,
+    textAlign: 'center',
+    color: colors.turquesa,
+    fontFamily: fonts.heading,
+    fontSize: 16,
   },
 });
 
