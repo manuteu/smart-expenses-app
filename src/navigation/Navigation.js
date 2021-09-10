@@ -14,7 +14,6 @@ const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   return (
-    // <NavigationContainer>
     <Stack.Navigator
       initialRouteName="Login"
       screenOptions={{ headerShown: false }}

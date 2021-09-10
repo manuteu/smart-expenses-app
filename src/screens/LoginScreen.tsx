@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background_light,
   },
   header: {
-    flex: 1,
+    // flex: 1,
     marginTop: '10%',
     marginLeft: 13,
     paddingHorizontal: 25,

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
 import {
   View,
   Text,
@@ -12,9 +11,8 @@ import {
   Platform,
   StatusBar,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
-
-import { RootStackParamList } from '../../types';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -68,40 +66,43 @@ export default function RendaScreen({ navigation }: any) {
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-
           <View style={styles.forms}>
-            <TextInput
-              // value={renda}
-              // // mask="renda"
-              // // inputMaskChange={(text: string) => handleCustom(text)}
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.asphalt,
-                },
-              ]}
-              placeholder="R$ 0,00"
-              placeholderTextColor={colors.placeholder}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              onChangeText={handleInputChange}
-              keyboardType="numeric"
-            />
-            <Text style={styles.textBellowInput}>Digite sua renda mensal</Text>
-            <TextInput
-              style={[
-                styles.input,
-                (isFocused || isFilled) && {
-                  borderColor: colors.asphalt,
-                },
-              ]}
-              placeholder="Dia do Pagamento"
-              placeholderTextColor={colors.placeholder}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              onChangeText={handleInputChange}
-              keyboardType="numeric"
-            />
+            <ScrollView>
+              <TextInput
+                // value={renda}
+                // // mask="renda"
+                // // inputMaskChange={(text: string) => handleCustom(text)}
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.asphalt,
+                  },
+                ]}
+                placeholder="R$ 0,00"
+                placeholderTextColor={colors.placeholder}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                onChangeText={handleInputChange}
+                keyboardType="numeric"
+              />
+              <Text style={styles.textBellowInput}>
+                Digite sua renda mensal
+              </Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.asphalt,
+                  },
+                ]}
+                placeholder="Dia do Pagamento"
+                placeholderTextColor={colors.placeholder}
+                onFocus={handleInputFocus}
+                onBlur={handleInputBlur}
+                onChangeText={handleInputChange}
+                keyboardType="numeric"
+              />
+            </ScrollView>
           </View>
           <View style={styles.footer}>
             <EmptyButton
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
     // padding: 10,
   },
   header: {
+    flex: 1,
     paddingLeft: 40,
     paddingRight: 20,
     marginTop: '10%',
@@ -133,6 +135,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    // position: 'absolute',
   },
   title: {
     fontSize: 30,
@@ -145,7 +148,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   forms: {
-    flex: 1,
+    flex: 3,
     paddingHorizontal: 55,
     marginTop: '12%',
   },

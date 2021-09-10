@@ -65,11 +65,10 @@ export default function DespesaScreen({ navigation }: any) {
     { label: 'Vestimenta', value: 5 },
   ];
 
-  // const picker = () => {};
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView behavior="padding">
+        <KeyboardAvoidingView behavior="height">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>
@@ -83,67 +82,65 @@ export default function DespesaScreen({ navigation }: any) {
               source={require('../../assets/images/Logo.png')}
             />
           </View>
-          <ScrollView style={styles.scrollview}>
-            <View style={styles.forms}>
-              <View>
-                <Picker
-                  style={styles.picker}
-                  item={tipo}
-                  items={dados}
-                  onItemChange={setTipo}
-                  title="Tipo de Despesas"
-                  placeholder="Tipo de Despesa"
-                  isNullable
-                  backdropAnimation={{
-                    opacity: 0.8,
-                    duration: 500,
-                    delay: 150,
-                  }}
-                  textInputStyle={styles.textPicker}
-                />
-              </View>
-              <View>
-                <TextInput
-                  style={styles.inputs}
-                  placeholder="R$ 0,00"
-                  placeholderTextColor={colors.concret}
-                  keyboardType="numeric"
-                  value={preco}
-                  onChangeText={setPreco}
-                />
-                <View>
-                  <Text style={styles.textBellowInput}>
-                    Digite o valor da despesa
-                  </Text>
-                </View>
-              </View>
-              <View>
-                <TextInput
-                  style={styles.inputsData}
-                  placeholder="Data de Pagamento"
-                  placeholderTextColor={colors.concret}
-                  value={dataPagamento}
-                  onChangeText={setDataPagamento}
-                  keyboardType="numeric"
-                />
-                <TextInput
-                  style={styles.inputsData}
-                  placeholder="Data de Vencimento"
-                  placeholderTextColor={colors.concret}
-                  value={dataVencimento}
-                  onChangeText={setDataVencimento}
-                  keyboardType="numeric"
-                />
-              </View>
-            </View>
-            <View style={styles.footer}>
-              <EmptyButton title="Cadastrar" onPress={submit} />
+          <View style={styles.forms}>
+            <ScrollView
+              style={styles.scrollview}
+              automaticallyAdjustContentInsets={false}
+            >
+              <Picker
+                style={styles.picker}
+                item={tipo}
+                items={dados}
+                onItemChange={setTipo}
+                title="Tipo de Despesas"
+                placeholder="Tipo de Despesa"
+                isNullable
+                backdropAnimation={{
+                  opacity: 0.5,
+                  duration: 500,
+                  delay: 20,
+                }}
+                textInputStyle={styles.textPicker}
+              />
 
-              <TouchableOpacity onPress={() => navigation.replace('Tab')}>
-                <Text style={styles.backButton}>Voltar</Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
+              <TextInput
+                style={styles.inputValor}
+                placeholder="R$ 0,00"
+                placeholderTextColor={colors.concret}
+                keyboardType="numeric"
+                value={preco}
+                onChangeText={setPreco}
+              />
+
+              {/* <Text style={styles.textBellowInput}>
+                Digite o valor da despesa
+              </Text> */}
+
+              <TextInput
+                style={styles.inputDataPag}
+                placeholder="Data de Pagamento"
+                placeholderTextColor={colors.concret}
+                value={dataPagamento}
+                onChangeText={setDataPagamento}
+                keyboardType="numeric"
+              />
+              <TextInput
+                style={styles.inputDataVenc}
+                placeholder="Data de Vencimento"
+                placeholderTextColor={colors.concret}
+                value={dataVencimento}
+                onChangeText={setDataVencimento}
+                keyboardType="numeric"
+              />
+              <View style={styles.footer}>
+                <EmptyButton title="Cadastrar" onPress={submit} />
+
+                <TouchableOpacity onPress={() => navigation.replace('Tab')}>
+                  <Text style={styles.backButton}>Voltar</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -153,7 +150,7 @@ export default function DespesaScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // height: '100%',
+    height: '100%',
     // width: '100%',
     backgroundColor: colors.background_light,
   },
@@ -166,7 +163,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: colors.concret,
   },
   title: {
     fontSize: 28,
@@ -179,19 +175,17 @@ const styles = StyleSheet.create({
     width: 120,
   },
   scrollview: {
-    height: '100%',
+    maxHeight: 360,
   },
   forms: {
-    // flex: 1,
-    // backgroundColor: colors.green,
     marginHorizontal: '12%',
-    marginTop: '10%',
-    // height: '55%',
+    marginTop: '20%',
+    height: '100%',
   },
   picker: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    marginBottom: -30,
+    height: '30%',
   },
   textPicker: {
     fontFamily: fonts.text,
@@ -199,36 +193,37 @@ const styles = StyleSheet.create({
     color: colors.dark_concret,
     textAlign: 'center',
   },
-  inputs: {
+  inputValor: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    fontFamily: fonts.text,
-    fontSize: 18,
-    textAlign: 'center',
-    position: 'absolute',
-    width: '100%',
-    marginTop: -35,
-  },
-  textBellowInput: {
-    fontSize: 16,
-    fontFamily: fonts.heading,
-    color: colors.turquesa,
     marginTop: -8,
     textAlign: 'center',
+    fontSize: 18,
   },
-  inputsData: {
+  inputDataPag: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    fontFamily: fonts.text,
-    fontSize: 18,
+    marginTop: 42,
     textAlign: 'center',
-    marginTop: 40,
+    fontSize: 18,
   },
+  inputDataVenc: {
+    borderBottomWidth: 1,
+    borderColor: colors.concret,
+    marginTop: 42,
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  // textBellowInput: {
+  //   fontSize: 16,
+  //   fontFamily: fonts.heading,
+  //   textAlign: 'center',
+  //   color: colors.turquesa,
+  //   marginTop: 2,
+  // },
   footer: {
-    // position: 'absolute',
-    width: '80%',
-    alignSelf: 'center',
-    marginTop: '13%',
+    width: '100%',
+    top: 40,
   },
   backButton: {
     paddingTop: 5,
