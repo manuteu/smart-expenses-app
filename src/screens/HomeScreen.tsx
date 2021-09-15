@@ -1,46 +1,43 @@
 import React, { useState, useEffect } from 'react';
 
-import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
-import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import api from '../services/api';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { color } from 'react-native-elements/dist/helpers';
 
 export type item = {
   nome: String;
   tipo: String;
-  preco: String;
+  preco: Number;
   id: String;
 };
 
 export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
-  // useEffect(() => {
-  // api
-  // .get('http://localhost:3000/despesas')
-  // .then((response) => {
-  //   setDespesas(response.data)
-  // })
-  // .catch((error) => {
-  //   alert("Ocorreu um erro ao buscar os items")
-  // });
-  //   async function getItems() {
-  //     try {
-  //       const { data } = await api.get('/despesas');
-  //       setDespesas(data);
-  //     } catch (error) {
-  //       alert('Ocorreu um erro ao buscar os items');
-  //     }
-  //   }
-  //   getItems();
-  // }, []);
+  useEffect(() => {
+    api
+      .get('/api/usuarios')
+      .then((response) => {
+        setDespesas(response.data);
+      })
+      .catch((error) => {
+        alert('Ocorreu um erro ao buscar os items');
+      });
+    async function getItems() {
+      try {
+        const { data } = await api.get('https://apismartex.herokuapp.com');
+        setDespesas(data);
+      } catch (error) {
+        alert('Ocorreu um erro ao buscar os items');
+      }
+    }
+    getItems();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,7 +52,7 @@ export default function Home({ navigation }: any) {
         </View>
         <FlatList
           data={despesas}
-          keyExtractor={(item: any) => item.id.toString()}
+          keyExtractor={(item: any) => item.id}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <View style={styles.listContainer}>
@@ -130,6 +127,7 @@ const styles = StyleSheet.create({
 
   listContainer: {
     backgroundColor: colors.dark_asphalt,
+    borderRadius: 10,
   },
   list: {
     marginTop: 20,

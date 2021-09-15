@@ -22,7 +22,7 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 
-type Despesa = {
+type DespesaScreen = {
   nome: string;
   tipo: string;
   preco: number;
@@ -30,11 +30,11 @@ type Despesa = {
 };
 
 export default function DespesaScreen({ navigation }: any) {
-  // const [nome, setNome] = useState('');
+  const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
   const [dataPagamento, setDataPagamento] = useState('');
-  const [dataVencimento, setDataVencimento] = useState('');
+  // const [dataVencimento, setDataVencimento] = useState('');
 
   // const handleText = (): string =>
   //   data ? data.toDateString() : 'No value Selected';
@@ -43,18 +43,20 @@ export default function DespesaScreen({ navigation }: any) {
     try {
       await axios({
         method: 'POST',
-        url: 'http://localhost:3000/despesas',
+        url: 'https://apismartex.herokuapp.com/api/usuarios',
         data: {
-          tipo,
-          preco,
-          dataPagamento,
-          dataVencimento,
+          nome,
+          // tipo,
+          // preco,
+          // dataPagamento,
+          // dataVencimento,
         },
       });
       alert('Despesa Cadastrada');
     } catch (error) {
       alert('Erro ao cadastrar despesa...');
     }
+    console.log(submit);
   }
 
   const dados: Array<PickerItem> = [
@@ -117,6 +119,13 @@ export default function DespesaScreen({ navigation }: any) {
               </Text> */}
 
               <TextInput
+                style={styles.inputDataVenc}
+                placeholder="Nome"
+                placeholderTextColor={colors.concret}
+                value={nome}
+                onChangeText={setNome}
+              />
+              <TextInput
                 style={styles.inputDataPag}
                 placeholder="Data de Pagamento"
                 placeholderTextColor={colors.concret}
@@ -124,22 +133,14 @@ export default function DespesaScreen({ navigation }: any) {
                 onChangeText={setDataPagamento}
                 keyboardType="numeric"
               />
-              <TextInput
-                style={styles.inputDataVenc}
-                placeholder="Data de Vencimento"
-                placeholderTextColor={colors.concret}
-                value={dataVencimento}
-                onChangeText={setDataVencimento}
-                keyboardType="numeric"
-              />
-              <View style={styles.footer}>
-                <EmptyButton title="Cadastrar" onPress={submit} />
-
-                <TouchableOpacity onPress={() => navigation.replace('Tab')}>
-                  <Text style={styles.backButton}>Voltar</Text>
-                </TouchableOpacity>
-              </View>
             </ScrollView>
+            <View style={styles.footer}>
+              <EmptyButton title="Cadastrar" onPress={submit} />
+
+              <TouchableOpacity onPress={() => navigation.replace('Tab')}>
+                <Text style={styles.backButton}>Voltar</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   scrollview: {
-    maxHeight: 360,
+    maxHeight: 260,
   },
   forms: {
     marginHorizontal: '12%',
