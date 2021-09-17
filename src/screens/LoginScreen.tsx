@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    paddingHorizontal: 37,
     backgroundColor: colors.background_light,
   },
   header: {
     // flex: 1,
     marginTop: '10%',
     marginLeft: 13,
-    paddingHorizontal: 25,
     color: colors.header,
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     color: colors.header,
   },
   form: {
-    paddingHorizontal: 37,
-    width: '95%',
+    // paddingHorizontal: 37,
+    width: '100%',
     marginTop: '10%',
   },
   input: {
@@ -178,14 +178,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   footer: {
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: '20%',
+    justifyContent: 'space-between',
     width: '100%',
     // paddingHorizontal: 25,
     position: 'absolute',
-    bottom: 0,
+    bottom: '10%',
+    alignSelf: 'center',
   },
   footerText: {
     color: colors.asphalt,
@@ -193,6 +192,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   button: {
-    width: '40%',
+    width: '45%',
   },
 });

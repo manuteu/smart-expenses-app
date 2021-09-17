@@ -19,25 +19,25 @@ export type item = {
 export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
-  useEffect(() => {
-    api
-      .get('/api/usuarios')
-      .then((response) => {
-        setDespesas(response.data);
-      })
-      .catch((error) => {
-        alert('Ocorreu um erro ao buscar os items');
-      });
-    async function getItems() {
-      try {
-        const { data } = await api.get('https://apismartex.herokuapp.com');
-        setDespesas(data);
-      } catch (error) {
-        alert('Ocorreu um erro ao buscar os items');
-      }
-    }
-    getItems();
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .get('/api/usuarios')
+  //     .then((response) => {
+  //       setDespesas(response.data);
+  //     })
+  //     .catch((error) => {
+  //       alert('Ocorreu um erro ao buscar os items');
+  //     });
+  //   async function getItems() {
+  //     try {
+  //       const { data } = await api.get('https://apismartex.herokuapp.com');
+  //       setDespesas(data);
+  //     } catch (error) {
+  //       alert('Ocorreu um erro ao buscar os items');
+  //     }
+  //   }
+  //   getItems();
+  // }, []);
 
   return (
     <SafeAreaView style={styles.container}>

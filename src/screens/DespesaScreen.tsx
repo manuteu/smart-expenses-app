@@ -9,6 +9,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import {
   TextInput,
@@ -21,6 +22,7 @@ import { Picker, PickerItem } from 'react-native-woodpicker';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
+import { ScreenHeight } from 'react-native-elements/dist/helpers';
 
 type DespesaScreen = {
   nome: string;
@@ -70,13 +72,13 @@ export default function DespesaScreen({ navigation }: any) {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView behavior="height">
+        <KeyboardAvoidingView behavior="position">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>
                 Cadastro {'\n'}
                 de {'\n'}
-                despesa
+                Despesa
               </Text>
             </View>
             <Image
@@ -85,10 +87,7 @@ export default function DespesaScreen({ navigation }: any) {
             />
           </View>
           <View style={styles.forms}>
-            <ScrollView
-              style={styles.scrollview}
-              automaticallyAdjustContentInsets={false}
-            >
+            <ScrollView keyboardDismissMode="on-drag">
               <Picker
                 style={styles.picker}
                 item={tipo}
@@ -125,22 +124,22 @@ export default function DespesaScreen({ navigation }: any) {
                 value={nome}
                 onChangeText={setNome}
               />
-              <TextInput
+              {/* <TextInput
                 style={styles.inputDataPag}
                 placeholder="Data de Pagamento"
                 placeholderTextColor={colors.concret}
                 value={dataPagamento}
                 onChangeText={setDataPagamento}
                 keyboardType="numeric"
-              />
-            </ScrollView>
-            <View style={styles.footer}>
-              <EmptyButton title="Cadastrar" onPress={submit} />
+              /> */}
+              <View style={styles.footer}>
+                <EmptyButton title="Cadastrar" onPress={submit} />
 
-              <TouchableOpacity onPress={() => navigation.replace('Tab')}>
-                <Text style={styles.backButton}>Voltar</Text>
-              </TouchableOpacity>
-            </View>
+                <TouchableOpacity onPress={() => navigation.replace('Tab')}>
+                  <Text style={styles.backButton}>Voltar</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
           </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
@@ -151,17 +150,16 @@ export default function DespesaScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
-    // width: '100%',
+    // flexDirection: 'column',
+    // justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 37,
     backgroundColor: colors.background_light,
   },
   header: {
-    // flex: 1,
-    paddingLeft: 40,
-    paddingRight: 20,
-    marginTop: '3%',
+    marginTop: '5%',
+    marginLeft: 13,
     color: colors.header,
-    fontFamily: fonts.heading,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -175,18 +173,27 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
   },
-  scrollview: {
-    maxHeight: 260,
+  content: {
+    // maxHeight: 260,
   },
   forms: {
-    marginHorizontal: '12%',
-    marginTop: '20%',
-    height: '100%',
+    // marginHorizontal: '12%',
+    // marginTop: '20%',
+    // height: '100%',
+    paddingTop: 100,
+    width: '100%',
+    // marginTop: '10%',
+    // backgroundColor: colors.blue,
+    // height: 400,
+    minHeight: ScreenHeight,
   },
   picker: {
+    flex: 1,
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    height: '30%',
+    // top: 30,
+    // height: '40%',
+    // backgroundColor: colors.turquesa,
   },
   textPicker: {
     fontFamily: fonts.text,
@@ -197,7 +204,8 @@ const styles = StyleSheet.create({
   inputValor: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    marginTop: -8,
+    // marginTop: -8,
+    marginTop: 42,
     textAlign: 'center',
     fontSize: 18,
   },
@@ -223,8 +231,13 @@ const styles = StyleSheet.create({
   //   marginTop: 2,
   // },
   footer: {
+    // width: '100%',
+    // top: 40,
+    // flexDirection: 'column',
+    position: 'relative',
+    marginTop: 70,
     width: '100%',
-    top: 40,
+    // backgroundColor: colors.green,
   },
   backButton: {
     paddingTop: 5,
