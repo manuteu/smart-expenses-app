@@ -150,8 +150,6 @@ export default function DespesaScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
-    // justifyContent: 'space-between',
     width: '100%',
     paddingHorizontal: 37,
     backgroundColor: colors.background_light,
@@ -173,27 +171,15 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
   },
-  content: {
-    // maxHeight: 260,
-  },
   forms: {
-    // marginHorizontal: '12%',
-    // marginTop: '20%',
-    // height: '100%',
     paddingTop: 100,
     width: '100%',
-    // marginTop: '10%',
-    // backgroundColor: colors.blue,
-    // height: 400,
     minHeight: ScreenHeight,
   },
   picker: {
     flex: 1,
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    // top: 30,
-    // height: '40%',
-    // backgroundColor: colors.turquesa,
   },
   textPicker: {
     fontFamily: fonts.text,
@@ -204,7 +190,6 @@ const styles = StyleSheet.create({
   inputValor: {
     borderBottomWidth: 1,
     borderColor: colors.concret,
-    // marginTop: -8,
     marginTop: 42,
     textAlign: 'center',
     fontSize: 18,
@@ -223,21 +208,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
-  // textBellowInput: {
-  //   fontSize: 16,
-  //   fontFamily: fonts.heading,
-  //   textAlign: 'center',
-  //   color: colors.turquesa,
-  //   marginTop: 2,
-  // },
   footer: {
-    // width: '100%',
-    // top: 40,
-    // flexDirection: 'column',
     position: 'relative',
     marginTop: 70,
     width: '100%',
-    // backgroundColor: colors.green,
   },
   backButton: {
     paddingTop: 5,
@@ -247,29 +221,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
-{
-  // Picker antigo
-  /* <Picker
-  prompt="Tipo de Despesas"
-  style={styles.picker}
-  selectedValue={tipo}
-  onValueChange={(itemValue, itemIndex) => setTipo(itemValue)}
-  itemStyle={
-    {
-      // color: colors.turquesa,
-    }
-  }
->
-  <Picker.Item
-    // color={colors.turquesa}
-    key={0}
-    label="Alimentação"
-    value="Alimentação"
-  />
-  <Picker.Item key={1} label="Transporte" value="Transporte" />
-  <Picker.Item key={2} label="Aluguel" value="Aluguel" />
-  <Picker.Item key={3} label="Lazer" value="Lazer" />
-  <Picker.Item key={4} label="Vestimenta" value="Vestimenta" />
-</Picker> */
-}
