@@ -87,7 +87,7 @@ export default function DespesaScreen({ navigation }: any) {
             />
           </View>
           <View style={styles.forms}>
-            <ScrollView keyboardDismissMode="on-drag">
+            <ScrollView>
               <Picker
                 style={styles.picker}
                 item={tipo}
