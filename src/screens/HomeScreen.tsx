@@ -13,31 +13,33 @@ export type item = {
   nome: String;
   tipo: String;
   preco: Number;
-  id: String;
+  id: number;
 };
 
 export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
-  // useEffect(() => {
-  //   api
-  //     .get('/api/usuarios')
-  //     .then((response) => {
-  //       setDespesas(response.data);
-  //     })
-  //     .catch((error) => {
-  //       alert('Ocorreu um erro ao buscar os items');
-  //     });
-  //   async function getItems() {
-  //     try {
-  //       const { data } = await api.get('https://apismartex.herokuapp.com');
-  //       setDespesas(data);
-  //     } catch (error) {
-  //       alert('Ocorreu um erro ao buscar os items');
-  //     }
-  //   }
-  //   getItems();
-  // }, []);
+  useEffect(() => {
+    api
+      .get('/api/rotas/usuarios')
+      .then((response) => {
+        setDespesas(response.data);
+      })
+      .catch((error) => {
+        alert('Ocorreu um erro ao buscar os items');
+      });
+    const getItems = async () => {
+      try {
+        const { data } = await api.get('https://apismartex.herokuapp.com/');
+        console.log(data);
+        setDespesas(data);
+        alert('Sucesso na requisição');
+      } catch (error) {
+        alert('Ocorreu um erro ao buscar os items');
+      }
+    };
+    getItems();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -52,16 +54,16 @@ export default function Home({ navigation }: any) {
         </View>
         <FlatList
           data={despesas}
-          keyExtractor={(item: any) => item.id}
+          keyExtractor={(item: any, index: number) => item.toString()}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <View style={styles.listContainer}>
               <View style={styles.list}>
-                <Text style={styles.listName}>{item.nome}</Text>
-                <Text style={styles.listType}>{item.tipo}</Text>
+                <Text style={styles.listName}>{item}</Text>
+                <Text style={styles.listType}>{item}</Text>
               </View>
               <View style={styles.listPrice}>
-                <Text>{item.preco}</Text>
+                <Text>{item}</Text>
               </View>
             </View>
           )}
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
   listContainer: {
     backgroundColor: colors.dark_asphalt,
     borderRadius: 10,
+    marginTop: 10,
   },
   list: {
     marginTop: 20,
@@ -138,10 +141,12 @@ const styles = StyleSheet.create({
   listName: {
     fontFamily: fonts.text,
     fontSize: 18,
+    color: colors.cloud,
   },
   listType: {
     fontFamily: fonts.text,
     fontSize: 18,
+    color: colors.cloud,
   },
   listPrice: {
     paddingHorizontal: 30,
@@ -149,6 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 10,
     textAlign: 'right',
+    color: colors.cloud,
   },
   button: {
     flex: 1,

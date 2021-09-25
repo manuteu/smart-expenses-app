@@ -107,7 +107,7 @@ export default function RendaScreen({ navigation }: any) {
           <View style={styles.footer}>
             <EmptyButton
               title="Cadastrar"
-              onPress={() => navigation.replace('Root')}
+              onPress={() => navigation.replace('Tab')}
             />
             <TouchableOpacity onPress={() => navigation.replace('Tab')}>
               <Text style={styles.textBellowButton}>Talvez depois</Text>

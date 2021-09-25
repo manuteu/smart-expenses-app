@@ -24,18 +24,18 @@ import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
 
-type DespesaScreen = {
-  nome: string;
-  tipo: string;
-  preco: number;
-  data: Date;
-};
+// type DespesaScreen = {
+//   nome: string;
+//   tipo: string;
+//   preco: number;
+//   // data: Date;
+// };
 
 export default function DespesaScreen({ navigation }: any) {
-  const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<PickerItem>();
   const [preco, setPreco] = useState('');
-  const [dataPagamento, setDataPagamento] = useState('');
+  const [nome, setNome] = useState('');
+  // const [dataPagamento, setDataPagamento] = useState('');
   // const [dataVencimento, setDataVencimento] = useState('');
 
   // const handleText = (): string =>
@@ -45,11 +45,11 @@ export default function DespesaScreen({ navigation }: any) {
     try {
       await axios({
         method: 'POST',
-        url: 'https://apismartex.herokuapp.com/api/usuarios',
+        url: 'https://apismartex.herokuapp.com',
         data: {
-          nome,
-          // tipo,
-          // preco,
+          tipo: tipo?.value,
+          preco: preco,
+          nome: nome,
           // dataPagamento,
           // dataVencimento,
         },
@@ -58,7 +58,7 @@ export default function DespesaScreen({ navigation }: any) {
     } catch (error) {
       alert('Erro ao cadastrar despesa...');
     }
-    console.log(submit);
+    console.log(axios);
   }
 
   const dados: Array<PickerItem> = [
