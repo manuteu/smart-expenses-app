@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export type item = {
   nome: String;
   tipo: String;
-  preco: Number;
+  valor: Number;
   id: number;
 };
 
@@ -20,17 +20,28 @@ export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
-    api
-      .get('/api/rotas/usuarios')
-      .then((response) => {
-        setDespesas(response.data);
+    fetch('https://apismartex.herokuapp.com/api/rotas/usuarios')
+      .then((resp) => resp.json())
+      .then((resp) => {
+        setDespesas(resp);
       })
+
       .catch((error) => {
-        alert('Ocorreu um erro ao buscar os items');
+        console.log(error);
       });
+    // api
+    //   .get('/api/rotas/usuarios')
+    //   .then((response) => {
+    //     setDespesas(response.data);
+    //   })
+    //   .catch((error) => {
+    //     alert('Ocorreu um erro ao buscar os items');
+    //   });
     const getItems = async () => {
       try {
-        const { data } = await api.get('https://apismartex.herokuapp.com/');
+        const { data } = await api.get(
+          'https://apismartex.herokuapp.com/api/rotas/usuarios'
+        );
         console.log(data);
         setDespesas(data);
         alert('Sucesso na requisição');
@@ -54,16 +65,17 @@ export default function Home({ navigation }: any) {
         </View>
         <FlatList
           data={despesas}
-          keyExtractor={(item: any, index: number) => item.toString()}
+          keyExtractor={(item: any, index: number) => item}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <View style={styles.listContainer}>
               <View style={styles.list}>
-                <Text style={styles.listName}>{item}</Text>
-                <Text style={styles.listType}>{item}</Text>
+                {/* <Text style={styles.listName}>{item.id}</Text> */}
+                <Text style={styles.listName}>{item.nome}</Text>
+                <Text style={styles.listType}>{item.tipo}</Text>
               </View>
               <View style={styles.listPrice}>
-                <Text>{item}</Text>
+                <Text>{item.valor}</Text>
               </View>
             </View>
           )}

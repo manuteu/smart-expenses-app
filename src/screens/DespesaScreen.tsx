@@ -24,16 +24,16 @@ import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
 
-// type DespesaScreen = {
-//   nome: string;
-//   tipo: string;
-//   preco: number;
-//   // data: Date;
-// };
+export type DespesaScreen = {
+  nome: string;
+  tipo: string;
+  valor: number;
+  // data: Date;
+};
 
 export default function DespesaScreen({ navigation }: any) {
   const [tipo, setTipo] = useState<PickerItem>();
-  const [preco, setPreco] = useState('');
+  const [valor, setValor] = useState('');
   const [nome, setNome] = useState('');
   // const [dataPagamento, setDataPagamento] = useState('');
   // const [dataVencimento, setDataVencimento] = useState('');
@@ -45,11 +45,11 @@ export default function DespesaScreen({ navigation }: any) {
     try {
       await axios({
         method: 'POST',
-        url: 'https://apismartex.herokuapp.com',
+        url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
         data: {
-          tipo: tipo?.value,
-          preco: preco,
-          nome: nome,
+          nome,
+          valor,
+          tipo,
           // dataPagamento,
           // dataVencimento,
         },
@@ -109,8 +109,8 @@ export default function DespesaScreen({ navigation }: any) {
                 placeholder="R$ 0,00"
                 placeholderTextColor={colors.concret}
                 keyboardType="numeric"
-                value={preco}
-                onChangeText={setPreco}
+                value={valor}
+                onChangeText={setValor}
               />
 
               {/* <Text style={styles.textBellowInput}>
