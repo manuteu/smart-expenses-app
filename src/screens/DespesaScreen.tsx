@@ -40,26 +40,50 @@ export default function DespesaScreen({ navigation }: any) {
 
   // const handleText = (): string =>
   //   data ? data.toDateString() : 'No value Selected';
+  const formData = new FormData();
 
-  async function submit() {
+  const submit = async () => {
     try {
-      await axios({
-        method: 'POST',
-        url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
-        data: {
-          nome,
-          valor,
-          tipo,
-          // dataPagamento,
-          // dataVencimento,
-        },
-      });
+      await fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+        method: 'post',
+        body: formData,
+      })
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (text) {
+          console.log(text);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // await axios({
+      //   method: 'POST',
+      //   url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
+      //   data: {
+      //     nome,
+      //     valor,
+      //     tipo,
+      //     // dataPagamento,
+      //     // dataVencimento,
+      //   },
+      // });
+      // await axios
+      //   .post('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+      //     data: {
+      //       nome: nome,
+      //       valor: valor,
+      //       tipo: tipo,
+      //     },
+      //   })
+      //   .then((response) => response.data)
+      //   .catch((error) => error);
       alert('Despesa Cadastrada');
     } catch (error) {
       alert('Erro ao cadastrar despesa...');
     }
-    console.log(axios);
-  }
+    console.log(submit);
+  };
 
   const dados: Array<PickerItem> = [
     { label: 'Alimentação', value: 1 },

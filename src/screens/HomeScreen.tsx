@@ -10,9 +10,9 @@ import api from '../services/api';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export type item = {
-  nome: String;
-  tipo: String;
-  valor: Number;
+  nome: string;
+  tipo: string;
+  valor: number;
   id: number;
 };
 
@@ -46,7 +46,7 @@ export default function Home({ navigation }: any) {
         setDespesas(data);
         alert('Sucesso na requisição');
       } catch (error) {
-        alert('Ocorreu um erro ao buscar os items');
+        // alert('Ocorreu um erro ao buscar os items');
       }
     };
     getItems();
@@ -65,13 +65,15 @@ export default function Home({ navigation }: any) {
         </View>
         <FlatList
           data={despesas}
-          keyExtractor={(item: any, index: number) => item}
+          keyExtractor={(item: item, index) => item.id.toString()}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <View style={styles.listContainer}>
               <View style={styles.list}>
                 {/* <Text style={styles.listName}>{item.id}</Text> */}
-                <Text style={styles.listName}>{item.nome}</Text>
+                <Text key={item.id} style={styles.listName}>
+                  {item.nome}
+                </Text>
                 <Text style={styles.listType}>{item.tipo}</Text>
               </View>
               <View style={styles.listPrice}>
