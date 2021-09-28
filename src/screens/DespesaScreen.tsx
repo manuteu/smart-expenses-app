@@ -40,23 +40,18 @@ export default function DespesaScreen({ navigation }: any) {
 
   // const handleText = (): string =>
   //   data ? data.toDateString() : 'No value Selected';
-  const formData = new FormData();
 
-  const submit = async () => {
+  const submit = () => {
     try {
-      await fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+      fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
         method: 'post',
-        body: formData,
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (text) {
-          console.log(text);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        body: JSON.stringify({
+          nome,
+          valor,
+          tipo,
+        }),
+      });
+      alert('Despesa Cadastrada');
       // await axios({
       //   method: 'POST',
       //   url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
@@ -78,7 +73,6 @@ export default function DespesaScreen({ navigation }: any) {
       //   })
       //   .then((response) => response.data)
       //   .catch((error) => error);
-      alert('Despesa Cadastrada');
     } catch (error) {
       alert('Erro ao cadastrar despesa...');
     }
