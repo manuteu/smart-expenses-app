@@ -29,27 +29,19 @@ export default function Home({ navigation }: any) {
       .catch((error) => {
         console.log(error);
       });
-    // api
-    //   .get('/api/rotas/usuarios')
-    //   .then((response) => {
-    //     setDespesas(response.data);
-    //   })
-    //   .catch((error) => {
-    //     alert('Ocorreu um erro ao buscar os items');
-    //   });
-    const getItems = async () => {
-      try {
-        const { data } = await api.get(
-          'https://apismartex.herokuapp.com/api/rotas/usuarios'
-        );
-        console.log(data);
-        setDespesas(data);
-        alert('Sucesso na requisição');
-      } catch (error) {
-        // alert('Ocorreu um erro ao buscar os items');
-      }
-    };
-    getItems();
+    // const getItems = async () => {
+    //   try {
+    //     const { data } = await api.get(
+    //       'https://apismartex.herokuapp.com/api/rotas/usuarios'
+    //     );
+    //     console.log(data);
+    //     setDespesas(data);
+    //     alert('Sucesso na requisição');
+    //   } catch (error) {
+    //     // alert('Ocorreu um erro ao buscar os items');
+    //   }
+    // };
+    // getItems();
   }, []);
 
   return (
@@ -63,25 +55,27 @@ export default function Home({ navigation }: any) {
           </View>
           <Text style={styles.subTitle}>Saldo geral</Text>
         </View>
-        <FlatList
-          data={despesas}
-          keyExtractor={(item: item, index) => item.id.toString()}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <View style={styles.listContainer}>
-              <View style={styles.list}>
-                {/* <Text style={styles.listName}>{item.id}</Text> */}
-                <Text key={item.id} style={styles.listName}>
-                  {item.nome}
-                </Text>
-                <Text style={styles.listType}>{item.tipo}</Text>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={despesas}
+            keyExtractor={(item: item, index) => item.id.toString()}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <View>
+                <View style={styles.list}>
+                  {/* <Text style={styles.listName}>{item.id}</Text> */}
+                  <Text key={item.id} style={styles.listName}>
+                    {item.nome}
+                  </Text>
+                  <Text style={styles.listType}>{item.tipo}</Text>
+                </View>
+                <View>
+                  <Text style={styles.listPrice}>{item.valor}</Text>
+                </View>
               </View>
-              <View style={styles.listPrice}>
-                <Text>{item.valor}</Text>
-              </View>
-            </View>
-          )}
-        />
+            )}
+          />
+        </View>
         <View style={styles.button}>
           <Button
             title="Ir para Login"
@@ -145,9 +139,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dark_asphalt,
     borderRadius: 10,
     marginTop: 10,
+    marginBottom: 10,
+    height: 160,
   },
   list: {
-    marginTop: 20,
+    marginTop: 5,
     paddingHorizontal: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -167,8 +163,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.text,
     fontSize: 14,
     marginBottom: 10,
-    textAlign: 'right',
-    color: colors.cloud,
+    // textAlign: 'right',
+    color: colors.concret,
   },
   button: {
     flex: 1,

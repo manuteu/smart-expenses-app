@@ -9,36 +9,43 @@ const screenWidth = Dimensions.get('window').width;
 const data = [
   {
     name: 'Alimentação',
-    population: 21500000,
-    color: 'rgba(131, 167, 234, 1)',
+    value: 200,
+    color: colors.green,
     legendFontColor: '#7F7F7F',
     legendFontSize: 15,
   },
   {
     name: 'Aluguel',
-    population: 2800000,
-    color: '#F00',
+    value: 800,
+    color: colors.dark_green,
     legendFontColor: '#7F7F7F',
     legendFontSize: 15,
   },
   {
     name: 'Combustível',
-    population: 527612,
-    color: 'red',
+    value: 500,
+    color: colors.turquesa,
     legendFontColor: '#7F7F7F',
     legendFontSize: 15,
   },
   {
-    name: 'New York',
-    population: 8538000,
-    color: '#ffffff',
+    name: 'Lazer',
+    value: 200,
+    color: colors.dark_turquesa,
     legendFontColor: '#7F7F7F',
     legendFontSize: 15,
   },
   {
-    name: 'Moscow',
-    population: 11920000,
-    color: 'rgb(0, 0, 255)',
+    name: 'Dízimo',
+    value: 300,
+    color: colors.blue,
+    legendFontColor: '#7F7F7F',
+    legendFontSize: 15,
+  },
+  {
+    name: 'Codguin',
+    value: 100,
+    color: colors.dark_blue,
     legendFontColor: '#7F7F7F',
     legendFontSize: 15,
   },
@@ -62,12 +69,11 @@ export default function Perfil() {
         width={screenWidth}
         height={180}
         chartConfig={chartConfig}
-        accessor={'population'}
+        accessor={'value'}
         backgroundColor={colors.dark_asphalt}
         style={{ borderRadius: 4 }}
         paddingLeft={'0'}
         center={[5, 0]}
-        absolute
       />
 
       <View style={styles.separator} />

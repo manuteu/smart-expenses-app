@@ -23,5 +23,11 @@ export default {
   dark_blue: '#2980B9',
   violet: '#9B59B6',
   dark_violet: '#8E44AD',
+  red: '#E74C3C',
+  dark_red: '#C0392B',
+  orange: '#E67E22',
+  dark_orange:'#D35400',
+  yellow: '#F1C40F',
+  dark_yellow: '#F39C12'
   
 };
