@@ -23,8 +23,9 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
+import api from '../services/api';
 
-export type DespesaScreen = {
+export type valores = {
   nome: string;
   tipo: string;
   valor: number;
@@ -41,17 +42,19 @@ export default function DespesaScreen({ navigation }: any) {
   // const handleText = (): string =>
   //   data ? data.toDateString() : 'No value Selected';
 
-  const submit = () => {
+  const randomNumber = Math.random().toFixed(5);
+
+  const submit = async () => {
     try {
-      fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+      await fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
         method: 'post',
         body: JSON.stringify({
-          nome,
-          valor,
-          tipo,
+          nome: nome,
+          valor: valor,
+          tipo: tipo?.label,
         }),
       });
-      alert('Despesa Cadastrada');
+      // alert('Despesa Cadastrada');
       // await axios({
       //   method: 'POST',
       //   url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
@@ -66,17 +69,18 @@ export default function DespesaScreen({ navigation }: any) {
       // await axios
       //   .post('https://apismartex.herokuapp.com/api/rotas/usuarios', {
       //     data: {
+      //       id: randomNumber,
       //       nome: nome,
       //       valor: valor,
-      //       tipo: tipo,
+      //       tipo: tipo?.label,
       //     },
       //   })
-      //   .then((response) => response.data)
+      //   .then((response) => response.data);
       //   .catch((error) => error);
     } catch (error) {
-      alert('Erro ao cadastrar despesa...');
+      console.log('Erro ao cadastrar despesa...');
     }
-    console.log(submit);
+    console.log(tipo?.label, valor, nome, randomNumber);
   };
 
   const dados: Array<PickerItem> = [
