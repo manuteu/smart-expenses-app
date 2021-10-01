@@ -26,9 +26,9 @@ import { ScreenHeight } from 'react-native-elements/dist/helpers';
 import api from '../services/api';
 
 export type valores = {
-  nome: string;
-  tipo: string;
-  valor: number;
+  nomeDespesa: string;
+  tpDespesa: string;
+  valorDespesa: number;
   // data: Date;
 };
 
@@ -45,44 +45,31 @@ export default function DespesaScreen({ navigation }: any) {
   const randomNumber = Math.random().toFixed(5);
 
   const submit = async () => {
-    try {
-      await fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+    const response = await fetch(
+      'https://apismartex.herokuapp.com/api/rotas/usuarios',
+      {
         method: 'post',
         body: JSON.stringify({
-          nome: nome,
-          valor: valor,
-          tipo: tipo?.label,
+          nome: 'Fred',
+          valor: '20',
+          tipo: 'comida',
         }),
-      });
-      // alert('Despesa Cadastrada');
-      // await axios({
-      //   method: 'POST',
-      //   url: 'https://apismartex.herokuapp.com/api/rotas/usuarios',
-      //   data: {
-      //     nome,
-      //     valor,
-      //     tipo,
-      //     // dataPagamento,
-      //     // dataVencimento,
-      //   },
-      // });
-      // await axios
-      //   .post('https://apismartex.herokuapp.com/api/rotas/usuarios', {
-      //     data: {
-      //       id: randomNumber,
-      //       nome: nome,
-      //       valor: valor,
-      //       tipo: tipo?.label,
-      //     },
-      //   })
-      //   .then((response) => response.data);
-      //   .catch((error) => error);
-    } catch (error) {
-      console.log('Erro ao cadastrar despesa...');
-    }
-    console.log(tipo?.label, valor, nome, randomNumber);
+      }
+    );
+    console.log(response);
+    // axios
+    //   .post('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+    //     nomeDespesa: 'Fred',
+    //     valorDespesa: '20',
+    //     tpDespesa: 'comida',
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
-
   const dados: Array<PickerItem> = [
     { label: 'Alimentação', value: 1 },
     { label: 'Transporte', value: 2 },
