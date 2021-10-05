@@ -25,12 +25,12 @@ import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
 import api from '../services/api';
 
-export type valores = {
-  nomeDespesa: string;
-  tpDespesa: string;
-  valorDespesa: number;
-  // data: Date;
-};
+// export type valores = {
+//   nomeDespesa: string;
+//   tpDespesa: string;
+//   valorDespesa: number;
+//   data: Date;
+// };
 
 export default function DespesaScreen({ navigation }: any) {
   const [tipo, setTipo] = useState<PickerItem>();
@@ -50,9 +50,9 @@ export default function DespesaScreen({ navigation }: any) {
       {
         method: 'post',
         body: JSON.stringify({
-          nome: 'Fred',
-          valor: '20',
-          tipo: 'comida',
+          nome: nome,
+          valor: valor,
+          tipo: tipo,
         }),
       }
     );
