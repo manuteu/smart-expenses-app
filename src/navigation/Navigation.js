@@ -6,6 +6,7 @@ import LoginScreen from '../screens/LoginScreen';
 import RegistreScreen from '../screens/RegistreScreen';
 import RendaScreen from '../screens/RendaScreen';
 import DespesaScreen from '../screens/DespesaScreen';
+import UltimasDespesasScreen from '../screens/UltimasDespesasScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import CustomTabs from './CustomTabs';
@@ -21,7 +22,8 @@ export default function RootNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Renda" component={RendaScreen} />
       <Stack.Screen name="Registre" component={RegistreScreen} />
-      <Stack.Screen name="Despesa" component={DespesaScreen} />
+      <Stack.Screen name="CadastrarDespesa" component={DespesaScreen} />
+      <Stack.Screen name="UltimasDespesas" component={UltimasDespesasScreen} />
       <Stack.Screen name="Tab" component={CustomTabs} />
       <Stack.Screen
         name="NotFound"

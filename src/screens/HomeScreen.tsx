@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 
 import { Button } from '../components/Button';
 
@@ -56,21 +62,26 @@ export default function Home({ navigation }: any) {
           <Text style={styles.subTitle}>Saldo geral</Text>
         </View>
         <View style={styles.listContainer}>
+          <TouchableOpacity
+            onPress={() => navigation.replace('UltimasDespesas')}
+          >
+            <Text style={styles.titleDespesa}>Últimas Despesas</Text>
+          </TouchableOpacity>
+
           <FlatList
             data={despesas}
             keyExtractor={(item: item, index) => item.id.toString()}
-            showsVerticalScrollIndicator={false}
+            // showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <View>
                 <View style={styles.list}>
-                  {/* <Text style={styles.listName}>{item.id}</Text> */}
                   <Text key={item.id} style={styles.listName}>
                     {item.nome}
                   </Text>
-                  <Text style={styles.listType}>{item.tipo}</Text>
+                  <Text style={styles.listPrice}>{item.valor}</Text>
                 </View>
                 <View>
-                  <Text style={styles.listPrice}>{item.valor}</Text>
+                  <Text style={styles.listType}>{item.tipo}</Text>
                 </View>
               </View>
             )}
@@ -98,13 +109,14 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: '5%',
     borderRadius: 10,
+    height: 160,
   },
   title: {
     fontFamily: fonts.text,
     fontSize: 18,
     color: colors.cloud,
     textAlign: 'center',
-    paddingVertical: 6,
+    paddingVertical: 14,
   },
   value: {
     flexDirection: 'row',
@@ -140,7 +152,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     marginBottom: 10,
-    height: 160,
+    maxHeight: 210,
+  },
+  titleDespesa: {
+    fontSize: 18,
+    fontWeight: '400',
+    color: colors.cloud,
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 20,
   },
   list: {
     marginTop: 5,
@@ -150,15 +170,10 @@ const styles = StyleSheet.create({
   },
   listName: {
     fontFamily: fonts.text,
-    fontSize: 18,
+    fontSize: 16,
     color: colors.cloud,
   },
   listType: {
-    fontFamily: fonts.text,
-    fontSize: 18,
-    color: colors.cloud,
-  },
-  listPrice: {
     paddingHorizontal: 30,
     fontFamily: fonts.text,
     fontSize: 14,
@@ -166,8 +181,13 @@ const styles = StyleSheet.create({
     // textAlign: 'right',
     color: colors.concret,
   },
+  listPrice: {
+    fontFamily: fonts.text,
+    fontSize: 16,
+    color: colors.cloud,
+  },
   button: {
-    flex: 1,
+    // flex: 1,
     width: '100%',
     // bottom: 50,
   },

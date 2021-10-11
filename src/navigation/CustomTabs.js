@@ -80,7 +80,7 @@ const CustomTabs = () => {
         }}
       />
       <Stack.Screen
-        name="Despesa"
+        name="CadastrarDespesa"
         component={Despesa}
         options={{
           tabBarVisible: false,
