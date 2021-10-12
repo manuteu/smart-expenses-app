@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   listName: {
-    fontFamily: fonts.text,
+    fontFamily: fonts.subTitle,
     fontSize: 16,
     color: colors.cloud,
   },

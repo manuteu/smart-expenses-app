@@ -3,8 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   useFonts,
+  Jost_300Light,
   Jost_400Regular,
   Jost_600SemiBold,
+  Jost_700Bold,
 } from '@expo-google-fonts/jost';
 
 import AppLoading from 'expo-app-loading';
@@ -18,8 +20,10 @@ import RootNavigator from './src/navigation/Navigation';
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
+    Jost_300Light,
     Jost_400Regular,
     Jost_600SemiBold,
+    Jost_700Bold,
   });
 
   if (!fontsLoaded) return <AppLoading />;
@@ -28,13 +32,10 @@ export default function App() {
     return null;
   } else {
     return (
-      // <SafeAreaProvider>
       <NavigationContainer>
+        <StatusBar />
         <RootNavigator />
       </NavigationContainer>
-      // {/* <Navigation /> */}
-      // <StatusBar />
-      // </SafeAreaProvider>
     );
   }
 }

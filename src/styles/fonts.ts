@@ -1,11 +1,7 @@
-const fontRegular = 'Jost_400Regular';
-
 export default {
-  heading: 'Jost_600SemiBold',
-
   bold: 'Jost_700Bold',
-
-  title: fontRegular,
-
-  text: fontRegular,
+  heading: 'Jost_600SemiBold',
+  text: 'Jost_400Regular',
+  title: 'Jost_400Regular',
+  subTitle: 'Jost_300Light',
 };

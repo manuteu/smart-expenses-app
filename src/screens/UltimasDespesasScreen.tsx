@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  FlatList,
-  Animated,
-} from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { RectButton } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
-import { Button } from 'react-native-elements/dist/buttons/Button';
 import { EmptyButton } from '../components/EmptyButton';
-import { Feather } from '@expo/vector-icons';
+import { CardDespesas } from '../components/CardDespesas';
 
 export type item = {
   nome: string;
@@ -46,34 +37,13 @@ export default function UltimasDespesasScreen({ navigation }: any) {
           source={require('../../assets/images/Logo.png')}
         />
       </View>
-      <Swipeable
-        overshootRight={false}
-        renderRightActions={() => (
-          <Animated.View>
-            <View>
-              <RectButton style={styles.buttonRemove}>
-                <Feather name="trash" size={28} color={colors.cloud} />
-              </RectButton>
-            </View>
-          </Animated.View>
-        )}
-      >
-        <FlatList
-          data={despesas}
-          keyExtractor={(item: item, index) => item.id.toString()}
-          // showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <View>
-              <View style={styles.list}>
-                <Text key={item.id} style={styles.listName}>
-                  {item.nome}
-                </Text>
-                <Text style={styles.listPrice}>{item.valor}</Text>
-              </View>
-            </View>
-          )}
-        />
-      </Swipeable>
+
+      <FlatList
+        data={despesas}
+        keyExtractor={(item: item) => String(item.id)}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <CardDespesas data={item} />}
+      />
       <EmptyButton title="Voltar" onPress={() => navigation.replace('Tab')} />
     </View>
   );
@@ -89,6 +59,7 @@ const styles = StyleSheet.create({
     color: colors.header,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 40,
   },
   title: {
     color: colors.cloud,
@@ -102,38 +73,5 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     marginRight: 16,
-  },
-  // listContainer: {
-  //   width: '90%',
-  //   backgroundColor: colors.dark_asphalt,
-  // },
-  list: {
-    marginTop: 5,
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  listName: {
-    fontFamily: fonts.text,
-    fontSize: 16,
-    color: colors.cloud,
-  },
-  listPrice: {
-    fontFamily: fonts.text,
-    fontSize: 16,
-    color: colors.cloud,
-  },
-  buttonRemove: {
-    width: 100,
-    height: 85,
-    backgroundColor: colors.dark_red,
-    marginTop: 15,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    right: 20,
-    paddingLeft: 15,
   },
 });
