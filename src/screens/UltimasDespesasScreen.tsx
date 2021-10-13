@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, Modal } from 'react-native';
 
 import fonts from '../styles/fonts';
 import colors from '../styles/colors';
 import { EmptyButton } from '../components/EmptyButton';
-import { CardDespesas } from '../components/CardDespesas';
+import { CardDespesas, DespesaProps } from '../components/CardDespesas';
+import { ModalDelete } from '../components/ModalDelete';
 
 export type item = {
   nome: string;
@@ -13,8 +14,12 @@ export type item = {
   id: number;
 };
 
-export default function UltimasDespesasScreen({ navigation }: any) {
+export default function UltimasDespesasScreen(
+  { navigation }: any,
+  { id }: item
+) {
   const [despesas, setDespesas] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     fetch('https://apismartex.herokuapp.com/api/rotas/usuarios')
@@ -27,6 +32,16 @@ export default function UltimasDespesasScreen({ navigation }: any) {
         console.log(error);
       });
   }, []);
+
+  const deleteDespesa = (despesa: DespesaProps) => {
+    fetch(
+      `https://apismartex.herokuapp.com/api/rotas/usuarios/${despesa.data.id}`,
+      {
+        method: 'delete',
+      }
+    );
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -42,9 +57,25 @@ export default function UltimasDespesasScreen({ navigation }: any) {
         data={despesas}
         keyExtractor={(item: item) => String(item.id)}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <CardDespesas data={item} />}
+        renderItem={({ item }) => (
+          <CardDespesas data={item} deleteModal={() => setModalVisible(true)} />
+        )}
       />
       <EmptyButton title="Voltar" onPress={() => navigation.replace('Tab')} />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          alert('Modal fechado.');
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <ModalDelete
+          closeModal={() => setModalVisible(false)}
+          deleteDespesa={deleteDespesa}
+        />
+      </Modal>
     </View>
   );
 }

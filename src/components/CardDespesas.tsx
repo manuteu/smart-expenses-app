@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   Animated,
   StyleSheet,
   TouchableOpacity,
+  Modal,
+  Pressable,
 } from 'react-native';
 import { RectButtonProps } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
@@ -13,15 +15,18 @@ import { Feather, AntDesign } from '@expo/vector-icons';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-interface DespesaProps extends RectButtonProps {
+export interface DespesaProps extends RectButtonProps {
   data: {
     nome: string;
     valor: number;
     id: number;
   };
+  deleteModal: () => void;
 }
 
-export const CardDespesas = ({ data }: DespesaProps) => {
+export const CardDespesas = ({ data, deleteModal }: DespesaProps) => {
+  // const [modalVisible, setModalVisible] = useState(false);
+
   const deleteDespesa = () => {
     fetch(`https://apismartex.herokuapp.com/api/rotas/usuarios/${data.id}`, {
       method: 'delete',
@@ -99,5 +104,26 @@ const styles = StyleSheet.create({
     right: 30,
     paddingLeft: 15,
     marginLeft: -14,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
   },
 });

@@ -45,44 +45,29 @@ export default function DespesaScreen({ navigation }: any) {
   // const randomNumber = Math.random().toFixed(5);
 
   const submit = async () => {
-    fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        nome: nome,
-        valor: valor,
-        tipo: tipo?.label,
-      }),
-    });
-    // const response = await fetch(
-    //   'https://apismartex.herokuapp.com/api/rotas/usuarios',
-    //   {
-    //     method: 'post',
-    //     body: JSON.stringify({
-    //       nome: 'pastel',
-    //       valor: '20',
-    //       tipo: 'Comida',
-    //     }),
-    //   }
-    // );
-    // console.log(response);
-
-    // axios
-    //   .post('https://apismartex.herokuapp.com/api/rotas/usuarios', {
-    //     nomeDespesa: 'Fred',
-    //     valorDespesa: '20',
-    //     tpDespesa: 'comida',
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    try {
+      if (nome != null && valor != null && tipo != null) {
+        fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nome: nome,
+            valor: valor,
+            tipo: tipo?.label,
+          }),
+        });
+        alert('Despesa Cadastrada! 😀');
+      } else {
+        alert('Não deixe campo em BRANCO! 😑');
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
+
   const dados: Array<PickerItem> = [
     { label: 'Alimentação', value: 1 },
     { label: 'Transporte', value: 2 },
