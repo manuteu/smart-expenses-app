@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   buttonRemove: {
-    width: 70,
+    width: 80,
     height: 60,
     backgroundColor: colors.dark_red,
     marginTop: 5,
