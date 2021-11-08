@@ -24,6 +24,7 @@ import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
 import api from '../services/api';
+import { useNavigation } from '@react-navigation/native';
 
 // export type valores = {
 //   nomeDespesa: string;
@@ -32,22 +33,17 @@ import api from '../services/api';
 //   data: Date;
 // };
 
-export default function DespesaScreen({ navigation }: any) {
+export default function DespesaScreen() {
   const [tipo, setTipo] = useState<PickerItem>();
   const [valor, setValor] = useState('');
   const [nome, setNome] = useState('');
-  // const [dataPagamento, setDataPagamento] = useState('');
-  // const [dataVencimento, setDataVencimento] = useState('');
 
-  // const handleText = (): string =>
-  //   data ? data.toDateString() : 'No value Selected';
-
-  // const randomNumber = Math.random().toFixed(5);
+  const navigation = useNavigation();
 
   const submit = async () => {
     try {
       if (nome != null && valor != null && tipo != null) {
-        fetch('https://apismartex.herokuapp.com/api/rotas/usuarios', {
+        fetch('https://apismartex.herokuapp.com/api/rotas/despesas', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -60,6 +56,7 @@ export default function DespesaScreen({ navigation }: any) {
           }),
         });
         alert('Despesa Cadastrada! 😀');
+        navigation.navigate('Tab');
       } else {
         alert('Não deixe campo em BRANCO! 😑');
       }
@@ -142,7 +139,7 @@ export default function DespesaScreen({ navigation }: any) {
               <View style={styles.footer}>
                 <EmptyButton title="Cadastrar" onPress={submit} />
 
-                <TouchableOpacity onPress={() => navigation.replace('Tab')}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                   <Text style={styles.backButton}>Voltar</Text>
                 </TouchableOpacity>
               </View>

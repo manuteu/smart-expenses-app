@@ -1,59 +1,34 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-
 import { DespesaProps } from './CardDespesas';
-
 import { RectButtonProps } from 'react-native-gesture-handler';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-// interface DespesaProps {
-//   data: {
-//     nome: string;
-//     valor: number;
-//     id: number;
-//   };
-// }
-// export type data = {
-//   nome: string;
-//   valor: number;
-//   id: number;
-// };
 interface ModalDespesa {
   deleteDespesa: (despesa: DespesaProps) => void;
   closeModal: () => void;
 }
 
-export const ModalDelete = ({ deleteDespesa, closeModal }: ModalDespesa) =>
-  // { data }: DespesaProps
-  {
-    // const [modalVisible, setModalVisible] = useState(false);
-
-    // const deleteDespesa = () => {
-    //   fetch(`https://apismartex.herokuapp.com/api/rotas/usuarios/${data.id}`, {
-    //     method: 'delete',
-    //   });
-    //   setModalVisible(false);
-    // };
-
-    return (
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <Text style={styles.title}>Deseja mesmo excluir a despesa ?</Text>
-          {/* <Text>{data.nome}</Text> */}
-          {/* <Text>?</Text> */}
-          <View style={styles.buttonsContainer}>
-            <Pressable onPress={closeModal} style={styles.buttons}>
-              <Text style={styles.cancelButton}>Cancelar</Text>
-            </Pressable>
-            <Pressable onPress={() => deleteDespesa} style={styles.buttons}>
-              <Text style={styles.deleteButton}>Excluir</Text>
-            </Pressable>
-          </View>
+export const ModalDelete = ({ deleteDespesa, closeModal }: ModalDespesa) => {
+  return (
+    <View style={styles.centeredView}>
+      <View style={styles.modalView}>
+        <Text style={styles.title}>Deseja mesmo excluir a despesa ?</Text>
+        {/* <Text>{data.nome}</Text> */}
+        {/* <Text>?</Text> */}
+        <View style={styles.buttonsContainer}>
+          <Pressable onPress={closeModal} style={styles.buttons}>
+            <Text style={styles.cancelButton}>Cancelar</Text>
+          </Pressable>
+          <Pressable onPress={() => deleteDespesa} style={styles.buttons}>
+            <Text style={styles.deleteButton}>Excluir</Text>
+          </Pressable>
         </View>
       </View>
-    );
-  };
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   centeredView: {

@@ -27,11 +27,12 @@ export interface DespesaProps extends RectButtonProps {
 export const CardDespesas = ({ data, deleteModal }: DespesaProps) => {
   // const [modalVisible, setModalVisible] = useState(false);
 
-  const deleteDespesa = () => {
-    fetch(`https://apismartex.herokuapp.com/api/rotas/usuarios/${data.id}`, {
-      method: 'delete',
-    });
-  };
+  // const deleteDespesa = () => {
+  //   fetch(`https://apismartex.herokuapp.com/api/rotas/despesas/${data.id}`, {
+  //     method: 'delete',
+  //   });
+  //   deleteModal();
+  // };
 
   return (
     <Swipeable
@@ -39,7 +40,7 @@ export const CardDespesas = ({ data, deleteModal }: DespesaProps) => {
       renderRightActions={() => (
         <Animated.View>
           <View>
-            <RectButton style={styles.buttonRemove} onPress={deleteDespesa}>
+            <RectButton style={styles.buttonRemove} onPress={deleteModal}>
               <Feather name="trash" size={22} color={colors.cloud} />
             </RectButton>
           </View>

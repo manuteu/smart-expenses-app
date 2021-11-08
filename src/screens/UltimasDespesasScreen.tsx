@@ -14,15 +14,12 @@ export type item = {
   id: number;
 };
 
-export default function UltimasDespesasScreen(
-  { navigation }: any,
-  { id }: item
-) {
+export default function UltimasDespesasScreen({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    fetch('https://apismartex.herokuapp.com/api/rotas/usuarios')
+    fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
       .then((resp) => resp.json())
       .then((resp) => {
         setDespesas(resp);
@@ -35,7 +32,7 @@ export default function UltimasDespesasScreen(
 
   const deleteDespesa = (despesa: DespesaProps) => {
     fetch(
-      `https://apismartex.herokuapp.com/api/rotas/usuarios/${despesa.data.id}`,
+      `https://apismartex.herokuapp.com/api/rotas/despesas/${despesa.data.id}`,
       {
         method: 'delete',
       }

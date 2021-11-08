@@ -26,7 +26,7 @@ export default function Home({ navigation }: any) {
   const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
-    fetch('https://apismartex.herokuapp.com/api/rotas/usuarios')
+    fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
       .then((resp) => resp.json())
       .then((resp) => {
         setDespesas(resp);
