@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,13 +6,11 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-
 import { Button } from '../components/Button';
-
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import api from '../services/api';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { context } from '../context';
 
 export type item = {
   nome: string;
@@ -23,6 +20,7 @@ export type item = {
 };
 
 export default function Home({ navigation }: any) {
+  const ctx = useContext(context);
   const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
@@ -35,19 +33,6 @@ export default function Home({ navigation }: any) {
       .catch((error) => {
         console.log(error);
       });
-    // const getItems = async () => {
-    //   try {
-    //     const { data } = await api.get(
-    //       'https://apismartex.herokuapp.com/api/rotas/usuarios'
-    //     );
-    //     console.log(data);
-    //     setDespesas(data);
-    //     alert('Sucesso na requisição');
-    //   } catch (error) {
-    //     // alert('Ocorreu um erro ao buscar os items');
-    //   }
-    // };
-    // getItems();
   }, []);
 
   return (
@@ -57,7 +42,7 @@ export default function Home({ navigation }: any) {
           <Text style={styles.title}>Boa noite, Usuário</Text>
           <View style={styles.value}>
             <Text style={styles.cifrao}>R$</Text>
-            <Text style={styles.currentMoney}>2.611,00</Text>
+            <Text style={styles.currentMoney}>{ctx?.renda?.valor}</Text>
           </View>
           <Text style={styles.subTitle}>Saldo geral</Text>
         </View>

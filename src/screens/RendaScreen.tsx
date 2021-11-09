@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -20,8 +20,11 @@ import fonts from '../styles/fonts';
 import { TextInput } from 'react-native-gesture-handler';
 import { EmptyButton } from '../components/EmptyButton';
 import { useNavigation } from '@react-navigation/native';
+import api from '../services/api';
+import { context } from '../context';
 
 export default function RendaScreen() {
+  const ctx = useContext(context);
   const [date, setDate] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -65,6 +68,17 @@ export default function RendaScreen() {
     } catch (error) {
       alert(error);
     }
+  };
+
+  const getUserValue = async () => {
+    try {
+      const response = await api.get('receita');
+
+      ctx.setRenda(response.data.valor);
+    } catch (error) {
+      console.log(error);
+    }
+    navigation.navigate('Tab');
   };
 
   return (
@@ -129,7 +143,7 @@ export default function RendaScreen() {
           </View>
           <View style={styles.footer}>
             <EmptyButton title="Cadastrar" onPress={submit} />
-            <TouchableOpacity onPress={() => navigation.navigate('Tab')}>
+            <TouchableOpacity onPress={() => getUserValue()}>
               <Text style={styles.textBellowButton}>Talvez depois</Text>
             </TouchableOpacity>
           </View>

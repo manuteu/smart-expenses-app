@@ -17,6 +17,7 @@ import useCachedResources from './hooks/useCachedResources';
 // import Navigation from './src/navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigation/Navigation';
+import { ContextProvider } from './src/context/index';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -34,10 +35,12 @@ export default function App() {
     return null;
   } else {
     return (
-      <NavigationContainer>
-        <StatusBar />
-        <RootNavigator />
-      </NavigationContainer>
+      <ContextProvider>
+        <NavigationContainer>
+          <StatusBar />
+          <RootNavigator />
+        </NavigationContainer>
+      </ContextProvider>
     );
   }
 }
