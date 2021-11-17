@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Image,
+  Platform,
 } from 'react-native';
 
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
@@ -19,14 +20,21 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Button } from '../components/Button';
 
-export default function RegistreScreen({ navigation }: any) {
+import { Context } from '../context/authContext';
+import { useNavigation } from '@react-navigation/native';
+
+export default function RegistreScreen() {
+  const { createUser } = useContext(Context);
+
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-  const [name, setName] = useState<string>();
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleInputBlur() {
     setIsFocused(false);
-    setIsFilled(!!name);
+    setIsFilled(!!nome);
   }
 
   function handleInputFocus() {
@@ -35,13 +43,18 @@ export default function RegistreScreen({ navigation }: any) {
 
   function handleInputChange(value: string) {
     setIsFilled(!!value);
-    setName(value);
+    setNome(value);
   }
+
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>Registre-se,</Text>
@@ -77,41 +90,15 @@ export default function RegistreScreen({ navigation }: any) {
                   (isFocused || isFilled) && {
                     borderColor: colors.turquesa,
                   },
-                ]}
-                placeholder="Sobrenome"
-                placeholderTextColor={colors.placeholder}
-                onBlur={handleInputBlur}
-                onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
-                autoCompleteType="name"
-              />
-              <TextInput
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && {
-                    borderColor: colors.turquesa,
-                  },
+                  { textTransform: 'lowercase' },
                 ]}
                 placeholder="E-mail"
                 placeholderTextColor={colors.placeholder}
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
+                value={email}
+                onChangeText={setEmail}
                 autoCompleteType="email"
-              />
-              <TextInput
-                style={[
-                  styles.input,
-                  (isFocused || isFilled) && {
-                    borderColor: colors.turquesa,
-                  },
-                ]}
-                placeholder="Nome de usuário"
-                placeholderTextColor={colors.placeholder}
-                onBlur={handleInputBlur}
-                onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
-                autoCompleteType="username"
               />
               <TextInput
                 style={[
@@ -124,12 +111,41 @@ export default function RegistreScreen({ navigation }: any) {
                 placeholderTextColor={colors.placeholder}
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
+                value={password}
+                onChangeText={setPassword}
                 autoCompleteType="password"
                 maxLength={16}
                 secureTextEntry={true}
               />
-              <TextInput
+              {/* <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.turquesa,
+                  },
+                ]}
+                placeholder="Sobrenome"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="name"
+              /> */}
+              {/* <TextInput
+                style={[
+                  styles.input,
+                  (isFocused || isFilled) && {
+                    borderColor: colors.turquesa,
+                  },
+                ]}
+                placeholder="Nome de usuário"
+                placeholderTextColor={colors.placeholder}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onChangeText={handleInputChange}
+                autoCompleteType="username"
+              /> */}
+              {/* <TextInput
                 style={[
                   styles.input,
                   (isFocused || isFilled) && {
@@ -144,14 +160,17 @@ export default function RegistreScreen({ navigation }: any) {
                 autoCompleteType="password"
                 maxLength={16}
                 secureTextEntry={true}
-              />
+              /> */}
             </View>
           </ScrollView>
 
           <View style={styles.button}>
             <Button
               title="Registrar"
-              onPress={() => navigation.replace('Login')}
+              onPress={() => {
+                createUser(nome, email, password);
+                navigation.navigate('Tab');
+              }}
             />
           </View>
         </KeyboardAvoidingView>
@@ -191,20 +210,18 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   form: {
-    marginTop: '10%',
-    paddingHorizontal: 50,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    paddingHorizontal: 47,
+    marginTop: '20%',
   },
   input: {
     borderBottomWidth: 1,
     borderColor: colors.placeholder,
     color: colors.header,
     width: '100%',
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
-    flexDirection: 'column',
-    marginBottom: 36,
+    marginBottom: 44,
+    padding: 10,
   },
 
   button: {
@@ -212,6 +229,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     paddingHorizontal: 37,
-    marginBottom: '10%',
+    marginBottom: '16%',
   },
 });

@@ -21,10 +21,10 @@ import { TextInput } from 'react-native-gesture-handler';
 import { EmptyButton } from '../components/EmptyButton';
 import { useNavigation } from '@react-navigation/native';
 import api from '../services/api';
-import { context } from '../context';
+// import { context } from '../context';
 
 export default function RendaScreen() {
-  const ctx = useContext(context);
+  // const ctx = useContext(context);
   const [date, setDate] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -70,16 +70,16 @@ export default function RendaScreen() {
     }
   };
 
-  const getUserValue = async () => {
-    try {
-      const response = await api.get('receita');
+  // const getUserValue = async () => {
+  //   try {
+  //     const response = await api.get('receita');
 
-      ctx.setRenda(response.data.valor);
-    } catch (error) {
-      console.log(error);
-    }
-    navigation.navigate('Tab');
-  };
+  //     ctx.setRenda(response.data.valor);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   navigation.navigate('Tab');
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -143,7 +143,7 @@ export default function RendaScreen() {
           </View>
           <View style={styles.footer}>
             <EmptyButton title="Cadastrar" onPress={submit} />
-            <TouchableOpacity onPress={() => getUserValue()}>
+            <TouchableOpacity onPress={() => navigation.navigate('Tab')}>
               <Text style={styles.textBellowButton}>Talvez depois</Text>
             </TouchableOpacity>
           </View>

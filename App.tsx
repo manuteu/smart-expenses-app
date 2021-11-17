@@ -9,15 +9,11 @@ import {
   Jost_600SemiBold,
   Jost_700Bold,
 } from '@expo-google-fonts/jost';
-
 import AppLoading from 'expo-app-loading';
-
 import useCachedResources from './hooks/useCachedResources';
-
-// import Navigation from './src/navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigation/Navigation';
-import { ContextProvider } from './src/context/index';
+import { Provider } from './src/context/authContext';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -35,12 +31,14 @@ export default function App() {
     return null;
   } else {
     return (
-      <ContextProvider>
+      <Provider>
         <NavigationContainer>
           <StatusBar />
-          <RootNavigator />
+          <SafeAreaProvider>
+            <RootNavigator />
+          </SafeAreaProvider>
         </NavigationContainer>
-      </ContextProvider>
+      </Provider>
     );
   }
 }

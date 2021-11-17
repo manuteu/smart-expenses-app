@@ -10,7 +10,7 @@ import { Button } from '../components/Button';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { context } from '../context';
+// import { context } from '../context';
 
 export type item = {
   nome: string;
@@ -20,7 +20,7 @@ export type item = {
 };
 
 export default function Home({ navigation }: any) {
-  const ctx = useContext(context);
+  // const ctx = useContext(context);
   const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Home({ navigation }: any) {
           <Text style={styles.title}>Boa noite, Usuário</Text>
           <View style={styles.value}>
             <Text style={styles.cifrao}>R$</Text>
-            <Text style={styles.currentMoney}>{ctx?.renda?.valor}</Text>
+            <Text style={styles.currentMoney}>2000</Text>
           </View>
           <Text style={styles.subTitle}>Saldo geral</Text>
         </View>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.text,
     fontSize: 11,
     paddingVertical: 10,
-    marginTop: 7,
+    marginTop: 4,
     marginRight: 4,
     color: colors.concret,
     textAlign: 'center',

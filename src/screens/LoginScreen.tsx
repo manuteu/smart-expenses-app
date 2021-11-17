@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,18 +21,21 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 // import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
+import { Context } from '../context/authContext';
 
 export default function LoginScreen({ navigation }: any) {
+  const { loginUser } = useContext(Context);
+
   const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-  const [name, setName] = useState<string>();
-  const [senha, setSenha] = useState<string>();
+  const [nome, setNome] = useState<string>();
+  const [password, setPassword] = useState<string>();
 
   function handleInputBlur() {
     setIsFocused(false);
-    setIsFilled(!!name);
-    setIsFilled(!!senha);
+    setIsFilled(!!nome);
+    setIsFilled(!!password);
   }
 
   function handleInputFocus() {
@@ -41,8 +44,8 @@ export default function LoginScreen({ navigation }: any) {
 
   function handleInputChange(value: string) {
     setIsFilled(!!value);
-    setName(value);
-    setSenha(value);
+    setNome(value);
+    setPassword(value);
   }
 
   return (
@@ -119,7 +122,10 @@ export default function LoginScreen({ navigation }: any) {
             <View style={styles.button}>
               <Button
                 title="Entrar"
-                onPress={() => navigation.replace('Renda')}
+                onPress={() => {
+                  navigation.replace('Renda');
+                  loginUser(nome, password);
+                }}
               />
             </View>
           </View>
@@ -133,7 +139,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    paddingHorizontal: 37,
+    paddingHorizontal: 27,
     backgroundColor: colors.background_light,
   },
   header: {
@@ -147,6 +153,7 @@ const styles = StyleSheet.create({
   logo: {
     height: 120,
     width: 120,
+    marginLeft: 50,
   },
   title: {
     fontSize: 36,
@@ -159,8 +166,9 @@ const styles = StyleSheet.create({
   },
   form: {
     // paddingHorizontal: 37,
-    width: '100%',
+    width: '90%',
     marginTop: '10%',
+    alignSelf: 'center',
   },
   input: {
     borderBottomWidth: 1,
