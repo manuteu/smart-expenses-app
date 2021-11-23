@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import LoginScreen from '../screens/LoginScreen';
@@ -10,18 +9,20 @@ import UltimasDespesasScreen from '../screens/UltimasDespesasScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import CustomTabs from './CustomTabs';
+import LoginTokenScreen from '../screens/LoginTokenScreen';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      // initialRouteName="Login"
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen name="LoginToken" component={LoginTokenScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Renda" component={RendaScreen} />
       <Stack.Screen name="Registre" component={RegistreScreen} />
+      <Stack.Screen name="Renda" component={RendaScreen} />
       <Stack.Screen name="CadastrarDespesa" component={DespesaScreen} />
       <Stack.Screen name="UltimasDespesas" component={UltimasDespesasScreen} />
       <Stack.Screen name="Tab" component={CustomTabs} />

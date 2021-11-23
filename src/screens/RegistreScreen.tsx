@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Image,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
@@ -169,9 +170,17 @@ export default function RegistreScreen() {
               title="Registrar"
               onPress={() => {
                 createUser(nome, email, password);
-                navigation.navigate('Tab');
+                navigation.navigate('Login');
               }}
             />
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => navigation.navigate('Login')}
+            >
+              <Text style={{ fontSize: 18, color: colors.dark_asphalt }}>
+                Voltar
+              </Text>
+            </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
@@ -225,10 +234,15 @@ const styles = StyleSheet.create({
   },
 
   button: {
+    flex: 1,
     position: 'absolute',
     bottom: 0,
     width: '100%',
     paddingHorizontal: 37,
     marginBottom: '16%',
+  },
+  backButton: {
+    padding: 12,
+    alignItems: 'center',
   },
 });

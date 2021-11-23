@@ -26,17 +26,8 @@ const CustomTabBarButton = ({ onPress }) => (
       style={{
         width: 65,
         height: 65,
-        // tintColor: colors.turquesa,
-        // backgroundColor: colors.dark_asphalt,
-        // borderColor: colors.turquesa,
-        // tintColor: colors.dark_asphalt,
       }}
     />
-    {/* {children} */}
-    {/* </Image> */}
-    {/* <AntDesign name="pluscircleo" size={60} color={colors.turquesa}>
-      {children}
-    </AntDesign> */}
   </TouchableOpacity>
 );
 
@@ -51,7 +42,6 @@ const CustomTabs = () => {
         showLabel: false,
         style: {
           position: 'absolute',
-          // bottom: 25,
           backgroundColor: colors.dark_asphalt,
           borderTopColor: colors.dark_asphalt,
           borderTopLeftRadius: 35,
@@ -84,18 +74,6 @@ const CustomTabs = () => {
         component={Despesa}
         options={{
           tabBarVisible: false,
-          // tabBarIcon: ({ focused }) => (
-          //   // <Image
-          //   //   source={require('../../assets/images/adicionar.png')}
-          //   //   resizeMode="contain"
-          //   //   style={{
-          //   //     width: 70,
-          //   //     height: 70,
-          //   //     tintColor: colors.dark_asphalt,
-          //   //   }}
-          //   // />
-          //   // <AntDesign name="pluscircleo" size={75} color={colors.turquesa} />
-          // ),
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}
       />

@@ -22,20 +22,22 @@ import fonts from '../styles/fonts';
 // import { RootStackParamList } from '../../types';
 import { Button } from '../components/Button';
 import { Context } from '../context/authContext';
+import { useNavigation } from '@react-navigation/native';
 
-export default function LoginScreen({ navigation }: any) {
+export default function LoginScreen() {
+  const navigation = useNavigation();
   const { loginUser } = useContext(Context);
 
   const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-  const [nome, setNome] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [senha, setSenha] = useState<string>();
 
   function handleInputBlur() {
     setIsFocused(false);
-    setIsFilled(!!nome);
-    setIsFilled(!!password);
+    setIsFilled(!!email);
+    setIsFilled(!!senha);
   }
 
   function handleInputFocus() {
@@ -44,8 +46,8 @@ export default function LoginScreen({ navigation }: any) {
 
   function handleInputChange(value: string) {
     setIsFilled(!!value);
-    setNome(value);
-    setPassword(value);
+    setEmail(value);
+    setSenha(value);
   }
 
   return (
@@ -92,7 +94,8 @@ export default function LoginScreen({ navigation }: any) {
                 placeholderTextColor={colors.placeholder}
                 onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
-                onChangeText={handleInputChange}
+                value={senha}
+                onChangeText={setSenha}
                 autoCompleteType="password"
                 maxLength={16}
                 secureTextEntry={true}
@@ -115,7 +118,7 @@ export default function LoginScreen({ navigation }: any) {
           </ScrollView>
 
           <View style={styles.footer}>
-            <TouchableOpacity onPress={() => navigation.replace('Registre')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Registre')}>
               <Text style={styles.footerText}>Registre-se</Text>
             </TouchableOpacity>
 
@@ -123,8 +126,8 @@ export default function LoginScreen({ navigation }: any) {
               <Button
                 title="Entrar"
                 onPress={() => {
-                  navigation.replace('Renda');
-                  loginUser(nome, password);
+                  loginUser(email, senha);
+                  navigation.navigate('Renda');
                 }}
               />
             </View>

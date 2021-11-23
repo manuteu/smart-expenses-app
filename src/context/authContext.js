@@ -20,7 +20,7 @@ const teste = (dispatch) => {
 const createUser = (dispatch) => {
   return async (nome, email, senha) => {
     try {
-      await api.post('/cadastro', {
+      await api.post('/auth/criar', {
         nome: nome,
         email: email,
         senha: senha,
@@ -34,17 +34,12 @@ const createUser = (dispatch) => {
 const loginUser = (dispatch) => {
   return async (email, senha) => {
     try {
-      const userData = await api.post('/login', {
+      const userData = await api.post('/auth/login', {
         email: email,
         senha: senha,
       });
 
-      await AsyncStorage.setItem('id', userData.data.token);
-
-      const id = await AsyncStorage.getItem('id');
-      console.log(id);
-
-      console.log(userData.data);
+      await AsyncStorage.setItem('token', userData.data.token);
     } catch (e) {
       console.log(e);
     }

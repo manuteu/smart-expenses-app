@@ -33,7 +33,7 @@ export default function App() {
     return (
       <Provider>
         <NavigationContainer>
-          <StatusBar />
+          <StatusBar style="dark" />
           <SafeAreaProvider>
             <RootNavigator />
           </SafeAreaProvider>
