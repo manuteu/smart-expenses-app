@@ -4,26 +4,26 @@ import api from '../services/api';
 
 const initialState = {};
 
-const reducer = (state, action) => {
+const reducer = (state: any, action: any) => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-const teste = (dispatch) => {
-  return (args) => {
+const teste = (dispatch: any) => {
+  return (args: any) => {
     console.log(args);
   };
 };
 
-const createUser = (dispatch) => {
-  return async (nome, email, senha) => {
+const createUser = (dispatch: any) => {
+  return async (nome: string, email: string, senha: string) => {
     try {
-      await api.post('/auth/criar', {
+      await api.post('/users/register', {
         nome: nome,
         email: email,
-        senha: senha,
+        password: senha,
       });
     } catch (e) {
       console.log(e);
@@ -31,12 +31,12 @@ const createUser = (dispatch) => {
   };
 };
 
-const loginUser = (dispatch) => {
-  return async (email, senha) => {
+const loginUser = (dispatch: any) => {
+  return async (email: string, senha: string) => {
     try {
-      const userData = await api.post('/auth/login', {
+      const userData = await api.post('/users/login', {
         email: email,
-        senha: senha,
+        password: senha,
       });
 
       await AsyncStorage.setItem('token', userData.data.token);

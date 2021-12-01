@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://apismartex.herokuapp.com/api/rotas',
+  baseURL: 'https://loginsmartex.herokuapp.com',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

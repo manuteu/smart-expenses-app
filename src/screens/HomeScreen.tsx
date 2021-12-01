@@ -23,17 +23,17 @@ export default function Home({ navigation }: any) {
   // const ctx = useContext(context);
   const [despesas, setDespesas] = useState([]);
 
-  useEffect(() => {
-    fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
-      .then((resp) => resp.json())
-      .then((resp) => {
-        setDespesas(resp);
-      })
+  // useEffect(() => {
+  //   fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
+  //     .then((resp) => resp.json())
+  //     .then((resp) => {
+  //       setDespesas(resp);
+  //     })
 
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <SafeAreaView style={styles.container}>

@@ -19,7 +19,7 @@ import {
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-// import { RootStackParamList } from '../../types';
+
 import { Button } from '../components/Button';
 import { Context } from '../context/authContext';
 import { useNavigation } from '@react-navigation/native';
@@ -32,12 +32,11 @@ export default function LoginScreen() {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [email, setEmail] = useState<string>();
-  const [senha, setSenha] = useState<string>();
+  const [senha, setSenha] = useState('');
 
   function handleInputBlur() {
     setIsFocused(false);
     setIsFilled(!!email);
-    setIsFilled(!!senha);
   }
 
   function handleInputFocus() {
@@ -47,7 +46,6 @@ export default function LoginScreen() {
   function handleInputChange(value: string) {
     setIsFilled(!!value);
     setEmail(value);
-    setSenha(value);
   }
 
   return (
@@ -127,7 +125,7 @@ export default function LoginScreen() {
                 title="Entrar"
                 onPress={() => {
                   loginUser(email, senha);
-                  navigation.navigate('Renda');
+                  const navigati = navigation.navigate('Tab');
                 }}
               />
             </View>
