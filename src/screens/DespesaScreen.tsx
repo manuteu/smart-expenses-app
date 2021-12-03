@@ -23,7 +23,6 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { EmptyButton } from '../components/EmptyButton';
 import { ScreenHeight } from 'react-native-elements/dist/helpers';
-import api from '../services/api';
 import { useNavigation } from '@react-navigation/native';
 
 // export type valores = {
@@ -70,13 +69,13 @@ export default function DespesaScreen() {
     { label: 'Transporte', value: 2 },
     { label: 'Aluguel', value: 3 },
     { label: 'Lazer', value: 4 },
-    { label: 'Vestimenta', value: 5 },
+    { label: 'Shopping', value: 5 },
   ];
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView behavior="position">
+        <KeyboardAvoidingView behavior="padding">
           <View style={styles.header}>
             <View>
               <Text style={styles.title}>

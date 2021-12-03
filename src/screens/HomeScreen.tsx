@@ -23,17 +23,17 @@ export default function Home({ navigation }: any) {
   // const ctx = useContext(context);
   const [despesas, setDespesas] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
-  //     .then((resp) => resp.json())
-  //     .then((resp) => {
-  //       setDespesas(resp);
-  //     })
+  useEffect(() => {
+    fetch('https://apismartex.herokuapp.com/api/rotas/despesas')
+      .then((resp) => resp.json())
+      .then((resp) => {
+        setDespesas(resp);
+      })
 
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +42,7 @@ export default function Home({ navigation }: any) {
           <Text style={styles.title}>Boa noite, Usuário</Text>
           <View style={styles.value}>
             <Text style={styles.cifrao}>R$</Text>
-            <Text style={styles.currentMoney}>2000</Text>
+            <Text style={styles.currentMoney}>1800</Text>
           </View>
           <Text style={styles.subTitle}>Saldo geral</Text>
         </View>
@@ -73,10 +73,7 @@ export default function Home({ navigation }: any) {
           />
         </View>
         <View style={styles.button}>
-          <Button
-            title="Ir para Login"
-            onPress={() => navigation.replace('Login')}
-          />
+          <Button title="Sair" onPress={() => navigation.replace('Login')} />
         </View>
       </View>
     </SafeAreaView>
@@ -94,14 +91,14 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: '5%',
     borderRadius: 10,
-    height: 160,
+    height: 140,
   },
   title: {
     fontFamily: fonts.text,
     fontSize: 18,
     color: colors.cloud,
     textAlign: 'center',
-    paddingVertical: 14,
+    paddingVertical: 10,
   },
   value: {
     flexDirection: 'row',

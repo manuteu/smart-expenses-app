@@ -55,11 +55,10 @@ export default function UltimasDespesasScreen({ navigation }: any) {
         keyExtractor={(item: item) => String(item.id)}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <CardDespesas data={item} deleteModal={() => setModalVisible(true)} />
+          <CardDespesas data={item} deleteModal={() => deleteDespesa} />
         )}
       />
-      <EmptyButton title="Voltar" onPress={() => navigation.replace('Tab')} />
-      <Modal
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -72,7 +71,18 @@ export default function UltimasDespesasScreen({ navigation }: any) {
           closeModal={() => setModalVisible(false)}
           deleteDespesa={deleteDespesa}
         />
-      </Modal>
+      </Modal> */}
+      <View
+        style={{
+          // alignItems: 'center',
+          alignSelf: 'center',
+          justifyContent: 'center',
+          width: '8 0%',
+          flex: 1,
+        }}
+      >
+        <EmptyButton title="Voltar" onPress={() => navigation.replace('Tab')} />
+      </View>
     </View>
   );
 }

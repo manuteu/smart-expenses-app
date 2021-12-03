@@ -8,6 +8,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Image,
+  Alert,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
@@ -21,13 +22,12 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 import { Button } from '../components/Button';
-import { Context } from '../context/authContext';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import api from '../services/api';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const { loginUser } = useContext(Context);
-
   const [isSelected, setSelection] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -47,6 +47,26 @@ export default function LoginScreen() {
     setIsFilled(!!value);
     setEmail(value);
   }
+
+  const loginUser = async () => {
+    // return async (email: string, senha: string) => {
+    try {
+      const userData = await api.post('/users/login', {
+        email: email,
+        password: senha,
+      });
+      console.log(userData.data);
+
+      if (userData.status >= 200 && userData.status <= 300) {
+        navigation.navigate('Tab');
+      }
+
+      await AsyncStorage.setItem('token', userData.data.token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  // };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -123,10 +143,11 @@ export default function LoginScreen() {
             <View style={styles.button}>
               <Button
                 title="Entrar"
-                onPress={() => {
-                  loginUser(email, senha);
-                  const navigati = navigation.navigate('Tab');
-                }}
+                onPress={
+                  // loginUser(email, senha);
+                  loginUser
+                  // navigation.navigate('Tab');
+                }
               />
             </View>
           </View>
